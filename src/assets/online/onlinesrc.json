@@ -1,0 +1,58 @@
+{
+    "strategyList": [
+        {
+            "text": "敬請期待！",
+            "link": "",
+            "img": "../assets/14/lock.svg"
+        },
+        {
+            "text": "敬請期待！",
+            "link": "",
+            "img": "../assets/14/lock.svg"
+        },
+        {
+            "text": "敬請期待！",
+            "link": "",
+            "img": "../assets/14/lock.svg"
+        },
+        {
+            "text": "敬請期待！",
+            "link": "",
+            "img": "../assets/14/lock.svg"
+            },
+            {
+            "text": "敬請期待！",
+            "link": "",
+            "img": "../assets/14/lock.svg"
+            },
+            {
+            "text": "敬請期待！",
+            "link": "",
+            "img": "../assets/14/lock.svg"
+            }
+    ],
+    "interviewList": [
+        {
+            "text": "敬請期待！",
+            "link": "",
+            "img": "../assets/14/lock.svg"
+        },
+        {
+            "text": "敬請期待！",
+            "link": "",
+            "img": "../assets/14/lock.svg"
+        }
+    ],
+    "shareList": [
+        {
+            "text": "敬請期待！",
+            "link": "",
+            "img": "../assets/14/lock.svg"
+        },
+        {
+            "text": "敬請期待！",
+            "link": "",
+            "img": "../assets/14/lock.svg"
+        }
+    ]
+}
