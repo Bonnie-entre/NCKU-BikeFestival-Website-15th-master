@@ -44,7 +44,7 @@ export default {
       pc: this.isPC(),
       classes: ['規劃與設計學院', '社會科學院', '不分學院', '工學院', '理學院', '文學院', '醫學院', '管理學院', '電機資訊學院', '生物科學與科技學院'],
       classKeys: ['design', 'social', 'undeclear', 'engineer', 'science', 'humanity', 'medicine', 'management', 'computer', 'biological'],
-      dept: [ '醫學系', '藥學系', '護理學系', '牙醫學系', '物理治療學系', '職能治療學系', '醫學檢驗生物技術學系','學院ＱＡ影片','回上頁',''],
+      dept: [ '醫學系', '藥學系', '護理學系', '牙醫學系', '物理治療學系', '職能治療學系', '醫學檢驗生物技術學系','學院ＱＡ影片','回上頁'],
       currentIndex: -1,
       check: false
     }

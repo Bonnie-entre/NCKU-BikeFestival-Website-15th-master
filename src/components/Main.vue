@@ -11,6 +11,10 @@
       div(class="intro_layout1")
         div(class="test")
           div(class="intro_film")
+            div(class="black1")
+              div(class="white_block" v-for="(block, i) of 16")
+            div(class="black2")
+              div(class="white_block" v-for="(block, i) of 16")
           div(class="intro_menu")
             ul
               router-link(tag="button" v-bind:to="'/activity'" ) 活動<br>介紹
@@ -226,9 +230,46 @@ export default {
           .intro_film{
           height: 460px;
           width: 1600px;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          justify-items: flex-start;
           border-radius: 0px;
           background-color: white;
           z-index: 100;
+          .black1{
+            height: 30px;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            justify-items: center;
+            align-content: center;
+            align-items: center;
+            background: #0C3759;
+            .white_block{
+              height: 60%;
+              width: 2%;
+              background: white;
+            }
+          }
+          .black2{
+            margin-top: 400px;
+            height: 30px;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            justify-items: center;
+            align-content: center;
+            align-items: center;
+            background: #0C3759;
+            .white_block{
+              height: 60%;
+              width: 2%;
+              background: white;
+            }
+          }
           }
           .intro_menu {
           display: flex;

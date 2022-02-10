@@ -14,7 +14,7 @@
           dic(class="left_bar1" v-show="pc")
             label(class="category" v-for="(item, index) in leftBar" @click="categoryIndex=index, categorylistIndex=index, voice=false;" v-bind:class="{ active: categoryIndex===index}") {{item}}
           div(class="left_bar_lists1")
-            button(class="lists_btn" v-for="(topic, i) in catgory[categoryIndex]" @click="categorylistIndex=i" v-bind:class="{ active: categoryIndex>>>i, active2: categorylistIndex===i}") {{topic}}
+            button(class="lists_btn" v-for="(topic, i) in catgory[categoryIndex]" @click="categorylistIndex=i" v-bind:class="{ active: categoryIndex>i, active2: categorylistIndex===i}") {{topic}}
           div(class="right_show1")
             div(class="platform" v-if=" categorylistIndex===categoryIndex") 舞台活動
             div(class="abnormal" v-if=" categorylistIndex=== categoryIndex+1") 不正常教育展
