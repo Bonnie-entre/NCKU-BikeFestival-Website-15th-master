@@ -2,31 +2,20 @@
   div(class="Dept_design_page")
     div(class="dept_top_bar_pc")
       div(class="dept_top_bar_layout" @click="scroll()")
-        router-link(tag="label" class="dept_exit_button" to="/")
-        div(class="dept_top_bar_item")
-          router-link(tag="label" v-for="(text, index) of menuText" v-bind:key="text" v-bind:to="'/' + urlText[index]" v-if="pc") {{text}}
-            div(id="bottom" v-if="index===1")
+        router-link(class="top_logo" to="/")
+        div(class="top_bar")
+          router-link(v-bind:class="{ active: index===1 }" tag="label" v-for="(text, index) of menuText" v-bind:key="text" v-bind:to="'/' + urlText[index]" v-if="pc") {{text}}
           label(@click="openTab('hhttps://docs.google.com/forms/d/e/1FAIpQLSfx69xLr9XCqz6y8OEn4d8n6gc4qw3KzOn8FHb7Dm94pGwwmg/viewform'); list = false;" v-if="pc") 我要報名
-    div(class="dept_top_bar_mobile" @click="deptList=false")
-      div(class="dept_mobile_title" @click="list = false")
-      router-link(tag="div" class="dept_mobile_exit_button" to="/")
-      div(class="dept_mobile_list" @click="list = !list")
-    div(class="dept_mobile_list_area" v-show="list")
-      router-link(tag="label" v-for="(text, index) of menuText" v-bind:key="text" v-bind:to="'/' + urlText[index]") {{text}}
-      label(@click="openTab('https://docs.google.com/forms/d/e/1FAIpQLSfx69xLr9XCqz6y8OEn4d8n6gc4qw3KzOn8FHb7Dm94pGwwmg/viewform'); list = false;" v-if="!pc") 我要報名
-    div(class="dept_decoration")
-    div(class="dept_intro")
-    button(class="dept_guide") 系館導覽報名表單
-    div(class="dept_menu")
-        div(class="dept_title") -不分學院-
-        div(class="dept_class" v-show="pc")
-          ul
-            li(v-for="(iter, index) in design" v-bind:key="`${index}-${iter}`" v-bind:data-key="classKeys[index]" class="dept_class_item" v-on:click="chooseClass(index)" v-bind:class="{active: currentIndex === index}" )
-              p {{iter}}
-        div(class="dept_class_mobile" v-show="!pc && deptList")
-          label(v-for="(iter, index) in design" v-bind:key="`${index}-${iter}`" v-bind:data-key="classKeys[index]" class="dept_class_item" v-on:click="chooseClass(index); tempClass=iter; deptList=false;" v-bind:class="{active: currentIndex === index}" ) {{iter}}
-
-
+    div(class="dept_layout" )
+      div(class="dept_menu")
+          div(class="dept_title") -不分學院-
+          div(class="dept_class" v-show="pc")
+            p(class="dept_class_item" v-for="(iter, index) in dept" @click="deptIndex=index" v-bind:class="{active: deptIndex === index}" ) {{iter}}
+            router-link(tag="p" v-bind:to="'/department'") 回上頁
+      div(class="dept_right_show")
+        div(class="dept_intro")
+        div(class="dept_guide")
+          button() 系館導覽報名表單
 </template>
 
 <script>
@@ -53,7 +42,7 @@ export default {
       pc: this.isPC(),
       classes: ['規劃與設計學院', '社會科學院', '不分學院', '工學院', '理學院', '文學院', '醫學院', '管理學院', '電機資訊學院', '生物科學與科技學院'],
       classKeys: ['design', 'social', 'undeclear', 'engineer', 'science', 'humanity', 'medicine', 'management', 'computer', 'biological'],
-      design: [ '不分系', '學院ＱＡ影片','回上頁'],
+      dept: [ '不分系', '學院QA影片'],
       currentIndex: -1,
       check: false
     }
@@ -148,12 +137,7 @@ export default {
   /*
     mobile layout css
   */
-  @media only screen and (max-width: 599px) {
-    @keyframes flow-in {
-      from { right: -40%; }
-      to { right: 0%; }
-    }
-  }
+
   /*
     computer layout css
   */
@@ -172,92 +156,81 @@ export default {
     .Dept_design_page {
       position: absolute;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      justify-items: flex-start;
-      height: 100vh;
-      width: 100vw;
+      justify-content: flex-start;
+      height: 100%;
+      width: 100%;
       min-width: 1000px;
-      background: linear-gradient(180deg, #DAD0F2 0%, #FCDBE3 100%);
       margin: 0;
       padding: 0;
-      overflow: hidden;
+      background: linear-gradient(180deg, #FCDBE3 0%, #DAD0F2 100%);
     }
     .dept_top_bar_pc {
       position: absolute;
-      left: 0%;
-      right: 0%;
-      top: 0%;
-      bottom: 0%;
-      background: #CDBFEE;
-      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
       display: flex;
+      flex-direction: row;
       justify-content: center;
       min-width: 600px;
       z-index: 100;
+      // top: 0%;
+      // left: 0%;
+      background: #CDBFEE;
       width: 100vw;
-      height: 16vh;
-      // &:hover {
-      //   box-shadow: 0 0 4px 2px rgba(51, 51, 51, 0.5);
-      // }
+      height: 115px;
+      box-shadow: 0 0 3px 1px rgba(51, 51, 51, 0.5);
       .dept_top_bar_layout {
-        display: grid;
-        grid-template-columns: 35vw ;
-        grid-template-areas: "home items .";
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
         justify-content: center;
         justify-items: center;
         align-items: center;
         align-content: center;
-        .dept_exit_button {
-          grid-area: home;
-          width: 40vw;
-          height: 16vh;
-          background-color: transparent;
-          background-image: url("../assets//logoHome.svg");
+        .top_logo{
+          width: 30%;
+          height: 100%;
+          margin-left: 0.5%;
+          margin-right: 0.5%;
+          background-image: url("../assets//logoHome_white.png");
           background-repeat: no-repeat;
-          background-size: 70% 70%;
+          background-size: 85% 43%;
           background-position: center;
-          transition: filter .3s ease;
+          transition: filter .8s ease;
           cursor: pointer;
-          &:hover {
-            filter: brightness(150%);
-          }
-          &:active {
-            filter: brightness(80%);
-          }
+            &:hover {
+              filter: brightness(105%);
+            }
+            &:active {
+              filter: brightness(80%);
+            }
         }
-        .dept_top_bar_item {
+        .top_bar{
+          width: 60%;
+          height: 50%;
+          display: flex;
+          flex-direction: row;
           justify-content: center;
-          grid-area: items;
-          display: grid;
-          grid-template-columns: repeat(5, 11vw);
-          
-          letter-spacing: 0.1em;
+          align-content: center;
+          align-items: center;
+          margin-left: 0.5%;
+          margin-right: 0.5%;
+
           font-family: GenSenRounded TW;
           font-style: normal;
-          font-weight: 500;
+          font-weight: 550;
           font-size: 24px;
           color: #0C3759;
-
-          background-image: url("../assets//topBar.svg");
-          background-repeat: no-repeat;
-          background-size: 135% 135%;
-          background-position: center;
-          border-radius: 2vw;
+          background: linear-gradient(to right, #FCDEE7 0%, #FCF4D3 100%);
+          box-shadow: 0px 2px 2px 1px rgba(105, 103, 103, 0.424);
+          border-radius: 147px;
           label {
-            display: grid;
-            grid-template-rows: 5fr 1fr;
-            grid-template-areas: "." "bottom";
-            width: 9vw;
-            height: 6vh;
-            line-height: 5.6vh;
-            background-color: transparent;
+            margin: 10px;
+            padding: 3px;
             letter-spacing: 0.2vw;
             background-color: transparent;
-            #bottom {
-              grid-area: "bottom";
-              background-color: white;
-            }
             &:hover {
               filter: brightness(150%);
               font-weight: 700;
@@ -267,100 +240,68 @@ export default {
               font-weight: 700;
             }
           }
-        }
-        .dept_sign_up_button {
-          grid-area: sign-up;
-          width: 8vw;
-          height: 6vh;
-          line-height: 5vh;
-          font-size: 3vh;
-          background-color: white;
-          border: 1px solid rgba(100, 100, 100, 0.3)
+          .active{
+            font-weight: 700;
+            // text-decoration: underline;
+            // text-decoration-color: white;
+            // text-decoration-thickness: 2px;
+            border-bottom: 1mm solid white;
+            // border-bottom: solid;
+          }
         }
       }
     }
-    .dept_decoration {
-      position: absolute;
-      top: -2vh;
-      left: 4.5vw;
-      height: 30vw;
-      width: 32vw;
-
-      margin-top: auto;
-      margin-bottom: auto;
-      padding-bottom: 38vw;
-
-      background: url("../assets/dept/decoration_left.svg");
-      background-position: bottom right;
-      background-repeat: no-repeat;
-      background-size: 100%;
-    }
-    .dept_intro{
-        position: absolute;
-        top: 22vh;
-        right: 4.5vw;
-        // height: 0.8vw;
-        width: 56vw;
-        margin-top: auto;
-        // margin-bottom: auto;
-        padding-bottom: 34vw;
-        background-color: #C4C4C4;
-    }
-    .dept_guide{
-        position: absolute;
-        bottom: 7vh;
-        right: 8vw;
-        height: 4vw;
-        width: 20vw;
-        margin-top: auto;
-        // margin-bottom: auto;
-        // padding-bottom: 6vw;
-
-        background: #C4C4C4;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        border: none;
-        border-radius: 64.5px;
-
-        font-size: 100%;
-        padding: 15px 32px;
-        text-align: center;
-        text-decoration: none;
-    }
-    .dept_menu {
-        width: 100%;
-        height: 50%;
-        
-        justify-content: center;
-        justify-items: center;
+    .dept_layout{
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      height: 100%;
+      margin-top: 16vh;
+      align-items: center;
+      justify-items: center;
+      justify-content: space-around;
+      background: linear-gradient(180deg, #FCDBE3 0%, #DAD0F2 100%);
+      // overflow-y: scroll;
+      .dept_menu {
+        width: 360px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        justify-items: flex-start;
         align-content: center;
-        align-self: center;
-        align-items: flex-start;
+        align-items: center;
+        margin-top: 20px;
+        background: linear-gradient(180deg, #ebe3f5 0%, #FCDBE3 100%);
+        border-radius: 30px;
+        overflow-y: scroll;
         z-index: 100;
         .dept_title{
             letter-spacing: 0.1em;
-            width: 40vw;
-            height: 6vw;
-            margin: 0 1vw;
+            width: 100%;
+            // height: 6vw;
+            margin-top: 30px;
+            margin-bottom: 20px;
             color: #769BFF;
-            font-size: 300%;
+            font-size: 40px;
             font-style: normal;
-            font-weight: 500;
+            font-weight: 700;
         }
-        ul {
-            vertical-align: center;
-            list-style-type: none;
-            margin: 0 3vw;
-            padding: 0;
-            p {
-            align-self: center;
-            justify-content: center;
-            width: 15vw;
-            height: 6vw;
-            margin: 0 10vw;
-            box-sizing: border-box;
+        .dept_class{
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          align-content: center;
+          align-items: center;
+          margin: 10px;
+          p {
+            width: 100%;
+            margin: 20px;
 
             color: #0C3759;
-            font-size: 150%;
+            font-weight: 500;
+            font-size: 24px;
             &:last-child {
                 background-position: 60% 15%;
                 background-size: 75% 75%;
@@ -376,8 +317,57 @@ export default {
             &:active {
                 filter: brightness(50%);
             }
-            }
+            // }
+        
+          }
+          .active{
+            text-decoration: underline;
+            text-decoration-color: #FCF6B8;
+            text-decoration-thickness: 6px;
+            font-weight: 800;
+          }
         }
+      }
+      .dept_right_show{
+        width: 60%;
+        // height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        justify-items: flex-start;
+        align-content: center;
+        align-items: center;
+        margin-top: 20px;
+        .dept_intro{
+          width: 700px;
+          height: 400px;
+          margin-top: 20px;
+          margin-bottom: 20px;
+          background-color: #C4C4C4;
+        }
+        .dept_guide{
+          width: 100%;
+          display: flex;
+          flex-direction: row-reverse;
+          justify-content: flex-start;
+          justify-items: flex-start;
+          // align-items: center;
+          // align-content: flex-start;
+          button{
+            height: 50px;
+            width: 240px;
+            background: #C4C4C4;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border: none;
+            border-radius: 64px;
+            margin: 20px;
+
+            font-size: 20px;
+            text-align: center;
+            text-decoration: none;
+          }
+        }
+      }
     }
   }
 </style>

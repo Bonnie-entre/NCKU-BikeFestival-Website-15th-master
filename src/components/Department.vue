@@ -209,52 +209,57 @@ export default {
       // left: 0%;
       background: #CDBFEE;
       width: 100vw;
-      height: 16vh;
+      height: 115px;
       box-shadow: 0 0 3px 1px rgba(51, 51, 51, 0.5);
-      &:hover {
-        box-shadow: 0 0 4px 2px rgba(51, 51, 51, 0.5);
-      }
       .dept_top_bar_layout {
+        width: 100%;
+        height: 100%;
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: center;
         justify-items: center;
         align-items: center;
         align-content: center;
         .top_logo{
-          width: 35vw;
-          height: 70%;
-          background-image: url("../assets//logoHome.svg");
+          width: 30%;
+          height: 100%;
+          margin-left: 0.5%;
+          margin-right: 0.5%;
+          background-image: url("../assets//logoHome_white.png");
           background-repeat: no-repeat;
-          background-size: 90% 90%;
+          background-size: 85% 43%;
+          background-position: center;
           transition: filter .8s ease;
           cursor: pointer;
             &:hover {
-              filter: brightness(150%);
+              filter: brightness(105%);
             }
             &:active {
               filter: brightness(80%);
             }
         }
         .top_bar{
-          width: 60vw;
+          width: 60%;
           height: 50%;
           display: flex;
           flex-direction: row;
           justify-content: center;
           align-content: center;
           align-items: center;
+          margin-left: 0.5%;
+          margin-right: 0.5%;
 
           font-family: GenSenRounded TW;
           font-style: normal;
-          font-weight: 500;
+          font-weight: 550;
           font-size: 24px;
           color: #0C3759;
-          background: linear-gradient(to right, #FCDBE3 0%, #f6eec2 100%);
-          box-shadow: 0 0 2px 1px rgba(214, 214, 214, 0.678);
+          background: linear-gradient(to right, #FCDEE7 0%, #FCF4D3 100%);
+          box-shadow: 0px 2px 2px 1px rgba(105, 103, 103, 0.424);
           border-radius: 147px;
           label {
             margin: 10px;
+            padding: 3px;
             letter-spacing: 0.2vw;
             background-color: transparent;
             &:hover {
@@ -267,11 +272,12 @@ export default {
             }
           }
           .active{
-            font-size: 26px;
             font-weight: 700;
-            text-decoration: underline;
-            text-decoration-color: #0c38597a;
-            text-decoration-thickness: 2px;
+            // text-decoration: underline;
+            // text-decoration-color: white;
+            // text-decoration-thickness: 2px;
+            border-bottom: 1mm solid white;
+            // border-bottom: solid;
           }
         }
       }
@@ -281,13 +287,14 @@ export default {
       flex-direction: row;
       width: 100%;
       height: 100%;
-      margin-top: 80px;
+      margin-top: 115px;
       align-items: center;
       justify-items: center;
       justify-content: space-around;
       background: linear-gradient(180deg, #FCDBE3 0%, #DAD0F2 100%);
       overflow-y: scroll;
       .dept_layout_l{
+        height: 100%;
         display: flex;
         justify-content: center;
         .dept_menu_l{
@@ -303,7 +310,7 @@ export default {
             height: 90px;
             width: 200px;
             border-radius: 120px;
-            margin-top: 20px;
+            margin: 20px;
 
             color: #769BFF;
             font-size: 28px;
@@ -338,6 +345,8 @@ export default {
         }
       }
       .dept_layout_r{
+        height: 100%;
+        // background: #769BFF;
         display: flex;
         justify-content: center;
         .dept_menu_r{
@@ -353,7 +362,7 @@ export default {
             height: 90px;
             width: 200px;
             border-radius: 120px;
-            margin-top: 20px;
+            margin: 20px;
 
             color: #769BFF;
             font-size: 28px;

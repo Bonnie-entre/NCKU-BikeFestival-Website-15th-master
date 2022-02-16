@@ -12,28 +12,39 @@
           button( v-for="(item, index) in introduceSrc" @click="selectPageTopic(0, index), currentIndex=index, voice=false;" v-bind:class="{ active: currentIndex===index }") {{item.topic}} 
         div(class="content1" v-show="voice===false")
           dic(class="left_bar1" v-show="pc")
-            label(class="category" v-for="(item, index) in leftBar" @click="categoryIndex=index, categorylistIndex=index, voice=false;" v-bind:class="{ active: categoryIndex===index}") {{item}}
-          div(class="left_bar_lists1")
+            div(class="left_bar_category")  
+              label(v-for="(item, index) in leftBar" @click="categoryIndex=index, categorylistIndex=0, voice=false;" v-bind:class="{ active: categoryIndex===index}") {{item}}
+            div(class="left_bar_lists1" v-show="categoryIndex===0" v-bind:style="{'top':'5px' }")
+              button(class="lists_btn" v-for="(topic, i) in catgory[0]" @click="categorylistIndex=i" v-bind:class="{ active2: categorylistIndex===i}") {{topic}}
+            div(class="left_bar_lists1" v-show="categoryIndex===1" v-bind:style="{'top':'78px' }")
+              button(class="lists_btn" v-for="(topic, i) in catgory[1]" @click="categorylistIndex=i" v-bind:class="{ active2: categorylistIndex===i}") {{topic}}
+            div(class="left_bar_lists1" v-show="categoryIndex===2" v-bind:style="{'top':'150px' }")
+              button(class="lists_btn" v-for="(topic, i) in catgory[2]" @click="categorylistIndex=i" v-bind:class="{ active2: categorylistIndex===i}") {{topic}}
+            div(class="left_bar_lists1" v-show="categoryIndex===3" v-bind:style="{'top':'225px' }")
+              button(class="lists_btn" v-for="(topic, i) in catgory[3]" @click="categorylistIndex=i" v-bind:class="{ active2: categorylistIndex===i}") {{topic}}
+          //- div(class="left_bar_lists1") 
             button(class="lists_btn" v-for="(topic, i) in catgory[categoryIndex]" @click="categorylistIndex=i" v-bind:class="{ active: categoryIndex>i, active2: categorylistIndex===i}") {{topic}}
+            v-bind:style="{'background-image': 'url(' + sponsorLogo[index].img + ')'}"
           div(class="right_show1")
-            div(class="platform" v-if=" categorylistIndex===categoryIndex") 舞台活動
-            div(class="abnormal" v-if=" categorylistIndex=== categoryIndex+1") 不正常教育展
-            div(class="daily" v-if=" categorylistIndex=== categoryIndex+2") 日常導覽
+            div(class="platform" v-if=" categorylistIndex===0") 舞台活動
+            div(class="abnormal" v-if=" categorylistIndex=== 1") 不正常教育展
+            div(class="daily" v-if=" categorylistIndex=== 2") 日常導覽
             div(class="activities" v-if="categoryIndex===0 && categorylistIndex===3") 各種活動
-            div(class="voice" v-if="categoryIndex===1 && categorylistIndex===4") 
+            div(class="voice" v-if="categoryIndex===1 && categorylistIndex===3") 
               div(class="voice_title") 
                 p() 留聲機
               div(class="voice_intro" ) 介紹
               div(class="voice_btn")
                 button(class="btn" @click="voice=!voice;") 進入留聲機
-            div(class="lightening" v-if="categoryIndex===2 && categorylistIndex===5")
-              div(class="lightening_top_bar")
-                button(v-for="(btn, btn_i) in lighteningSrc" @click="lighteningIndex=btn_i" v-bind:class="{ active: lighteningIndex===btn_i}")  {{btn.topic}}
-              div(class="lightening_content")
-                div(class="item1") 
-                div(class="item2")
-                dic(class="item3")
-            div(class="interview" v-if="categoryIndex===3 && categorylistIndex===6") 
+            div(class="lightening" v-if="categoryIndex===2 && categorylistIndex===3")
+              div(class="lightening_layout")
+                div(class="lightening_top_bar")
+                  button(v-for="(btn, btn_i) in lighteningSrc" @click="lighteningIndex=btn_i" v-bind:class="{ active: lighteningIndex===btn_i}")  {{btn.topic}}
+                div(class="lightening_content")
+                  div(class="item1") 
+                  div(class="item2")
+                  dic(class="item3")
+            div(class="interview" v-if="categoryIndex===3 && categorylistIndex===3") 
               div(class="interview_title") 
                 p() 模擬面試
               div(class="interview_intro" ) 介紹
@@ -43,7 +54,7 @@
                   div(class="film_list") 影片二
                   div(class="film_list") 影片三
                 div(class="film_show") 影片
-            div(class="discover" v-if="categoryIndex===3 && categorylistIndex===7") 
+            div(class="discover" v-if="categoryIndex===3 && categorylistIndex===4") 
               div(class="discover_title") 
                 p() 探索學習
               div(class="discover_content" ) 
@@ -151,13 +162,13 @@ export default {
       voice: false,
       menuText: [ '活動介紹', '科系資訊', '主題專欄', '合作單位'],
       urlText: ['activity', 'department', 'column', 'sponsor'],
-      leftBar: ['分類一','分類二','分類三','分類四'],
+      leftBar: ['扎根九十，學術賦能','南方智匯，成就燈程','未來想像，視界共好'],
       voice_leftBar: ['留聲機初衷','他們的故事','擺渡人們','心理測驗'],
       catgory: [
         ['舞台活動', '不正常教育展', '日常導覽', '各種活動'],
-        ['','舞台活動', '不正常教育展', '日常導覽', '留聲機'],
-        ['','','舞台活動', '不正常教育展', '日常導覽', '閃電秀'],
-        ['','','','舞台活動', '不正常教育展', '日常導覽', '模擬面試','探索學習'],
+        ['舞台活動', '不正常教育展', '日常導覽', '留聲機'],
+        ['舞台活動', '不正常教育展', '日常導覽', '閃電秀'],
+        ['舞台活動', '不正常教育展', '日常導覽', '模擬面試','探索學習'],
         ],
       list: false,
       titleBlock: false,
@@ -293,15 +304,19 @@ export default {
   */
   @media only screen and (min-width: 600px) {
     @font-face {
-    font-family: 'GenYoGothicTW-Bold';
-    src: url('../assets/fonts/GenYoGothicTW-Bold.woff') format("woff"),
-          url('../assets/fonts/GenYoGothicTW-Bold.ttf') format("truetype"),
-          url('../assets/fonts/GenYoGothicTW-Bold.eot') format("embedded-opentype");
+    font-family: 'GenSenRounded-M';
+    src: url('../assets/fonts/GenSenRoundedTW-M.ttf') format("truetype");
+          // url('../assets/fonts/GenYoGothicTW-Bold.woff') format("woff"),
+          // url('../assets/fonts/GenYoGothicTW-Bold.ttf') format("truetype");
+          // url('../assets/fonts/GenYoGothicTW-Bold.eot') format("embedded-opentype");
+    font-style: normal;
+    font-weight: normal;
     }
-    @import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC');
-    *{
-      font-family: 'Noto Sans TC'!important;
-    }
+    
+    // @import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC');
+    // *{
+    //   font-family: 'Noto Sans TC'!important;
+    // }
     .activity_page {
       position: absolute;
       display: flex;
@@ -342,52 +357,57 @@ export default {
       // left: 0%;
       background: #CDBFEE;
       width: 100vw;
-      height: 16vh;
+      height: 115px;
       box-shadow: 0 0 3px 1px rgba(51, 51, 51, 0.5);
-      &:hover {
-        box-shadow: 0 0 4px 2px rgba(51, 51, 51, 0.5);
-      }
       .activity_top_bar_layout {
+        width: 100%;
+        height: 100%;
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: center;
         justify-items: center;
         align-items: center;
         align-content: center;
         .top_logo{
-          width: 35vw;
-          height: 70%;
-          background-image: url("../assets//logoHome.svg");
+          width: 30%;
+          height: 100%;
+          margin-left: 0.5%;
+          margin-right: 0.5%;
+          background-image: url("../assets//logoHome_white.png");
           background-repeat: no-repeat;
-          background-size: 90% 90%;
+          background-size: 85% 46%;
+          background-position: center;
           transition: filter .8s ease;
           cursor: pointer;
             &:hover {
-              filter: brightness(150%);
+              filter: brightness(105%);
             }
             &:active {
               filter: brightness(80%);
             }
         }
         .top_bar{
-          width: 60vw;
+          width: 60%;
           height: 50%;
           display: flex;
           flex-direction: row;
           justify-content: center;
           align-content: center;
           align-items: center;
+          margin-left: 0.5%;
+          margin-right: 0.5%;
 
-          font-family: GenSenRounded TW;
+          font-family: 'GenSenRounded-M';
           font-style: normal;
-          font-weight: 500;
+          font-weight: 550;
           font-size: 24px;
           color: #0C3759;
-          background: linear-gradient(to right, #FCDBE3 0%, #f6eec2 100%);
-          box-shadow: 0 0 2px 1px rgba(214, 214, 214, 0.678);
+          background: linear-gradient(to right, #FCDEE7 0%, #FCF4D3 100%);
+          box-shadow: 0px 2px 2px 1px rgba(105, 103, 103, 0.424);
           border-radius: 147px;
           label {
             margin: 10px;
+            padding: 3px;
             letter-spacing: 0.2vw;
             background-color: transparent;
             &:hover {
@@ -400,11 +420,12 @@ export default {
             }
           }
           .active{
-            font-size: 26px;
             font-weight: 700;
-            text-decoration: underline;
-            text-decoration-color: #0c38597a;
-            text-decoration-thickness: 2px;
+            // text-decoration: underline;
+            // text-decoration-color: white;
+            // text-decoration-thickness: 2px;
+            border-bottom: 1mm solid white;
+            // border-bottom: solid;
           }
         }
       }
@@ -417,8 +438,9 @@ export default {
       justify-content: flex-start;
       min-width: 600px;
       width: 100%;
+      height: 100%;
       background: linear-gradient(180deg, #FCDBE3 0%, #DAD0F2 100%);
-      margin-top: 16vh;
+      margin-top: 115px;
       overflow-y: scroll;
       // z-index: 50;
       .activity_layout1 {
@@ -461,52 +483,110 @@ export default {
           display: flex;
           flex-direction: row;
           width: 100%;
-          justify-content: flex-start;
+          justify-content: center;
           justify-items: center;
           align-items: flex-start;
           align-content: flex-start;
-          // overflow-y: scroll;
+          overflow-y: hidden;
           overflow-x: hidden;
           transition: filter .8s ease;
-          margin-top: 10px;
+          margin: 10px;
           .left_bar1{
+            width: 40%;
             display: flex;
-            flex-direction: column;
-            flex-wrap: wrap;
-            width: 16%;
-            height: 70vh;
+            flex-direction: row;
             justify-content: flex-start;
-            align-items: center;
-            margin: 10px;
-            label{
-              height: 48px;
-              width: 158px;
-              background: transparent;
+            justify-items: flex-start;
+            align-content: flex-start;
+            align-items: flex-start;
+            margin: 10px 10px 10px 0;
+            .left_bar_category{
+              display: flex;
+              flex-direction: column;
+              flex-wrap: wrap;
+              width: 50%;
+              justify-content: flex-start;
+              justify-items: flex-start;
+              align-items: flex-start;
+              margin: 10px 10px 10px 0px;
+              label{
+                height: 48px;
+                width: 240px;
+                background: transparent;
 
-              font-size: 42px;
-              font-weight: 700;
-              line-height: 50px;
-              letter-spacing: 0.145em;
-              margin: 6px;
+                font-family: 'GenSenRounded-M';
+                font-size: 22px;
+                font-weight: 700;
+                line-height: 50px;
+                letter-spacing: 0.145em;
+                padding: 2px;
+                margin: 10px;
+                cursor: pointer;
+              }
+              .active{
+                // text-decoration: underline;
+                // text-decoration-color: white;
+                // text-decoration-thickness: 3px;
+                border-bottom: 1.2mm solid white;
+                // border-bottom-right-radius: 5px;
+              }
             }
-            .active{
-              text-decoration: underline;
-              text-decoration-color: white;
-              text-decoration-thickness: 3px;
-              // background: #769BFF;
+            .left_bar_lists1{
+              position: relative;
+              // top: 16px;
+              // left: 15%;
+              // background: #C4C4C4;
+              display: flex;
+              flex-direction: column;
+              width: 50%;
+              justify-content: flex-start;
+              align-items: center;
+              margin: 10px 0px 10px 10px;
+              overflow-y: scroll;
+              button{
+                height: 50px;
+                width: 180px;
+                border-radius: nullpx;
+                background: #FFFBCE;
+
+                font-family: 'GenSenRounded-M';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 22px;
+                line-height: 36px;
+                letter-spacing: 0.1em;
+                color: #769BFF;
+                border: none;
+                box-shadow: (0px 4px 4px rgba(0, 0, 0, 0.25));
+                // filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+                margin: 8px;
+                cursor: pointer;
+              }
+              .active{
+                background: transparent;
+                border: none;
+                box-shadow: none;
+              }
+              .active2{
+                background: #769BFF;
+                color: #FFFBCE;
+              }
             }
           }
           .left_bar_lists1{
+            position: relative;
+            top: 16px;
+            left: -15px;
+            // background: #C4C4C4;
             display: flex;
             flex-direction: column;
             width: 20%;
             height: 70vh;
             justify-content: flex-start;
             align-items: center;
-            // background-color: #769BFF;
-            margin: 10px;
+            margin: 10px 10px 10px 0;
             button{
-              height: 48px;
+              height: 50px;
               width: 200px;
               border-radius: nullpx;
               background: #FFFBCE;
@@ -515,16 +595,18 @@ export default {
               font-weight: 500;
               font-size: 24px;
               line-height: 36px;
-              // display: flex;
-              // align-items: center;
               letter-spacing: 0.1em;
               color: #769BFF;
-              // text-align: left;
-              margin: 6.5px;
+              border: none;
+              box-shadow: (0px 4px 4px rgba(0, 0, 0, 0.25));
+              // filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+              margin: 8px;
+              cursor: pointer;
             }
             .active{
               background: transparent;
               border: none;
+              box-shadow: none;
             }
             .active2{
               background: #769BFF;
@@ -533,29 +615,29 @@ export default {
           }
           .right_show1{
             overflow-y: scroll;
-            margin-top: 10px;
+            margin: 10px 10px 0 0;
             // width: 698px;
             // height: 800px;
             // background: #FFFFFF;
             border-radius: 20px;
             .platform{
-              width: 698px;
-              height: 500px;
+              width: 720px;
+              height: 530px;
               background: #FFFFFF;
             }
             .abnormal{
-              width: 698px;
-              height: 500px;
+              width: 750px;
+              height: 530px;
               background: #FFFFFF;
             }
             .daily{
-              width: 698px;
-              height: 500px;
+              width: 750px;
+              height: 530px;
               background: #FFFFFF;
             }
             .activities{
-              width: 698px;
-              height: 500px;
+              width: 750px;
+              height: 530px;
               background: #FFFFFF;
             }
             .voice{
@@ -564,8 +646,8 @@ export default {
               justify-items: flex-start;
               align-content: center;
               align-items: center;
-              width: 698px;
-              height: 500px;
+              width: 750px;
+              height: 530px;
               background: #FFFFFF;
               .voice_title{
                 width: 80%;
@@ -581,7 +663,7 @@ export default {
               }
               .voice_intro{
                 width: 80%;
-                height: 300px;
+                height: 360px;
                 background: gray;
               }
               .voice_btn{
@@ -617,18 +699,21 @@ export default {
               flex-direction: column;
               // justify-items: flex-start;
               // justify-content: center;
-              width: 698px;
-              height: 800px;
+              width: 750px;
+              height: 530px;
               background: #FFFFFF;
-              .lightening_top_bar{
+              overflow-y: scroll;
+              .lightening_layout{
+                .lightening_top_bar{
                 display: flex;
                 flex-direction: row;
                 justify-content: flex-start;
                 justify-items: flex-start;
                 align-content: center;
                 align-items: center;
-                width: 698px;
+                width: 100%;
                 height: 80px;
+                margin-top: 10px;
                 z-index: 20;
                 button{
                   width: 180px;
@@ -670,10 +755,12 @@ export default {
                   margin: 2vh;
                 }
               }
+              }
+              
             }
             .interview{
-              width: 698px;
-              height: 600px;
+              width: 750px;
+              height: 530px;
               background: #FFFFFF;
               display: flex;
               flex-direction: column;
@@ -694,7 +781,7 @@ export default {
               }
               .interview_intro{
                 width: 80%;
-                height: 120px;
+                height: 110px;
                 background: gray;
               }
               .film{
@@ -732,8 +819,8 @@ export default {
               }
             }
             .discover{
-              width: 698px;
-              height: 500px;
+              width: 750px;
+              height: 530px;
               background: #FFFFFF;
               display: flex;
               flex-direction: column;
@@ -1135,7 +1222,7 @@ export default {
           justify-items: center;
           align-items: flex-start;
           align-content: flex-start;
-          overflow-y: scroll;
+          overflow-y: hidden;
           overflow-x: hidden;
           transition: filter .8s ease;
           margin-top: 10px;
@@ -1193,6 +1280,7 @@ export default {
         justify-content: flex-start;
         align-items: center;
         align-content: center;
+
         .top_bar3 {
           display: flex;
             flex-direction: row;
@@ -1208,7 +1296,7 @@ export default {
                 background: white;
                 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
                 border-radius: 30px;
-              border: none;
+                border: none;
 
                 font-size: 2.5vh;
                 font-weight: normal;
@@ -1235,7 +1323,7 @@ export default {
           justify-items: center;
           align-items: center;
           align-content: center; 
-          overflow-y: scroll;
+          // overflow-y: scroll;
           
           z-index: 5;
           width: 80%;

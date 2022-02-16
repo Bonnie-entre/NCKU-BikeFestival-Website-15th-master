@@ -56,11 +56,6 @@ export default new Router({
       name: 'Activity',
       component: Activity
     },
-    // {
-    //   path: '/activity_voice',
-    //   name: 'Activity_voice',
-    //   component: Activity_voice
-    // },
     {
       path: '/column',
       name: 'Columns',

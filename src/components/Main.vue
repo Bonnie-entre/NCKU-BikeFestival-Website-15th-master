@@ -132,59 +132,67 @@ export default {
       position: absolute;
       display: flex;
       flex-direction: row;
-      justify-content: center;
+      justify-content: space-around;
+      justify-items: flex-start;
+      align-content: center;
+      align-items: center;
       min-width: 600px;
       z-index: 100;
       // top: 0%;
       // left: 0%;
       background: #FCDBE3;
-      width: 100vw;
-      height: 16vh;
+      width: 100%;
+      height: 115px;
       box-shadow: 0 0 3px 1px rgba(51, 51, 51, 0.5);
-      &:hover {
-        box-shadow: 0 0 4px 2px rgba(51, 51, 51, 0.5);
-      }
       .news_top_bar_layout {
+        width: 100%;
+        height: 100%;
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: center;
         justify-items: center;
         align-items: center;
         align-content: center;
         .top_logo{
-          width: 35vw;
-          height: 70%;
+          width: 30%;
+          height: 90px;
+          margin-left: 0.5%;
+          margin-right: 0.5%;
           background-image: url("../assets//logoHome.svg");
           background-repeat: no-repeat;
-          background-size: 90% 90%;
+          background-size: 85% 100%;
+          background-position: center;
           transition: filter .8s ease;
           cursor: pointer;
             &:hover {
-              filter: brightness(150%);
+              filter: brightness(105%);
             }
             &:active {
               filter: brightness(80%);
             }
         }
         .top_bar{
-          width: 60vw;
+          width: 60%;
           height: 50%;
           display: flex;
           flex-direction: row;
           justify-content: center;
           align-content: center;
           align-items: center;
+          margin-left: 0.5%;
+          margin-right: 0.5%;
 
           font-family: GenSenRounded TW;
           font-style: normal;
-          font-weight: 500;
+          font-weight: 550;
           font-size: 24px;
           color: #0C3759;
-          background: linear-gradient(to right, #FCDBE3 0%, #f6eec2 100%);
-          box-shadow: 0 0 2px 1px rgba(214, 214, 214, 0.678);
+          background: linear-gradient(to right, #FCDEE7 0%, #FCF4D3 100%);
+          box-shadow: 0px 2px 2px 1px rgba(105, 103, 103, 0.424);
           border-radius: 147px;
           label {
             margin: 10px;
+            padding: 3px;
             letter-spacing: 0.2vw;
             background-color: transparent;
             &:hover {
@@ -197,11 +205,12 @@ export default {
             }
           }
           .active{
-            font-size: 26px;
             font-weight: 700;
-            text-decoration: underline;
-            text-decoration-color: #0c38597a;
-            text-decoration-thickness: 2px;
+            // text-decoration: underline;
+            // text-decoration-color: white;
+            // text-decoration-thickness: 2px;
+            border-bottom: 1mm solid white;
+            // border-bottom: solid;
           }
         }
       }
@@ -216,6 +225,7 @@ export default {
       justify-content: flex-start;
       background: linear-gradient(180deg, #DAD0F2 0%, #FCDBE3 100%);
       overflow-y: scroll;
+      overflow-x: hidden;
 
       .intro_layout1{
         .test{
@@ -297,8 +307,8 @@ export default {
             // letter-spacing: 0.245em;
             color: #769BFF;
             text-shadow: 0px 4px 4px rgba(12, 55, 89, 0.25);
-
             transition: filter .3s ease, border-width .2s ease, border-radius .2s ease;
+            cursor: pointer;
             &:hover {
               border-width: 0.2vw;
               background-size: 90% 90%;

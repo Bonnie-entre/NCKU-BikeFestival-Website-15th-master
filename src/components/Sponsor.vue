@@ -5,9 +5,7 @@
         router-link(class="top_logo" to="/")
         div(class="top_bar")
           router-link(v-bind:class="{ active: index===3 }" tag="label" v-for="(text, index) of menuText" v-bind:key="text" v-bind:to="'/' + urlText[index]" v-if="pc") {{text}}
-            //- div(id="bottom" v-if="index===3")
           label(@click="openTab('https://docs.google.com/forms/d/e/1FAIpQLSfx69xLr9XCqz6y8OEn4d8n6gc4qw3KzOn8FHb7Dm94pGwwmg/viewform'); list = false;" v-if="pc") 我要報名
-    button(v-show="mode === 1" class="sponsor_return_button" v-on:click="mode = 0; currentIndex = -1;")
     div(class="sponsor_layout_1" v-show="mode === 0" @click="list = false")
       section(class="sponsor_list")
         label(v-for="(iter, index) of sponsorLogo" v-bind:key="iter.name" v-bind:data-name="iter.name" v-bind:href="`${iter.link}`" target="_blank" v-bind:style="{'background-image': 'url(' + sponsorLogo[index].img + ')'}" v-on:click="currentIndex = index; mode = 1;")
@@ -62,6 +60,54 @@ export default {
         {
           name: '川益科技',
           img: 'https://i.imgur.com/XDztEZK.jpg'
+        },
+        {
+          name: '馥貴春',
+          img: 'https://i.imgur.com/a2u62ZH.jpg'
+        },
+        {
+          name: '馥貴春',
+          img: 'https://i.imgur.com/a2u62ZH.jpg'
+        },
+        {
+          name: '馥貴春',
+          img: 'https://i.imgur.com/a2u62ZH.jpg'
+        },
+        {
+          name: '馥貴春',
+          img: 'https://i.imgur.com/a2u62ZH.jpg'
+        },
+        {
+          name: '馥貴春',
+          img: 'https://i.imgur.com/a2u62ZH.jpg'
+        },
+        {
+          name: '馥貴春',
+          img: 'https://i.imgur.com/a2u62ZH.jpg'
+        },
+        {
+          name: '馥貴春',
+          img: 'https://i.imgur.com/a2u62ZH.jpg'
+        },
+        {
+          name: '馥貴春',
+          img: 'https://i.imgur.com/a2u62ZH.jpg'
+        },
+        {
+          name: '馥貴春',
+          img: 'https://i.imgur.com/a2u62ZH.jpg'
+        },
+        {
+          name: '馥貴春',
+          img: 'https://i.imgur.com/a2u62ZH.jpg'
+        },
+        {
+          name: '馥貴春',
+          img: 'https://i.imgur.com/a2u62ZH.jpg'
+        },
+        {
+          name: '馥貴春',
+          img: 'https://i.imgur.com/a2u62ZH.jpg'
         }
       ],
       sponsor: [
@@ -358,52 +404,57 @@ export default {
       // left: 0%;
       background: #CDBFEE;
       width: 100vw;
-      height: 16vh;
+      height: 115px;
       box-shadow: 0 0 3px 1px rgba(51, 51, 51, 0.5);
-      &:hover {
-        box-shadow: 0 0 4px 2px rgba(51, 51, 51, 0.5);
-      }
       .live_top_bar_layout {
+        width: 100%;
+        height: 100%;
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: center;
         justify-items: center;
         align-items: center;
         align-content: center;
         .top_logo{
-          width: 35vw;
-          height: 70%;
-          background-image: url("../assets//logoHome.svg");
+          width: 30%;
+          height: 100%;
+          margin-left: 0.5%;
+          margin-right: 0.5%;
+          background-image: url("../assets//logoHome_white.png");
           background-repeat: no-repeat;
-          background-size: 90% 90%;
+          background-size: 85% 43%;
+          background-position: center;
           transition: filter .8s ease;
           cursor: pointer;
-          &:hover {
-            filter: brightness(150%);
-          }
-          &:active {
-            filter: brightness(80%);
-          }
+            &:hover {
+              filter: brightness(105%);
+            }
+            &:active {
+              filter: brightness(80%);
+            }
         }
         .top_bar{
-          width: 60vw;
+          width: 60%;
           height: 50%;
           display: flex;
           flex-direction: row;
           justify-content: center;
           align-content: center;
           align-items: center;
+          margin-left: 0.5%;
+          margin-right: 0.5%;
 
           font-family: GenSenRounded TW;
           font-style: normal;
-          font-weight: 500;
+          font-weight: 550;
           font-size: 24px;
           color: #0C3759;
-          background: linear-gradient(to right, #FCDBE3 0%, #f6eec2 100%);
-          box-shadow: 0 0 2px 1px rgba(214, 214, 214, 0.678);
+          background: linear-gradient(to right, #FCDEE7 0%, #FCF4D3 100%);
+          box-shadow: 0px 2px 2px 1px rgba(105, 103, 103, 0.424);
           border-radius: 147px;
           label {
             margin: 10px;
+            padding: 3px;
             letter-spacing: 0.2vw;
             background-color: transparent;
             &:hover {
@@ -416,63 +467,21 @@ export default {
             }
           }
           .active{
-            font-size: 26px;
             font-weight: 700;
-            text-decoration: underline;
-            text-decoration-color: #0c38597a;
-            text-decoration-thickness: 2px;
+            // text-decoration: underline;
+            // text-decoration-color: white;
+            // text-decoration-thickness: 2px;
+            border-bottom: 1mm solid white;
+            // border-bottom: solid;
           }
         }
-      }
-    }
-
-    .sponsor_title {
-      position: absolute;
-      z-index: 20;
-      left: 4vw;
-      top: 6vh;
-
-      width: 17vw;
-      height: 8vw;
-      background-image: url("../assets//sponsor/title.svg");
-      background-repeat: no-repeat;
-      background-size: 100% 100%;
-      background-position: 50% 50%;
-    }
-
-    .sponsor_return_button {
-      position: absolute;
-      z-index: 1;
-      left: 2vw;
-      top: 7vw;
-
-      width: 3vw;
-      height: 3vw;
-      background-color: transparent;
-      background-image: url("../assets//return.svg");
-      background-repeat: no-repeat;
-      background-size: 100% 100%;
-      background-position: 50% 50%;
-
-      outline: none;
-      border: none;
-
-      cursor: pointer;
-
-      transition: filter .3s ease;
-
-      &:hover {
-        filter: brightness(110%);
-      }
-      &:active {
-        filter: brightness(80%);
       }
     }
 
     .sponsor_layout_1 {
       display: grid;
       grid-template-columns: 1fr 5fr 1fr;
-      grid-template-rows: 2.4fr 1.8fr 0.8fr;
+      grid-template-rows: 1.4fr 1.8fr 0.8fr;
       grid-template-areas: ". . ."
         ". list ."
         ". . .";

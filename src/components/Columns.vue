@@ -8,8 +8,8 @@
           label(@click="openTab('https://docs.google.com/forms/d/e/1FAIpQLSfx69xLr9XCqz6y8OEn4d8n6gc4qw3KzOn8FHb7Dm94pGwwmg/viewform'); list = false;" v-if="pc") 我要報名
     div(class="column_layout")
         div(class="column_layout_l")
-            div(class="left_bar1" v-show="pc")
-                button(v-bind:class="{ active: leftbarIndex===index }" v-for="(item, index) in leftBar" @click="leftbarIndex=index") {{item }}
+            //- div(class="left_bar1" v-show="pc")
+            button(v-bind:class="{ active: leftbarIndex===index }" v-for="(item, index) in leftBar" @click="leftbarIndex=index") {{item }}
         div(class="column_layout_r")
             div(class="right_show")
                 div(class="film_background" v-for="(item, index) in rightShow") 
@@ -170,56 +170,59 @@ export default {
       justify-content: center;
       min-width: 600px;
       z-index: 100;
-    //   top: 0%;
-      // left: 0%;
       background: #CDBFEE;
       width: 100vw;
-      height: 16vh;
+      height: 115px;
       box-shadow: 0 0 3px 1px rgba(51, 51, 51, 0.5);
-      &:hover {
-        box-shadow: 0 0 4px 2px rgba(51, 51, 51, 0.5);
-      }
       .dept_top_bar_layout {
+        width: 100%;
+        height: 100%;
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: center;
         justify-items: center;
         align-items: center;
         align-content: center;
         .top_logo{
-          width: 35vw;
-          height: 70%;
-          background-image: url("../assets//logoHome.svg");
+          width: 30%;
+          height: 100%;
+          margin-left: 0.5%;
+          margin-right: 0.5%;
+          background-image: url("../assets//logoHome_white.png");
           background-repeat: no-repeat;
-          background-size: 90% 90%;
+          background-size: 85% 43%;
+          background-position: center;
           transition: filter .8s ease;
           cursor: pointer;
             &:hover {
-              filter: brightness(150%);
+              filter: brightness(105%);
             }
             &:active {
               filter: brightness(80%);
             }
         }
         .top_bar{
-          width: 60vw;
+          width: 60%;
           height: 50%;
           display: flex;
           flex-direction: row;
           justify-content: center;
           align-content: center;
           align-items: center;
+          margin-left: 0.5%;
+          margin-right: 0.5%;
 
           font-family: GenSenRounded TW;
           font-style: normal;
-          font-weight: 500;
+          font-weight: 550;
           font-size: 24px;
           color: #0C3759;
-          background: linear-gradient(to right, #FCDBE3 0%, #f6eec2 100%);
-          box-shadow: 0 0 2px 1px rgba(214, 214, 214, 0.678);
+          background: linear-gradient(to right, #FCDEE7 0%, #FCF4D3 100%);
+          box-shadow: 0px 2px 2px 1px rgba(105, 103, 103, 0.424);
           border-radius: 147px;
           label {
             margin: 10px;
+            padding: 3px;
             letter-spacing: 0.2vw;
             background-color: transparent;
             &:hover {
@@ -232,11 +235,12 @@ export default {
             }
           }
           .active{
-            font-size: 26px;
             font-weight: 700;
-            text-decoration: underline;
-            text-decoration-color: #0c38597a;
-            text-decoration-thickness: 2px;
+            // text-decoration: underline;
+            // text-decoration-color: white;
+            // text-decoration-thickness: 2px;
+            border-bottom: 1mm solid white;
+            // border-bottom: solid;
           }
         }
       }
@@ -246,7 +250,8 @@ export default {
         display: flex;
         flex-direction: row;
         width: 100%;
-        margin-top: 16vh;
+        height: 100%;
+        margin-top: 115px;
         align-items: flex-start;
         align-content: space-around;
         justify-items: center;
@@ -254,18 +259,16 @@ export default {
         background: linear-gradient(180deg, #FCDBE3 0%, #DAD0F2 100%);
         overflow-y: scroll;
         z-index: 2;
-        // height: 82vh;
         .column_layout_l{
-            .left_bar1 {
+          width: 30%;
+          height: 100%;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+                align-content: center;
                 justify-items: center;
                 justify-content: center;
-                width: 20%;
-                // margin-top: 16vh;
-                padding: 0.5vh;
-                // overflow-y: scroll;
+                // margin: 0px 10px 0px 0;
                 button {
                     height: 60px;
                     width: 260px;
@@ -273,6 +276,7 @@ export default {
                     background: white;
                     border-radius: 30px;
                     border: none;
+                    box-shadow: 0px 2px 2px 1px rgba(105, 103, 103, 0.424);
                     margin-top: 6px;
 
                     font-size: 24px;
@@ -288,29 +292,30 @@ export default {
                     }
                 }
                 .active{
-                    background: #CDBFEE;
+                    background: #769BFF;
                     color: white;
-                }
+                // }
             }
         }
         .column_layout_r{
+          height: 100%;
+          background: #FFE9EE;
             .right_show{
                 display: flex;
                 flex-direction: row;
                 flex-wrap: wrap;
-                height: 700px;
-                width: 850px;
+                width: 930px;
                 align-items: center;
                 align-content: flex-start;
                 justify-items: center;
-                justify-content: space-around;
-                background: #FFE9EE;
+                justify-content: center;
+                // background: #FFE9EE;
                 .film_background{
                     width: 380px;
                     height: 280px;
                     background-color: white;
                     border-radius: 23px;
-                    margin: 20px 0px 0px 0px;
+                    margin: 20px 15px 0px 15px;
 
                     display: flex;
                     flex-direction: column;
@@ -327,6 +332,9 @@ export default {
                         margin-top: 1vh;
                     }
                     p{
+                        position: relative;
+                        top: -5px;
+                        left: -110px;
                         font-weight: 500;
                         font-size: 20px;
                         // line-height: 20px;
