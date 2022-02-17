@@ -10,7 +10,8 @@ import VueLoading from 'vue-loading-overlay'
 import VePie from 'v-charts/lib/pie.common'
 import VeLiquidfill from 'v-charts/lib/liquidfill.common'
 import 'vue-loading-overlay/dist/vue-loading.css'
-import 'reset-css'
+// import 'reset-css'
+
 
 Vue.config.productionTip = false
 Vue.prototype.axios = axios

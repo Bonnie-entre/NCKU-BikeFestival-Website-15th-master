@@ -5,7 +5,7 @@
         router-link(class="top_logo" to="/")
         div(class="top_bar")
           router-link(v-bind:class="{ active: index===1 }" tag="label" v-for="(text, index) of menuText" v-bind:key="text" v-bind:to="'/' + urlText[index]" v-if="pc") {{text}}
-          label(@click="openTab('hhttps://docs.google.com/forms/d/e/1FAIpQLSfx69xLr9XCqz6y8OEn4d8n6gc4qw3KzOn8FHb7Dm94pGwwmg/viewform'); list = false;" v-if="pc") 我要報名
+          label(@click="openTab('https://docs.google.com/forms/d/e/1FAIpQLSdBW8m8SVm5YqwtsOGWAaMYwOWiMJ_RbjZTNMq4dJYYWCg85Q/viewform'); list = false;" v-if="pc") 我要報名
     div(class="dept_layout" v-show="mode===0" @click="list = false;")
       div(class="dept_layout_l")
         div(class="dept_menu_l")
@@ -163,29 +163,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-  /*
-    phone layout css
-  */
-
-  /*
-    computer layout css
-  */
-  @media only screen and (min-width: 600px) {
-
-    @font-face {
-    font-family: 'GenYoGothicTW-Bold';
-    src: url('../assets/fonts/GenYoGothicTW-Bold.woff') format("woff"),
-          url('../assets/fonts/GenYoGothicTW-Bold.ttf') format("truetype"),
-          url('../assets/fonts/GenYoGothicTW-Bold.eot') format("embedded-opentype");
-    }
-    @import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC');
-    *{
-      font-family: 'Noto Sans TC'!important;
-    }
-
     .dept_page {
-      position: absolute;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -199,17 +177,14 @@ export default {
       // overflow-y: scroll;
     }
     .dept_top_bar_pc {
-      position: absolute;
       display: flex;
       flex-direction: row;
       justify-content: center;
       min-width: 600px;
       z-index: 100;
-      // top: 0%;
-      // left: 0%;
       background: #CDBFEE;
       width: 100vw;
-      height: 115px;
+      height: 16vh;
       box-shadow: 0 0 3px 1px rgba(51, 51, 51, 0.5);
       .dept_top_bar_layout {
         width: 100%;
@@ -227,7 +202,7 @@ export default {
           margin-right: 0.5%;
           background-image: url("../assets//logoHome_white.png");
           background-repeat: no-repeat;
-          background-size: 85% 43%;
+          background-size: 85% 46%;
           background-position: center;
           transition: filter .8s ease;
           cursor: pointer;
@@ -286,8 +261,7 @@ export default {
       display: flex;
       flex-direction: row;
       width: 100%;
-      height: 100%;
-      margin-top: 115px;
+      height: 84vh;
       align-items: center;
       justify-items: center;
       justify-content: space-around;
@@ -303,20 +277,15 @@ export default {
           align-items: center;
           justify-items: center;
           justify-content: space-around;
-          // width: 100%;
-          // background-color: #0C3759;
-          // z-index: 100;
           button {
             height: 90px;
             width: 200px;
             border-radius: 120px;
-            margin: 20px;
+            margin: 10px;
 
             color: #769BFF;
             font-size: 28px;
             background-color: white;
-            // background-repeat: no-repeat;
-            // background-position: 60% 15%;
 
             &:last-child {
               background-position: 60% 15%;
@@ -324,11 +293,8 @@ export default {
             }
             border: 0px solid rgb(103, 192, 225);
             border-radius: 2vw;
-            // box-sizing: content-box;
-
             transition: filter .3s ease, border-width .2s ease, border-radius .2s ease;
-
-            // cursor: pointer;
+            cursor: pointer;
             &:hover {
               border-width: 0.2vw;
               background-size: 90% 90%;
@@ -346,7 +312,6 @@ export default {
       }
       .dept_layout_r{
         height: 100%;
-        // background: #769BFF;
         display: flex;
         justify-content: center;
         .dept_menu_r{
@@ -355,20 +320,15 @@ export default {
           align-items: center;
           justify-items: center;
           justify-content: space-around;
-          // width: 50%;
-          // background-color: #0C3759;
-          // z-index: 100;
           button {
             height: 90px;
             width: 200px;
             border-radius: 120px;
-            margin: 20px;
+            margin: 10px;
 
             color: #769BFF;
             font-size: 28px;
             background-color: white;
-            // background-repeat: no-repeat;
-            // background-position: 60% 15%;
 
             &:last-child {
               background-position: 60% 15%;
@@ -376,11 +336,8 @@ export default {
             }
             border: 0px solid rgb(103, 192, 225);
             border-radius: 2vw;
-            // box-sizing: content-box;
-
             transition: filter .3s ease, border-width .2s ease, border-radius .2s ease;
-
-            // cursor: pointer;
+            cursor: pointer;
             &:hover {
               border-width: 0.2vw;
               background-size: 90% 90%;
@@ -397,5 +354,4 @@ export default {
         }
       }
     }
-  }
 </style>

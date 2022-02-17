@@ -5,7 +5,7 @@
         router-link(class="top_logo" to="/")
         div(class="top_bar")
           router-link(v-bind:class="{ active: index===3 }" tag="label" v-for="(text, index) of menuText" v-bind:key="text" v-bind:to="'/' + urlText[index]" v-if="pc") {{text}}
-          label(@click="openTab('https://docs.google.com/forms/d/e/1FAIpQLSfx69xLr9XCqz6y8OEn4d8n6gc4qw3KzOn8FHb7Dm94pGwwmg/viewform'); list = false;" v-if="pc") 我要報名
+          label(@click="openTab('https://docs.google.com/forms/d/e/1FAIpQLSdBW8m8SVm5YqwtsOGWAaMYwOWiMJ_RbjZTNMq4dJYYWCg85Q/viewform'); list = false;" v-if="pc") 我要報名
     div(class="sponsor_layout_1" v-show="mode === 0" @click="list = false")
       section(class="sponsor_list")
         label(v-for="(iter, index) of sponsorLogo" v-bind:key="iter.name" v-bind:data-name="iter.name" v-bind:href="`${iter.link}`" target="_blank" v-bind:style="{'background-image': 'url(' + sponsorLogo[index].img + ')'}" v-on:click="currentIndex = index; mode = 1;")
@@ -364,23 +364,6 @@ export default {
       transform: translateX(0vw) translateY(0vw);
     }
   }
-  /*
-    mobile layout css
-  */
-
-  /*
-    computer layout css
-  */
-  @media only screen and (min-width: 600px) {    @font-face {
-    font-family: 'GenYoGothicTW-Bold';
-    src: url('../assets/fonts/GenYoGothicTW-Bold.woff') format("woff"),
-          url('../assets/fonts/GenYoGothicTW-Bold.ttf') format("truetype"),
-          url('../assets/fonts/GenYoGothicTW-Bold.eot') format("embedded-opentype");
-    }
-    @import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC');
-    *{
-      font-family: 'Noto Sans TC'!important;
-    }
     .sponsor_page {
       position: absolute;
       display: flex;
@@ -404,7 +387,7 @@ export default {
       // left: 0%;
       background: #CDBFEE;
       width: 100vw;
-      height: 115px;
+      height: 130px;
       box-shadow: 0 0 3px 1px rgba(51, 51, 51, 0.5);
       .live_top_bar_layout {
         width: 100%;
@@ -422,7 +405,7 @@ export default {
           margin-right: 0.5%;
           background-image: url("../assets//logoHome_white.png");
           background-repeat: no-repeat;
-          background-size: 85% 43%;
+          background-size: 85% 46%;
           background-position: center;
           transition: filter .8s ease;
           cursor: pointer;
@@ -675,5 +658,4 @@ export default {
         background-repeat: no-repeat;
       }
     }
-  }
 </style>

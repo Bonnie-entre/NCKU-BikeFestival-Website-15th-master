@@ -189,6 +189,17 @@ export default {
 
 <style lang="scss">
   @import url(https://fonts.googleapis.com/earlyaccess/cwtexyen.css);
+  @import 'reset-css';
+
+  @font-face {
+  font-family: 'GenSenRounded-M';
+  src: url('./assets/fonts/GenSenRoundedTW-M.ttf') format("truetype");
+  font-weight: 650;
+  }
+  
+  * {
+    font-family: 'GenSenRounded-M'!important;
+  }
 
   @keyframes clickEffect {
     0% {
@@ -239,17 +250,6 @@ export default {
     mobile layout css
   */
   @media only screen and (max-width: 551px) {
-    @font-face {
-    font-family: 'GenYoGothicTW-Bold';
-    src: url('./assets/fonts/GenYoGothicTW-Bold.woff') format("woff"),
-          url('./assets/fonts/GenYoGothicTW-Bold.ttf') format("truetype"),
-          url('./assets/fonts/GenYoGothicTW-Bold.eot') format("embedded-opentype");
-    }
-    @import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC');
-    *{
-      font-family: 'Noto Sans TC'!important;
-    }
-
     .zoom-enter-active,
     .zoom-leave-active {
       animation-duration: 0.5s;
@@ -400,16 +400,6 @@ export default {
     computer layout css
   */
   @media only screen and (min-width: 552px) {
-    @font-face {
-    font-family: 'GenYoGothicTW-Bold';
-    src: url('./assets/fonts/GenYoGothicTW-Bold.woff') format("woff"),
-          url('./assets/fonts/GenYoGothicTW-Bold.ttf') format("truetype"),
-          url('./assets/fonts/GenYoGothicTW-Bold.eot') format("embedded-opentype");
-    }
-    @import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC');
-    *{
-      font-family: 'Noto Sans TC'!important;
-    }
     .zoom-enter-active,
     .zoom-leave-active {
       animation-duration: 0.5s;
