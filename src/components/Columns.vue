@@ -146,10 +146,9 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    min-width: 600px;
     z-index: 100;
     background: #CDBFEE;
-    width: 100vw;
+    width: 100%;
     height: 16vh;
     box-shadow: 0 0 3px 1px rgba(51, 51, 51, 0.5);
     .dept_top_bar_layout {
@@ -187,21 +186,14 @@ export default {
         justify-content: center;
         align-content: center;
         align-items: center;
-        margin-left: 0.5%;
-        margin-right: 0.5%;
-
-        font-family: GenSenRounded TW;
-        font-style: normal;
-        font-weight: 550;
-        font-size: 24px;
+        
         color: #0C3759;
         background: linear-gradient(to right, #FCDEE7 0%, #FCF4D3 100%);
         box-shadow: 0px 2px 2px 1px rgba(105, 103, 103, 0.424);
         border-radius: 147px;
         label {
-          margin: 10px;
-          padding: 3px;
-          letter-spacing: 0.2vw;
+          margin: 0.8vw;
+          font-size: 180%;
           background-color: transparent;
           &:hover {
             filter: brightness(150%);
@@ -214,15 +206,10 @@ export default {
         }
         .active{
           font-weight: 700;
-          // text-decoration: underline;
-          // text-decoration-color: white;
-          // text-decoration-thickness: 2px;
           border-bottom: 1mm solid white;
-          // border-bottom: solid;
         }
       }
     }
-  
   }
   .column_layout {
     display: flex;
@@ -244,8 +231,7 @@ export default {
       align-items: center;
       align-content: center;
       justify-items: center;
-      justify-content: space-around;
-      margin: 2px 0 2px 0;
+      justify-content: center;
       button {
           height: 60px;
           width: 260px;
@@ -254,10 +240,9 @@ export default {
           border-radius: 30px;
           border: none;
           box-shadow: 0px 2px 2px 1px rgba(105, 103, 103, 0.424);
+          margin: 0.8vh;
 
           font-size: 24px;
-          font-weight: normal;
-          letter-spacing: 0.1vh;
           text-align: center;
           z-index: 5;
           cursor: pointer;
@@ -277,6 +262,7 @@ export default {
       height: 100%;
       width: 70%;
       background: #FFE9EE;
+      overflow-y: scroll;
       .right_show{
         width: 100%;
         height: 100%;
@@ -287,6 +273,7 @@ export default {
         align-content: space-around;
         justify-items: center;
         justify-content: space-around;
+        margin: 6px 0 6px 0;
         .film_background{
           width: 380px;
           height: 280px;
@@ -299,6 +286,7 @@ export default {
           justify-items: center;
           justify-content: space-around;
           letter-spacing: 0.1em;
+          margin: 10px;
           .film{
               width: 80%;
               height: 80%;

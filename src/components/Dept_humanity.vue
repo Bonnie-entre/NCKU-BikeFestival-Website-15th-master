@@ -171,7 +171,7 @@ export default {
         margin-right: 0.5%;
         background-image: url("../assets//logoHome_white.png");
         background-repeat: no-repeat;
-        background-size: 85% 43%;
+        background-size: 85% 46%;
         background-position: center;
         transition: filter .8s ease;
         cursor: pointer;
@@ -190,21 +190,14 @@ export default {
         justify-content: center;
         align-content: center;
         align-items: center;
-        margin-left: 0.5%;
-        margin-right: 0.5%;
-
-        font-family: GenSenRounded TW;
-        font-style: normal;
-        font-weight: 550;
-        font-size: 24px;
+        
         color: #0C3759;
         background: linear-gradient(to right, #FCDEE7 0%, #FCF4D3 100%);
         box-shadow: 0px 2px 2px 1px rgba(105, 103, 103, 0.424);
         border-radius: 147px;
         label {
-          margin: 10px;
-          padding: 3px;
-          letter-spacing: 0.2vw;
+          margin: 0.8vw;
+          font-size: 180%;
           background-color: transparent;
           &:hover {
             filter: brightness(150%);

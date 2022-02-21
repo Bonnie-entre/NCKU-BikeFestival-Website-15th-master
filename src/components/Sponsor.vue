@@ -17,7 +17,7 @@
       section(class="sponsor_content")
         article(class="sponsor_content_article" v-html="sponsor[currentIndex].content")
         article(class="sponsor_content_info" v-html="sponsor[currentIndex].info")
-        label(class="sponsor_logo_small")
+        //- label(class="sponsor_logo_small")
 </template>
 
 <script>
@@ -365,8 +365,9 @@ export default {
     }
   }
     .sponsor_page {
-      position: absolute;
+      // position: absolute;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100vh;
@@ -377,17 +378,15 @@ export default {
       overflow: hidden;
     }
     .live_top_bar_pc {
-      position: absolute;
       display: flex;
       flex-direction: row;
       justify-content: center;
       min-width: 600px;
       z-index: 100;
       top: 0%;
-      // left: 0%;
       background: #CDBFEE;
       width: 100vw;
-      height: 130px;
+      height: 16vh;
       box-shadow: 0 0 3px 1px rgba(51, 51, 51, 0.5);
       .live_top_bar_layout {
         width: 100%;
@@ -461,201 +460,168 @@ export default {
       }
     }
 
-    .sponsor_layout_1 {
-      display: grid;
-      grid-template-columns: 1fr 5fr 1fr;
-      grid-template-rows: 1.4fr 1.8fr 0.8fr;
-      grid-template-areas: ". . ."
-        ". list ."
-        ". . .";
+    .sponsor_layout_1 {  
+      height: 84vh;
+      width: 100%;
       justify-content: center;
       align-content: center;
       align-items: center;
-
-      width: 100vw;
-      height: 100vh;
-
       background-color: linear-gradient(180deg, #DAD0F2 0%, #FCDBE3 100%);
+      .sponsor_list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        label {
+          width: 140px;
+          height: 140px;
+          border: 5px solid transparent;
+          border-radius: 20px;
+          background-position: 50% 50%;
+          background-size: contain;
+          background-color : white;
+          background-repeat: no-repeat;
+          margin: 0.5vh 0.5vw 0.5vh 0.5vw;
+
+          transition: .2s transform ease-in-out;
+          cursor: pointer;
+          &:hover {
+            &:before {
+              position:absolute;
+              display: block;
+              text-align: center;
+              content: '';
+              width: 10vw;
+              height: 10vw;
+              border-radius: 20px;
+              background-color: rgba(0, 0, 0, 0.66);
+              z-index: 20;
+            }
+            &:after {
+              position:absolute;
+              content: attr(data-name);
+              color: white;
+              text-align: center;
+              font-size: 20px;
+              margin-top: 3vh;
+              margin-left: -5vw;
+              width: 10vw;
+              height: 10vw;
+              z-index: 21;
+            }
+          }
+        }
+      }
     }
 
     .sponsor_layout_2 {
-      display: grid;
-      position: absolute;
-      grid-template-columns: 1fr 1.5fr;
-      grid-template-areas: "left right";
-      width: 100vw;
-      height: 92vh;
-      top: 8%;
-    }
-
-    .sponsor_list {
-      grid-area: list;
-
-      display: grid;
-      grid-template-columns: repeat(6, 10vw);
-      grid-template-rows: repeat(3, 10vw);
-      grid-gap: 3vw;
-      justify-content: center;
-      align-items: center;
-
+      display: flex;
+      flex-direction: row;
       width: 100%;
-      label {
-        width: 10vw;
-        height: 10vw;
-        border: 5px solid transparent;
-        border-radius: 20px;
-        background-position: 50% 50%;
-        background-size: contain;
-        background-color : white;
-        background-repeat: no-repeat;
+      height: 84vh;
+      .sponsor_info {
+        display: flex;
+        flex-direction: column;
+        width: 40%;
+        height: 100%;
+        justify-content: center;
+        justify-items: center;
+        align-content: center;
+        align-items: center;
+        background-color: linear-gradient(180deg, #DAD0F2 0%, #FCDBE3 100%);
+        box-shadow: 0 0 3px 2px rgba(100, 100, 100, 0.3);;
+        p {
+          color: rgb(48,182,245);
+          font-size: 40px;
+          letter-spacing: 4px;
+          padding: 10px;
+        }
 
-        transition: .2s transform ease-in-out;
-        cursor: pointer;
-        &:hover {
-          &:before {
-            position:absolute;
-            display: block;
-            text-align: center;
-            content: '';
-            width: 10vw;
-            height: 10vw;
-            border-radius: 20px;
-            background-color: rgba(0, 0, 0, 0.66);
-            z-index: 20;
+        label {
+          width: 18vw;
+          height: 18vw;
+          background-position: center center;
+          background-size: contain;
+          background-color : white;
+          background-repeat: no-repeat;
+          border-radius: 30px;
+          box-shadow: 1px 1px 2px 1px rgba(55, 55, 55, 0.3);
+          border: 15px solid transparent;
+          transform: skewX(-3deg);
+          margin: 1vh;
+          cursor: pointer;
+          transition: .2s transform ease-in-out;
+          &:hover {
+            // transform: scale(1.05) skewX(-3deg);
+            transform: scale(1.05);
           }
           &:after {
-            position:absolute;
-            content: attr(data-name);
-            color: white;
-            text-align: center;
-            font-size: 20px;
-            margin-top: 3vh;
-            margin-left: -5vw;
-            width: 10vw;
-            height: 10vw;
-            z-index: 21;
+            position: absolute;
+            display: inline-block;
+            content: '';
+            width: 3vw;
+            height: 3vw;
+            background-image: url("../assets//mouse.svg");
+            background-position: 50% 50%;
+            background-size: contain;
+
+            margin-left: 10vw;
+            margin-top: 20vw;
+            animation: mouse .5s ease-in-out infinite alternate;
           }
         }
       }
-    }
 
-    .sponsor_info {
-      grid-area: left;
-      display: grid;
-      grid-template-rows: 0.5fr 1fr 2fr 1fr;
-      grid-template-areas: "."
-        "title"
-        "icon"
-        ".";
-      justify-content: center;
-      justify-items: center;
-      align-content: center;
-      align-items: center;
-      // transform: skewX(3deg);
+      .sponsor_content {
+        grid-area: right;
 
-      position: absolute;
-      left: -2vw;
-      width: 100%;
-      height: 100%;
-      background-color: linear-gradient(180deg, #DAD0F2 0%, #FCDBE3 100%);
-      box-shadow: 0 0 3px 2px rgba(100, 100, 100, 0.3);
+        display: grid;
+        grid-template-rows: 4fr 1.2fr 0.5fr 0.2fr;
+        grid-template-areas: "content" "info" "logo" ".";
+        justify-content: flex-start;
+        justify-items: flex-start;
+        align-content: flex-start;
+        align-items: flex-start;
+        padding: 8vh 2vw 3vh 4vw;
 
-      p {
-        grid-area: title;
-        color: rgb(48,182,245);
-        font-size: 40px;
-        letter-spacing: 4px;
-        // transform: skewX(-3deg);
-      }
+        width: 100%;
+        height: 90%;
 
-      label {
-        grid-area: icon;
-        width: 18vw;
-        height: 18vw;
-        background-position: center center;
-        background-size: contain;
-        background-color : white;
-        background-repeat: no-repeat;
-        border-radius: 30px;
-        box-shadow: 1px 1px 2px 1px rgba(55, 55, 55, 0.3);
-        border: 15px solid transparent;
-        transform: skewX(-3deg);
-
-        cursor: pointer;
-        transition: .2s transform ease-in-out;
-        &:hover {
-          // transform: scale(1.05) skewX(-3deg);
-          transform: scale(1.05);
+        .sponsor_content_article {
+          padding: 0 10px 0 5px;
+          text-align: left;
+          line-height: 3.6vh;
+          grid-area: content;
+          width: 85%;
+          height: 52vh;
+          overflow-y: scroll;
+          &::-webkit-scrollbar {
+            width: 0.6vw;
+            border-radius: 0.5vw;
+          }
+          &::-webkit-scrollbar-thumb {
+            background: rgb(103, 192, 225);
+            border-radius: 0.5vw;
+          }
         }
-        &:after {
-          position: absolute;
-          display: inline-block;
-          content: '';
-          width: 3vw;
-          height: 3vw;
-          background-image: url("../assets//mouse.svg");
-          background-position: 50% 50%;
-          background-size: contain;
-
-          margin-left: 10vw;
-          margin-top: 20vw;
-          animation: mouse .5s ease-in-out infinite alternate;
+        .sponsor_content_info {
+          grid-area: info;
+          padding: 12px 0 0 5px;
+          border-top: 3px solid rgb(254,241,217);
+          border-radius: 1px;
+          text-align: left;
+          width: 65%;
+          color: rgb(60, 60, 60);
+          font-size: 15px;
+          line-height: 25px;
         }
       }
     }
 
-    .sponsor_content {
-      grid-area: right;
+    
 
-      display: grid;
-      grid-template-rows: 4fr 1.2fr 0.5fr 0.2fr;
-      grid-template-areas: "content" "info" "logo" ".";
-      justify-content: flex-start;
-      justify-items: flex-start;
-      align-content: flex-start;
-      align-items: flex-start;
-      padding: 8vh 2vw 3vh 4vw;
-
-      width: 100%;
-      height: 90%;
-
-      .sponsor_content_article {
-        padding: 0 10px 0 5px;
-        text-align: left;
-        line-height: 3.6vh;
-        grid-area: content;
-        width: 85%;
-        height: 52vh;
-        overflow-y: scroll;
-        &::-webkit-scrollbar {
-          width: 0.6vw;
-          border-radius: 0.5vw;
-        }
-        &::-webkit-scrollbar-thumb {
-          background: rgb(103, 192, 225);
-          border-radius: 0.5vw;
-        }
-      }
-      .sponsor_content_info {
-        grid-area: info;
-        padding: 12px 0 0 5px;
-        border-top: 3px solid rgb(254,241,217);
-        border-radius: 1px;
-        text-align: left;
-        width: 65%;
-        color: rgb(60, 60, 60);
-        font-size: 15px;
-        line-height: 25px;
-      }
-      .sponsor_logo_small {
-        grid-area: logo;
-        margin: 0 0 0 38vw;
-        width: 15vw;
-        height: 6vh;
-        background-image: url("../assets//logoSmall.svg");
-        background-position: left center;
-        background-size: contain;
-        background-repeat: no-repeat;
-      }
-    }
+    
 </style>

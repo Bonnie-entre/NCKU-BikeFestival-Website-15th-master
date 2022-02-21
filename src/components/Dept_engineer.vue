@@ -43,7 +43,7 @@ export default {
       pc: this.isPC(),
       classes: ['規劃與設計學院', '社會科學院', '不分學院', '工學院', '理學院', '文學院', '醫學院', '管理學院', '電機資訊學院', '生物科學與科技學院'],
       classKeys: ['design', 'social', 'undeclear', 'engineer', 'science', 'humanity', 'medicine', 'management', 'computer', 'biological'],
-      dept: [ '材料科學與工程學系','化學工程化學工程系', '土木工程系', '水利及海洋工程學系', '工程科學系', '系統及船舶機電工程學系','航空太空工程學系', '資源工程學系', '環境工程學系', '生物醫學工程學系', '測量及空間資訊學系', '能源國際學士學位學程','學院QA影片'],
+      dept: [ '材料科學與工程學系','化學工程系', '土木工程系', '水利及海洋工程學系', '工程科學系', '系統及船舶機電工程學系','航空太空工程學系', '資源工程學系', '環境工程學系', '生物醫學工程學系', '測量及空間資訊學系', '能源國際學士學位學程','學院QA影片'],
       currentIndex: -1,
       check: false
     }
@@ -190,21 +190,14 @@ export default {
         justify-content: center;
         align-content: center;
         align-items: center;
-        margin-left: 0.5%;
-        margin-right: 0.5%;
-
-        font-family: GenSenRounded TW;
-        font-style: normal;
-        font-weight: 550;
-        font-size: 24px;
+        
         color: #0C3759;
         background: linear-gradient(to right, #FCDEE7 0%, #FCF4D3 100%);
         box-shadow: 0px 2px 2px 1px rgba(105, 103, 103, 0.424);
         border-radius: 147px;
         label {
-          margin: 10px;
-          padding: 3px;
-          letter-spacing: 0.2vw;
+          margin: 0.8vw;
+          font-size: 180%;
           background-color: transparent;
           &:hover {
             filter: brightness(150%);
@@ -217,11 +210,7 @@ export default {
         }
         .active{
           font-weight: 700;
-          // text-decoration: underline;
-          // text-decoration-color: white;
-          // text-decoration-thickness: 2px;
           border-bottom: 1mm solid white;
-          // border-bottom: solid;
         }
       }
     }

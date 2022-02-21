@@ -1,17 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import Intro from '@/components/Intro'
-// import Parent from '@/components/Parent'
 import Main from '@/components/Main'
 import Department from '@/components/Department'
 import Activity from '@/components/Activity'
 import Columns from '@/components/Columns'
-import SignUp from '@/components/SignUp'
-import About from '@/components/About'
+// import About from '@/components/About'
 import Sponsor from '@/components/Sponsor'
-// import Activity_voice from '@/components/Activity_voice'
-// import OnlineSource from '@/components/OnlineSource'
-import Live from '@/components/Live'
 import Dept_design from '@/components/Dept_design'
 import Dept_social from '@/components/Dept_social'
 import Dept_undeclear from '@/components/Dept_undeclear'
@@ -33,18 +27,6 @@ export default new Router({
       component: Main,
       meta: { transitionName: 'slide' }
     },
-    // {
-    //   path: '/parent',
-    //   name: 'Parent',
-    //   component: Parent,
-    //   meta: { transitionName: 'slide' }
-    // },
-    // {
-    //   path: '/news',
-    //   name: 'News',
-    //   component: News,
-    //   meta: { transitionName: 'slide' }
-    // },
     {
       path: '/department',
       name: 'Department',
@@ -61,31 +43,16 @@ export default new Router({
       name: 'Columns',
       component: Columns
     },
-    {
-      path: '/sign-up',
-      name: 'SignUp',
-      component: SignUp
-    },
-    {
-      path: '/about',
-      name: 'About',
-      component: About
-    },
+    // {
+    //   path: '/about',
+    //   name: 'About',
+    //   component: About
+    // },
     {
       path: '/sponsor',
       name: 'Sponsor',
       component: Sponsor
     },
-    // {
-    //   path: '/online',
-    //   name: 'OnlineSource',
-    //   component: OnlineSource
-    // },
-    // {
-    //   path: '/live',
-    //   name: 'Live',
-    //   component: Live
-    // }
     {
       path: '/Dept_design',
       name: 'Dept_design',
