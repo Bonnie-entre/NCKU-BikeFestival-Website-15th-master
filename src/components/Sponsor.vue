@@ -365,15 +365,14 @@ export default {
     }
   }
     .sponsor_page {
-      // position: absolute;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      height: 100vh;
-      width: 100vw;
-      margin: 0;
-      padding: 0;
+      justify-content: flex-start;
+      justify-content: flex-start;
+      height: 100%;
+      width: 100%;
+      min-width: 1000px;
       background: linear-gradient(180deg, #FCDBE3 0%, #DAD0F2 100%);
       overflow: hidden;
     }
@@ -381,83 +380,70 @@ export default {
       display: flex;
       flex-direction: row;
       justify-content: center;
-      min-width: 600px;
       z-index: 100;
-      top: 0%;
       background: #CDBFEE;
-      width: 100vw;
+      width: 100%;
       height: 16vh;
       box-shadow: 0 0 3px 1px rgba(51, 51, 51, 0.5);
       .live_top_bar_layout {
-        width: 100%;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      justify-items: center;
+      align-items: center;
+      align-content: center;
+      .top_logo{
+        width: 30%;
         height: 100%;
+        margin-left: 0.5%;
+        margin-right: 0.5%;
+        background-image: url("../assets//logoHome_white.png");
+        background-repeat: no-repeat;
+        background-size: 85% 46%;
+        background-position: center;
+        transition: filter .8s ease;
+        cursor: pointer;
+          &:hover {
+            filter: brightness(105%);
+          }
+          &:active {
+            filter: brightness(80%);
+          }
+      }
+      .top_bar{
+        width: 60%;
+        height: 50%;
         display: flex;
         flex-direction: row;
         justify-content: center;
-        justify-items: center;
-        align-items: center;
         align-content: center;
-        .top_logo{
-          width: 30%;
-          height: 100%;
-          margin-left: 0.5%;
-          margin-right: 0.5%;
-          background-image: url("../assets//logoHome_white.png");
-          background-repeat: no-repeat;
-          background-size: 85% 46%;
-          background-position: center;
-          transition: filter .8s ease;
-          cursor: pointer;
-            &:hover {
-              filter: brightness(105%);
-            }
-            &:active {
-              filter: brightness(80%);
-            }
-        }
-        .top_bar{
-          width: 60%;
-          height: 50%;
-          display: flex;
-          flex-direction: row;
-          justify-content: center;
-          align-content: center;
-          align-items: center;
-          margin-left: 0.5%;
-          margin-right: 0.5%;
-
-          font-family: GenSenRounded TW;
-          font-style: normal;
-          font-weight: 550;
-          font-size: 24px;
-          color: #0C3759;
-          background: linear-gradient(to right, #FCDEE7 0%, #FCF4D3 100%);
-          box-shadow: 0px 2px 2px 1px rgba(105, 103, 103, 0.424);
-          border-radius: 147px;
-          label {
-            margin: 10px;
-            padding: 3px;
-            letter-spacing: 0.2vw;
-            background-color: transparent;
-            &:hover {
-              filter: brightness(150%);
-              font-weight: 700;
-            }
-            &:active {
-              filter: brightness(80%);
-              font-weight: 700;
-            }
-          }
-          .active{
+        align-items: center;
+        
+        color: #0C3759;
+        background: linear-gradient(to right, #FCDEE7 0%, #FCF4D3 100%);
+        box-shadow: 0px 2px 2px 1px rgba(105, 103, 103, 0.424);
+        border-radius: 147px;
+        label {
+          margin: 0.8vw;
+          font-size: 180%;
+          background-color: transparent;
+          &:hover {
+            filter: brightness(150%);
             font-weight: 700;
-            // text-decoration: underline;
-            // text-decoration-color: white;
-            // text-decoration-thickness: 2px;
-            border-bottom: 1mm solid white;
-            // border-bottom: solid;
           }
+          &:active {
+            filter: brightness(80%);
+            font-weight: 700;
+          }
+        }
+        .active{
+          font-weight: 700;
+          border-bottom: 1mm solid white;
         }
       }
+    }
     }
 
     .sponsor_layout_1 {  
@@ -467,6 +453,8 @@ export default {
       align-content: center;
       align-items: center;
       background-color: linear-gradient(180deg, #DAD0F2 0%, #FCDBE3 100%);
+      overflow-y: scroll;
+      overflow-x: hidden;
       .sponsor_list {
         display: flex;
         flex-direction: row;

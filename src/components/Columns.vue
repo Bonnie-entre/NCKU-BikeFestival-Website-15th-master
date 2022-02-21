@@ -8,7 +8,6 @@
           label(@click="openTab('https://docs.google.com/forms/d/e/1FAIpQLSdBW8m8SVm5YqwtsOGWAaMYwOWiMJ_RbjZTNMq4dJYYWCg85Q/viewform'); list = false;" v-if="pc") 我要報名
     div(class="column_layout")
         div(class="column_layout_l")
-            //- div(class="left_bar1" v-show="pc")
             button(v-bind:class="{ active: leftbarIndex===index }" v-for="(item, index) in leftBar" @click="leftbarIndex=index") {{item }}
         div(class="column_layout_r")
             div(class="right_show")
@@ -270,10 +269,8 @@ export default {
         flex-direction: row;
         flex-wrap: wrap;
         align-items: center;
-        align-content: space-around;
         justify-items: center;
-        justify-content: space-around;
-        margin: 6px 0 6px 0;
+        justify-content: center;
         .film_background{
           width: 380px;
           height: 280px;
@@ -286,7 +283,7 @@ export default {
           justify-items: center;
           justify-content: space-around;
           letter-spacing: 0.1em;
-          margin: 10px;
+          margin: 1vh 1vw 1vh 1vw;
           .film{
               width: 80%;
               height: 80%;
@@ -300,7 +297,6 @@ export default {
               left: -110px;
               font-weight: 500;
               font-size: 20px;
-              // line-height: 20px;
               color: #000000;
           }
         }
