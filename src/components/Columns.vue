@@ -8,12 +8,13 @@
           label(@click="openTab('https://docs.google.com/forms/d/e/1FAIpQLSdBW8m8SVm5YqwtsOGWAaMYwOWiMJ_RbjZTNMq4dJYYWCg85Q/viewform'); list = false;" v-if="pc") 我要報名
     div(class="column_layout")
         div(class="column_layout_l")
-            button(v-bind:class="{ active: leftbarIndex===index }" v-for="(item, index) in leftBar" @click="leftbarIndex=index") {{item }}
+            button(v-bind:class="{ active: leftbarIndex===index }" v-for="(item, index) in info" @click="leftbarIndex=index") {{ item.title }}
         div(class="column_layout_r")
             div(class="right_show")
-                div(class="film_background" v-for="(item, index) in rightShow") 
-                    div(class="film")
-                    p() {{item}}
+                div(class="film_background" v-for="(item, index) in info[leftbarIndex].content") 
+                    a(:href="item.url")
+                        div(class="film" :style="{ backgroundImage: 'url(' + item.imagePreivew + ')' }") 
+                        p() {{ item.text }}
     
 </template>
 
@@ -30,8 +31,208 @@ export default {
     return {
       menuText: [ '活動介紹', '科系資訊', '主題專欄', '合作單位'],
       urlText: ['activity', 'department', 'column', 'sponsor'],
-      leftBar: ['考試策略','課綱新創','讀書秘籍','國際時事','經驗分享','興趣探索','心態調適','親子關係','孩子健康'],
-      rightShow: ['專欄','專欄','專欄','專欄'],
+      info: [
+        {
+          title: "考試策略",
+          content: [
+            {
+              text: "考前衝刺三步驟",
+              url: "https://bit.ly/考前衝刺三步驟​",
+              imagePreivew: require("@/assets/columns/1-1.png")
+            },
+            {
+              text: "讀書帳 x 科系探索網站 x 實用資訊",
+              url: "https://bit.ly/實用網站和應用程式",
+              imagePreivew: require("@/assets/columns/1-2.png")
+            }
+          ]
+        },
+        {
+          title: "課綱新制",
+          content: [
+            {
+              text: "什麼是學習歷程檔案？",
+              url: "https://bit.ly/學習歷程小撇步​",
+              imagePreivew: require("@/assets/columns/2-1.png")
+            },
+            {
+              text: "戰勝108課綱-國英數",
+              url: "https://bit.ly/戰勝國英數​",
+              imagePreivew: require("@/assets/columns/2-2.png")
+            },
+            {
+              text: "成大四大班群-文法財經",
+              url: "https://bit.ly/文法財經篇",
+              imagePreivew: require("@/assets/columns/2-3.png")
+            },
+            {
+              text: "成大四大班群-理工1",
+              url: "https://bit.ly/理工類上篇",
+              imagePreivew: require("@/assets/columns/2-4.png")
+            },
+            {
+              text: "成大四大班群-理工2",
+              url: "https://bit.ly/理工類下偏",
+              imagePreivew: require("@/assets/columns/2-5.png")
+            },
+            {
+              text: "成大四大班群-醫護",
+              url: "https://www.facebook.com/NCKUbikefestival/posts/4553270128134446",
+              imagePreivew: require("@/assets/columns/2-6.png")
+            },
+            {
+              text: "108課綱新手懶人包",
+              url: "https://www.facebook.com/NCKUbikefestival/posts/3339211246207013",
+              imagePreivew: require("@/assets/columns/2-7.png")
+            }
+          ]
+        },
+        {
+          title: "讀書秘笈",
+          content: [
+            {
+              text: "正確目標，更正確的方向",
+              url: "https://bit.ly/偉大的目標伴你走更镸的路",
+              imagePreivew: require("@/assets/columns/3-1.png")
+            },
+            {
+              text: "高中生的時間管理術",
+              url: "https://bit.ly/好想成為時間管理大師",
+              imagePreivew: require("@/assets/columns/3-2.png")
+            },
+            {
+              text: "休息，是為了更長遠的路",
+              url: "https://bit.ly/適當的放鬆可以走更長的路",
+              imagePreivew: require("@/assets/columns/3-2.png")
+            },
+            {
+              text: "保持專注的方法",
+              url: "https://www.facebook.com/248448688616633/posts/4486862748108518/",
+              imagePreivew: require("@/assets/columns/3-4.png")
+            }
+          ]
+        },
+        {
+          title: "國際時事",
+          content: [
+            {
+              text: "祖克柏的元宇宙世界",
+              url: "https://bit.ly/Metaverse英文專欄​",
+              imagePreivew: require("@/assets/columns/4-1.png")
+            },
+            {
+              text: "風靡全球的魷魚遊戲",
+              url: "https://bit.ly/SquidGame魷魚遊戲英文專欄",
+              imagePreivew: require("@/assets/columns/4-2.png")
+            },
+            {
+              text: "貝佐斯的月球夢",
+              url: "https://bit.ly/SpaceTravel臉書專欄",
+              imagePreivew: require("@/assets/columns/4-3.png")
+            },
+            {
+              text: "阿富汗難民問題",
+              url: "https://www.facebook.com/NCKUbikefestival/posts/4512943412167118/",
+              imagePreivew: require("@/assets/columns/4-4.png")
+            }
+          ]
+        },
+        {
+          title: "經驗分享",
+          content: [
+            {
+              text: "大學新生手冊",
+              url: "https://bit.ly/實際大學生活",
+              imagePreivew: require("@/assets/columns/5-1.png")
+            },
+            {
+              text: "成大交換學生懶人包",
+              url: "https://bit.ly/交換學生大補帖",
+              imagePreivew: require("@/assets/columns/5-2.png")
+            },
+            {
+              text: "成大雙主修/輔系/轉系/學程指南",
+              url: "https://www.facebook.com/248448688616633/posts/4467307496730710/",
+              imagePreivew: require("@/assets/columns/5-3.png")
+            },
+            {
+              text: "過來人說-管道選擇",
+              url: "http://bit.ly/2QrXumy",
+              imagePreivew: require("@/assets/columns/5-4.png")
+            },
+            {
+              text: "過來人說-志向選擇",
+              url: "https://reurl.cc/yy84XE",
+              imagePreivew: require("@/assets/columns/5-5.png")
+            },
+            {
+              text: "過來人說-心路歷程",
+              url: "https://www.facebook.com/story.php?story_fbid=2484325735028906&id=248448688616633",
+              imagePreivew: require("@/assets/columns/5-6.png")
+            },
+          ]
+        },
+        {
+          title: "興趣探索",
+          content: [
+            {
+              text: "興趣是什麼？",
+              url: "https://bit.ly/3tsTXJO",
+              imagePreivew: require("@/assets/columns/6-1.png")
+            },
+            {
+              text: "如何找到自己的興趣？",
+              url: "https://bit.ly/3JqrWIn",
+              imagePreivew: require("@/assets/columns/6-2.png")
+            },
+            {
+              text: "性向 vs. 興趣",
+              url: "https://bit.ly/3I4wX7P",
+              imagePreivew: require("@/assets/columns/6-3.png")
+            }
+          ]
+        },
+        {
+          title: "心態調適",
+          content: [
+            {
+              text: "應對成敗掌",
+              url: "https://www.facebook.com/248448688616633/posts/3329524207175717/",
+              imagePreivew: require("@/assets/columns/7-1.png")
+            },
+            {
+              text: "焦慮退散拳",
+              url: "https://www.facebook.com/248448688616633/posts/3356553297806141/",
+              imagePreivew: require("@/assets/columns/7-2.png")
+            },
+            {
+              text: "忘憂寶典",
+              url: "https://www.facebook.com/248448688616633/posts/3423617827766354/",
+              imagePreivew: require("@/assets/columns/7-3.png")
+            }
+          ]
+        },
+        {
+          title: "親子關係",
+          content: [
+            {
+              text: "家長陣線-親子交流",
+              url: "https://bit.ly/親子交流真經",
+              imagePreivew: require("@/assets/columns/8-1.png")
+            },
+            {
+              text: "家長陣線-作戰策略",
+              url: "https://www.facebook.com/NCKUbikefestival/posts/1811853425609477",
+              imagePreivew: require("@/assets/columns/8-2.jpeg")
+            },
+            {
+              text: "家長陣線-考前備戰",
+              url: "https://www.facebook.com/NCKUbikefestival/posts/1872819752846177",
+              imagePreivew: require("@/assets/columns/8-3.jpeg")
+            },
+          ]
+        }
+      ],
       mode: 0,
       list: false,
       deptList: false,
@@ -216,14 +417,12 @@ export default {
     width: 100%;
     height: 84vh;
     align-items: flex-start;
-    align-content: space-around;
-    justify-items: center;
-    justify-content: flex-end;
+    justify-content: flex-start;
     background: linear-gradient(180deg, #FCDBE3 0%, #DAD0F2 100%);
     // overflow-y: scroll;
     z-index: 2;
     .column_layout_l{
-      width: 30%;
+      width: 20vw;
       height: 100%;
       display: flex;
       flex-direction: column;
@@ -259,44 +458,45 @@ export default {
     }
     .column_layout_r{
       height: 100%;
-      width: 70%;
+      width: 80vw;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
       background: #FFE9EE;
       overflow-y: scroll;
       .right_show{
-        width: 100%;
+        width: 70vw;
         height: 100%;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         align-items: center;
-        justify-items: center;
-        justify-content: center;
-        .film_background{
-          width: 380px;
-          height: 280px;
+        justify-content: flex-start;
+        .film_background a{
+          width: 600px;
+          height: 400px;
           background-color: white;
           border-radius: 23px;
           display: flex;
           flex-direction: column;
           align-items: center;
-          align-content: space-around;
-          justify-items: center;
-          justify-content: space-around;
-          letter-spacing: 0.1em;
+          justify-content: space-evenly;
           margin: 1vh 1vw 1vh 1vw;
+          text-decoration: none;
           .film{
-              width: 80%;
-              height: 80%;
+              width: 90%;
+              height: 75%;
               background-color: #C4C4C4;
+              background-position: center;
+              background-repeat: no-repeat;
+              background-size: cover;
               border-radius: 20px;
-              margin-top: 1vh;
           }
           p{
-              position: relative;
-              top: -5px;
-              left: -110px;
+              width: 90%;
+              text-align: left;
               font-weight: 500;
-              font-size: 20px;
+              font-size: 24px;
               color: #000000;
           }
         }

@@ -1,69 +1,62 @@
 <template lang="pug">
   div(class="activity_page")
-    div(class="activity_top_bar_pc")
-      div(class="activity_top_bar_layout" @click="scroll()")
-        router-link(class="top_logo" to="/")
-        div(class="top_bar")
-          router-link(v-bind:class="{ active: index===0 }" tag="label" v-for="(text, index) of menuText" v-bind:key="text" v-bind:to="'/' + urlText[index]" v-if="pc") {{text}}
-          label(@click="openTab('https://docs.google.com/forms/d/e/1FAIpQLSdBW8m8SVm5YqwtsOGWAaMYwOWiMJ_RbjZTNMq4dJYYWCg85Q/viewform'); list = false;" v-if="pc") 我要報名
+    Header
     div(class="activity_layout" @click="list = false;")
       div(class="activity_layout1" v-show="currentIndex===0")
         div(class="top_bar1" v-show="pc")
           button( v-for="(item, index) in introduceSrc" @click="selectPageTopic(0, index), currentIndex=index, voice=false;" v-bind:class="{ active: currentIndex===index }") {{item.topic}} 
         div(class="content1" v-show="voice===false")
           dic(class="left_bar1" v-show="pc")
-            div(class="left_bar_category")  
-              label(v-for="(item, index) in leftBar" @click="categoryIndex=index, categorylistIndex=0, voice=false;" v-bind:class="{ active: categoryIndex===index}") {{item}}
-            div(class="left_bar_lists1" v-show="categoryIndex===0" v-bind:style="{'top':'5px' }")
-              button(class="lists_btn" v-for="(topic, i) in catgory[0]" @click="categorylistIndex=i" v-bind:class="{ active2: categorylistIndex===i}") {{topic}}
-            div(class="left_bar_lists1" v-show="categoryIndex===1" v-bind:style="{'top':'78px'}")
-              button(class="lists_btn" v-for="(topic, i) in catgory[1]" @click="categorylistIndex=i" v-bind:class="{ active2: categorylistIndex===i}") {{topic}}
-            div(class="left_bar_lists1" v-show="categoryIndex===2" v-bind:style="{'top':'150px'}")
-              button(class="lists_btn" v-for="(topic, i) in catgory[2]" @click="categorylistIndex=i" v-bind:class="{ active2: categorylistIndex===i}") {{topic}}
-            div(class="left_bar_lists1" v-show="categoryIndex===3" v-bind:style="{'top':'225px' }")
-              button(class="lists_btn" v-for="(topic, i) in catgory[3]" @click="categorylistIndex=i" v-bind:class="{ active2: categorylistIndex===i}") {{topic}}
+            div(class="left_bar_category")
+              div(class="left_bar_item" v-for="(item, index) in leftBar" @click="categorySelector(index)")
+                label(v-bind:class="{ active: categoryIndex===index}") {{ item.title }}
+                div(class="left_bar_lists1" v-show="categoryIndex===index")
+                  button(class="lists_btn" v-for="(topic, i) in item.catgories" @click="listSelector(i)" v-bind:class="{ active2: categorylistIndex===i}") {{topic}}
           div(class="right_show1")
-            div(class="platform" v-if=" categorylistIndex===0") 舞台活動
-            div(class="abnormal" v-if=" categorylistIndex=== 1") 不正常教育展
-            div(class="daily" v-if=" categorylistIndex=== 2") 日常導覽
-            div(class="activities" v-if="categoryIndex===0 && categorylistIndex===3") 各種活動
-            div(class="voice" v-if="categoryIndex===1 && categorylistIndex===3") 
-              div(class="voice_title") 
-                p() 留聲機
-              div(class="voice_intro" ) 介紹
-              div(class="voice_btn")
-                button(class="btn" @click="voice=!voice;") 進入留聲機
-            div(class="lightening" v-if="categoryIndex===2 && categorylistIndex===3")
-              div(class="lightening_layout")
-                div(class="lightening_top_bar")
-                  button(v-for="(btn, btn_i) in lighteningSrc" @click="lighteningIndex=btn_i" v-bind:class="{ active: lighteningIndex===btn_i}")  {{btn.topic}}
-                div(class="lightening_content")
-                  div(class="item1") 
-                  div(class="item2")
-                  dic(class="item3")
-            div(class="interview" v-if="categoryIndex===3 && categorylistIndex===3") 
-              div(class="interview_title") 
-                p() 模擬面試
-              div(class="interview_intro" ) 介紹
-              div(class="film" )
-                div(class="film_lists")
-                  div(class="film_list") 影片一
-                  div(class="film_list") 影片二
-                  div(class="film_list") 影片三
-                div(class="film_show") 影片
-            div(class="discover" v-if="categoryIndex===3 && categorylistIndex===4") 
-              div(class="discover_title") 
-                p() 探索學習
-              div(class="discover_content" ) 
-                div(class="discover_show")
-                  div(class="discover_show_img")
-                  div(class="discover_show_intro")
-                div(class="discover_show")
-                  div(class="discover_show_img")
-                  div(class="discover_show_intro")
-                div(class="discover_show")
-                  div(class="discover_show_img")
-                  div(class="discover_show_intro")
+            Interview(v-if="categoryIndex === 0 && categorylistIndex === 2")
+            Exploration(v-if="categoryIndex === 2 && categorylistIndex === 1")
+            Show(v-if="categoryIndex === 1 && categorylistIndex === 1")
+            //- div(class="platform" v-if=" categorylistIndex===0") 舞台活動
+            //- div(class="abnormal" v-if=" categorylistIndex=== 1") 不正常教育展
+            //- div(class="daily" v-if=" categorylistIndex=== 2") 日常導覽
+            //- div(class="activities" v-if="categoryIndex===0 && categorylistIndex===3") 各種活動
+            //- div(class="voice" v-if="categoryIndex===1 && categorylistIndex===3") 
+            //-   div(class="voice_title") 
+            //-     p() 留聲機
+            //-   div(class="voice_intro" ) 介紹
+            //-   div(class="voice_btn")
+            //-     button(class="btn" @click="voice=!voice;") 進入留聲機
+            //- div(class="lightening" v-if="categoryIndex===2 && categorylistIndex===3")
+            //-   div(class="lightening_layout")
+            //-     div(class="lightening_top_bar")
+            //-       button(v-for="(btn, btn_i) in lighteningSrc" @click="lighteningIndex=btn_i" v-bind:class="{ active: lighteningIndex===btn_i}")  {{btn.topic}}
+            //-     div(class="lightening_content")
+            //-       div(class="item1") 
+            //-       div(class="item2")
+            //-       dic(class="item3")
+            //- div(class="interview" v-if="categoryIndex===3 && categorylistIndex===3") 
+            //-   div(class="interview_title") 
+            //-     p() 模擬面試
+            //-   div(class="interview_intro" ) 介紹
+            //-   div(class="film" )
+            //-     div(class="film_lists")
+            //-       div(class="film_list") 影片一
+            //-       div(class="film_list") 影片二
+            //-       div(class="film_list") 影片三
+            //-     div(class="film_show") 影片
+            //- div(class="discover" v-if="categoryIndex===3 && categorylistIndex===4") 
+            //-   div(class="discover_title") 
+            //-     p() 探索學習
+            //-   div(class="discover_content" ) 
+            //-     div(class="discover_show")
+            //-       div(class="discover_show_img")
+            //-       div(class="discover_show_intro")
+            //-     div(class="discover_show")
+            //-       div(class="discover_show_img")
+            //-       div(class="discover_show_intro")
+            //-     div(class="discover_show")
+            //-       div(class="discover_show_img")
+            //-       div(class="discover_show_intro")
 
         div(class="content1_voice" v-show="voice!==false")
             div(class="left_bar")
@@ -122,10 +115,19 @@ import srcJson from '../assets//activity/activity.json'
 import Waterfall from 'vue-waterfall/lib/waterfall'
 import WaterfallSlot from 'vue-waterfall/lib/waterfall-slot'
 
+import Header from '@/components/common/Header.vue';
+import Interview from '@/components/activities/Interview.vue';
+import Exploration from '@/components/activities/Exploration.vue';
+import Show from '@/components/activities/Show.vue';
+
 export default {
   components: {
     Waterfall,
-    WaterfallSlot
+    WaterfallSlot,
+    Interview,
+    Exploration,
+    Show,
+    Header
   },
   created () {
     window.addEventListener('resize', this.windowSizeChange)
@@ -157,16 +159,21 @@ export default {
       phsyPage2: false,
       lighteningIndex: 0,
       voice: false,
-      menuText: [ '活動介紹', '科系資訊', '主題專欄', '合作單位'],
-      urlText: ['activity', 'department', 'column', 'sponsor'],
-      leftBar: ['扎根九十，學術賦能','南方智匯，成就燈程','未來想像，視界共好'],
+      leftBar: [
+        {
+          title: '扎根九十',
+          catgories: ['舞台活動—燭華', '日常展覽', '模擬面試']
+        },
+        {
+          title: '南方智慧',
+          catgories: ['教育創新', '閃電秀', '單車體驗']
+        },
+        {
+          title: '未來想像',
+          catgories: ['時空膠囊', '探索學習']
+        }
+      ],
       voice_leftBar: ['留聲機初衷','他們的故事','擺渡人們','心理測驗'],
-      catgory: [
-        ['舞台活動', '不正常教育展', '日常導覽', '各種活動'],
-        ['舞台活動', '不正常教育展', '日常導覽', '留聲機'],
-        ['舞台活動', '不正常教育展', '日常導覽', '閃電秀'],
-        ['舞台活動', '不正常教育展', '日常導覽', '模擬面試','探索學習'],
-        ],
       list: false,
       titleBlock: false,
       titleFlag: false,
@@ -213,6 +220,15 @@ export default {
     },
     openTab: function (url) {
       window.open(url, '_blank')
+    },
+    categorySelector: function (index) {
+      if (this.categoryIndex !== index)
+        this.categorylistIndex = 0;
+      this.categoryIndex=index;
+      this.voice=false;
+    },
+    listSelector: function (index) {
+      this.categorylistIndex = index;
     },
     selectPageTopic: function (title, index) {
       var i, j
@@ -291,15 +307,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  
   .activity_page {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     justify-content: flex-start;
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
     min-width: 1000px;
     margin: 0;
     padding: 0;
@@ -320,75 +335,6 @@ export default {
       }
     }
   }
-  .activity_top_bar_pc {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    z-index: 100;
-    background: #CDBFEE;
-    width: 100%;
-    height: 16vh;
-    box-shadow: 0 0 3px 1px rgba(51, 51, 51, 0.5);
-    .activity_top_bar_layout {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      justify-items: center;
-      align-items: center;
-      align-content: center;
-      .top_logo{
-        width: 30%;
-        height: 100%;
-        margin-left: 0.5%;
-        margin-right: 0.5%;
-        background-image: url("../assets//logoHome_white.png");
-        background-repeat: no-repeat;
-        background-size: 85% 46%;
-        background-position: center;
-        transition: filter .8s ease;
-        cursor: pointer;
-          &:hover {
-            filter: brightness(105%);
-          }
-          &:active {
-            filter: brightness(80%);
-          }
-      }
-      .top_bar{
-        width: 60%;
-        height: 50%;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-content: center;
-        align-items: center;
-        
-        color: #0C3759;
-        background: linear-gradient(to right, #FCDEE7 0%, #FCF4D3 100%);
-        box-shadow: 0px 2px 2px 1px rgba(105, 103, 103, 0.424);
-        border-radius: 147px;
-        label {
-          margin: 0.8vw;
-          font-size: 180%;
-          background-color: transparent;
-          &:hover {
-            filter: brightness(150%);
-            font-weight: 700;
-          }
-          &:active {
-            filter: brightness(80%);
-            font-weight: 700;
-          }
-        }
-        .active{
-          font-weight: 700;
-          border-bottom: 1mm solid white;
-        }
-      }
-    }
-  }
   .activity_layout {
     display: flex;
     flex-direction: column;
@@ -399,8 +345,12 @@ export default {
     width: 100%;
     height: 84vh;
     background: linear-gradient(180deg, #FCDBE3 0%, #DAD0F2 100%);
-    overflow-y: scroll;
     .activity_layout1 {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      height: 100%;
       .top_bar1 {
         display: flex;
         flex-direction: row;
@@ -408,7 +358,8 @@ export default {
         align-items: center;
         align-content: space-around;
         width: 100vw;
-        margin: 3.5vh 0 3.5vh 0;
+        height: 4vh;
+        margin: 3vh 0;
         button {
           width: 280px;
           height: 45px;
@@ -439,16 +390,17 @@ export default {
       .content1 {
         display: flex;
         flex-direction: row;
-        width: 100%;
-        justify-content: center;
-        justify-items: center;
+        width: 90%;
+        height: 74vh;
+        box-sizing: border-box;
+        padding: 20px;
+        justify-content: space-between;
         align-items: flex-start;
-        align-content: space-around;
         overflow-y: hidden;
         overflow-x: hidden;
         transition: filter .8s ease;
         .left_bar1{
-          width: 38%;
+          width: 30%;
           display: flex;
           flex-direction: row;
           justify-content: flex-start;
@@ -459,70 +411,69 @@ export default {
           .left_bar_category{
             display: flex;
             flex-direction: column;
-            flex-wrap: wrap;
-            width: 50%;
+            width: 100%;
             justify-content: flex-start;
-            justify-items: flex-start;
             align-items: flex-start;
-            margin: 10px 0px 10px 0px;
-            label{
-              height: 48px;
-              width: 240px;
-              background: transparent;
-
-              font-family: 'GenSenRounded-M';
-              font-size: 22px;
-              font-weight: 700;
-              line-height: 50px;
-              letter-spacing: 0.145em;
-              padding: 2px;
-              margin: 10px;
-              cursor: pointer;
+            .left_bar_item{
+              width: 50%;
+              position: relative;
+              label{
+                width: 35%;
+                background: transparent;
+                font-family: 'GenSenRounded-M';
+                font-size: 22px;
+                font-weight: 700;
+                line-height: 50px;
+                letter-spacing: 0.145em;
+                padding: 2px;
+                margin: 10px;
+                cursor: pointer;
+              }
+              .left_bar_lists1{
+                position: absolute;
+                top: 0;
+                left: 100%;
+                display: flex;
+                flex-direction: column;
+                width: 65%;
+                justify-content: flex-start;
+                align-items: center;
+                button{
+                  height: 50px;
+                  width: 180px;
+                  border-radius: nullpx;
+                  background: #FFFBCE;
+                  font-style: normal;
+                  font-weight: 500;
+                  font-size: 22px;
+                  line-height: 36px;
+                  letter-spacing: 0.1em;
+                  color: #769BFF;
+                  border: none;
+                  box-shadow: (0px 4px 4px rgba(0, 0, 0, 0.25));
+                  margin: 8px;
+                  cursor: pointer;
+                }
+                .active{
+                  background: transparent;
+                  border: none;
+                  box-shadow: none;
+                }
+                .active2{
+                  background: #769BFF;
+                  color: #FFFBCE;
+                }
+              }
             }
             .active{
               border-bottom: 1.2mm solid white;
             }
           }
-          .left_bar_lists1{
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            width: 50%;
-            justify-content: flex-start;
-            align-items: center;
-            margin: 10px 0 10px 0;
-            button{
-              height: 50px;
-              width: 180px;
-              border-radius: nullpx;
-              background: #FFFBCE;
-              font-style: normal;
-              font-weight: 500;
-              font-size: 22px;
-              line-height: 36px;
-              letter-spacing: 0.1em;
-              color: #769BFF;
-              border: none;
-              box-shadow: (0px 4px 4px rgba(0, 0, 0, 0.25));
-              margin: 8px;
-              cursor: pointer;
-            }
-            .active{
-              background: transparent;
-              border: none;
-              box-shadow: none;
-            }
-            .active2{
-              background: #769BFF;
-              color: #FFFBCE;
-            }
-          }
         }
         .right_show1{
-          // width: 65%;
-          // margin: 10px 10px 0 0;
+          width: 70%;
+          height: 100%;
           border-radius: 20px;
-          overflow-y: scroll;
           .platform{
             width: 750px;
             height: 530px;
