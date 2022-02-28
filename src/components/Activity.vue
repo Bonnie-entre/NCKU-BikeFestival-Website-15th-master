@@ -22,15 +22,13 @@
                 button.lists_btn(
                   v-for="(topic, i) in item.catgories",
                   @click="listSelector(i, index)",
-                  v-bind:class="{ active2: categorylistIndex === i }"
+                  v-bind:class="{ active2: categorylistIndex === i && categoryIndex===index }"
                 ) {{ topic }}
         .right_show1
           Interview(v-if="categoryIndex === 0 && categorylistIndex === 2")
           Exploration(v-if="categoryIndex === 2 && categorylistIndex === 1")
           Show(v-if="categoryIndex === 1 && categorylistIndex === 1")
           div(class="platform" v-if=" categorylistIndex===0") 舞台活動
-          div(class="abnormal" v-if=" categorylistIndex=== 1") 不正常教育展
-          div(class="daily" v-if=" categorylistIndex=== 2") 日常導覽
           div(class="activities" v-if="categoryIndex===0 && categorylistIndex===3") 各種活動
           div(class="voice" v-if="categoryIndex===1 && categorylistIndex===3")
             div(class="voice_title")
