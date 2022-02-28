@@ -67,9 +67,8 @@ export default {
   },
   methods: {
     menuSelector: function (index) {
-      if (this.menuIndex !== index)
-        this.deptIndex = 0;
-      this.menuIndex = index;
+      if (this.menuIndex !== index) { this.deptIndex = 0 }
+      this.menuIndex = index
     }
   }
 }
@@ -82,7 +81,7 @@ export default {
   background-color: #fff;
   border-radius: 20px;
   height: 100%;
-
+  overflow-y: scroll;
   h3 {
     font-size: 40px;
     text-align: left;
