@@ -211,7 +211,7 @@ export default {
         },
         {
           title: '未來想像，視界共好',
-          catgories: ['時空膠囊沈浸式體驗展區', '跨領域探索學習', '人生藍圖加值站', '新·南漂—線下行銷活動']
+          catgories: ['時空膠囊沈浸式體驗展區', '跨領域探索學習']
         }
       ],
       voice_leftBar: ['留聲機初衷', '他們的故事', '擺渡人們', '心理測驗'],
@@ -432,6 +432,7 @@ export default {
     justify-content: flex-start;
     align-items: center;
     height: 100%;
+    margin-top: 10px;
     .top_bar1 {
       display: flex;
       flex-direction: row;
@@ -471,7 +472,7 @@ export default {
     .content1 {
       display: flex;
       flex-direction: row;
-      width: 100%;
+      width: 90%;
       height: 74vh;
       box-sizing: border-box;
       padding: 20px;
