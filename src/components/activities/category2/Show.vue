@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(class="panel")
+  Panel
     h3 閃電秀
     div.menu
       div.menu_item(@click="activeIndex = 0" :class="{ active: activeIndex === 0 }") 大演講
@@ -14,7 +14,11 @@
 </template>
 
 <script>
+import Panel from '../Panel.vue'
 export default {
+  components: {
+    Panel
+  },
   data: function () {
     return {
       activeIndex: 0,
@@ -44,12 +48,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.panel {
-  box-sizing: border-box;
-  padding: 30px 40px;
-  background-color: #fff;
-  border-radius: 20px;
-  height: 100%;
   h3 {
     font-size: 40px;
     text-align: left;
@@ -92,5 +90,4 @@ export default {
       }
     }
   }
-}
 </style>
