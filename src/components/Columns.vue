@@ -6,12 +6,12 @@
         div(class="top_bar")
           div(class="top_bar_mobile" v-if="!pc")
             label() 主題專欄
-            button( @click="dropdown = !dropdown")
+            button( @click="dropdown_top = !dropdown_top")
               div(class="list_btn" v-for="(l, index) of 3")
           div(class="top_bar_pc" v-if="pc")
             router-link(v-bind:class="{ active: index===2 }" tag="label" v-for="(text, index) of menuText" v-bind:key="text" v-bind:to="'/' + urlText[index]" v-if="pc") {{text}}
             label(@click="openTab('https://docs.google.com/forms/d/e/1FAIpQLSdBW8m8SVm5YqwtsOGWAaMYwOWiMJ_RbjZTNMq4dJYYWCg85Q/viewform'); list = false;" v-if="pc") 我要報名
-    div(class="column_layout")
+    div(class="column_layout" v-if="!dropdown_top")
         div(class="column_layout_l")
           button(v-if="pc" v-bind:class="{ active: leftbarIndex===index }" v-for="(item, index) in info" @click="leftbarIndex=index") {{ item.title }}
           div(class="dropdown" v-if="!pc")
@@ -24,6 +24,10 @@
                     a(:href="item.url")
                         div(class="film" :style="{ backgroundImage: 'url(' + item.imagePreivew + ')' }") 
                         p() {{ item.text }}
+    div(class="column_layout_dropdown_top" v-if="dropdown_top")
+      router-link(class="dropdown_top_list" v-for="(item, index) in menuText" tag="label"  v-bind:key="text" v-bind:to="'/' + urlText[index]" v-bind:class="{ active: index==2 }") {{item}}
+      //- router-link(v-bind:class="{ active: index===2 }" tag="label" v-for="(text, index) of menuText" v-bind:key="text" v-bind:to="'/' + urlText[index]" v-if="pc")
+      label(class="dropdown_top_list" @click="openTab('https://docs.google.com/forms/d/e/1FAIpQLSdBW8m8SVm5YqwtsOGWAaMYwOWiMJ_RbjZTNMq4dJYYWCg85Q/viewform'); list = false;") 我要報名
     
 </template>
 
@@ -244,6 +248,7 @@ export default {
       ],
       mode: 0,
       dropdown: false,
+      dropdown_top: false,
       list: false,
       deptList: false,
       deptSlides: srcJson,
@@ -428,9 +433,6 @@ export default {
     .column_layout{
       display: flex;
       flex-direction: column;
-      // justify-content: center;
-      // justify-items: center;
-      // align-content: center;
       align-items: center;
       height: 90vh;
       .column_layout_l{
@@ -510,6 +512,27 @@ export default {
           }
         }
       }
+    }
+    .column_layout_dropdown_top{
+      display: flex;
+      flex-direction: column;
+      width: 50vw;
+      height: 70vh;
+      margin-top: 5vh;
+      align-items: center;
+      .dropdown_top_list{
+        width: 100%;
+        color: #0C3759;
+        font-size: 220%;
+        letter-spacing: 1.5vw;
+        margin: 3vh;
+        line-height: 8vh;
+        
+      }
+      .active{
+        font-weight: 700;
+        border-bottom: 1mm solid #0C3759;
+        }
     }
   }
   @media only screen and (min-width: 600px) {
