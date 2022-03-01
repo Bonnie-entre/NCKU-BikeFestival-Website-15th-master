@@ -1,6 +1,5 @@
 <template lang="pug">
-  Panel
-    h3 模擬面試
+  Panel(title="模擬面試")
     div.menu
       div.menu_item(
         v-for="(item, index) in menu"

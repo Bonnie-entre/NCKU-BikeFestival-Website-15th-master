@@ -1,6 +1,5 @@
 <template lang="pug">
-  Panel
-    h3 閃電秀
+  Panel(title="閃電秀")
     div.menu
       div.menu_item(@click="activeIndex = 0" :class="{ active: activeIndex === 0 }") 大演講
       div.menu_item(@click="activeIndex = 1" :class="{ active: activeIndex === 1 }") 小演講

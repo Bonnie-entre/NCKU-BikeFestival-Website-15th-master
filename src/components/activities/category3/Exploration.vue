@@ -1,6 +1,6 @@
 <template lang="pug">
-  Panel
-    h3 探索學習
+  Panel(title="探索學習")
+
     div.container
       div.column_item(
         v-for="col in columns"
