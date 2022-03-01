@@ -287,18 +287,16 @@ export default {
       }
         .intro_layout2{
           .show_info1{
-            height: 26vh;
             width: 80vw;
             margin: 2vh 0 2vh 0;
-            border-radius: 49px;
             background-color: #C4C4C4;
+            background-size: cover;
           }
           .show_info2{
-            height: 26vh;
             width: 80vw;
             margin: 2vh 0 2vh 0;
-            border-radius: 49px;
             background-color: #584848;
+            background-size: cover;
           }
         }
       }
@@ -523,18 +521,16 @@ export default {
       }
       .intro_layout2{
         .show_info1{
-          height: 80vh;
           width: 80vw;
           margin: 4vh 0 4vh 0;
-          border-radius: 49px;
           background-color: #C4C4C4;
+          background-size: cover;
         }
         .show_info2{
-          height: 80vh;
           width: 80vw;
           margin: 4vh 0 4vh 0;
-          border-radius: 49px;
           background-color: #584848;
+          background-size: cover;
         }
       }
     }
