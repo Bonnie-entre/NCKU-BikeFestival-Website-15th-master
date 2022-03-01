@@ -2,7 +2,7 @@
   div(class="panel")
     h3 探索學習
     div.container
-      a.column_item(
+      div.column_item(
         v-for="col in columns"
         href="https://www.facebook.com/248448688616633/posts/4611526018975523/?d=n"
       )
@@ -44,30 +44,34 @@ export default {
   background-color: #fff;
   border-radius: 20px;
   height: 100%;
+  overflow-y: scroll;
   h3 {
     font-size: 40px;
     text-align: left;
   }
-
   .container {
     display: flex;
     justify-content: space-around;
-    align-items: center;
-    height: 80%;
+    margin-top: 20px;
+    height: 90%;
     .column_item {
       display: flex;
       flex-direction: column;
-      justify-content: space-around;
       width: 25%;
-      height: 90%;
-      text-decoration: none;
+      height: 100%;
       .title {
         font-size: 28px;
         color: #769BFF;
         font-weight: 700;
+        margin: 20px 0;
       }
       .content {
         color: #000;
+        text-align: left;
+        letter-spacing: 0.5px;
+      }
+      img{
+        height: 50%;
       }
     }
   }

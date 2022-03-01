@@ -32,7 +32,7 @@ export default {
           link_2: 'https://www.youtube.com/playlist?list=PLqUuGuTWwe_WHmQVMF1A7qsKLXEgPBpwL'
         },
         {
-          title: '效內外活動',
+          title: '校內外活動',
           img: require('@/assets/activity/6.png'),
           link_1: 'https://www.youtube.com/playlist?list=PLqUuGuTWwe_UaYeMiKJ64lFgJunD4xPw6',
           link_2: 'https://www.youtube.com/playlist?list=PLqUuGuTWwe_WGMUS2xxKHF7v9n_F-0SbF'
@@ -86,6 +86,9 @@ export default {
         font-size: 28px;
         color: #769BFF;
         font-weight: 700;
+      }
+      img {
+        height: 50%;
       }
     }
   }
