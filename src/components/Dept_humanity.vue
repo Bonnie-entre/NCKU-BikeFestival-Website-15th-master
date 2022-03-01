@@ -12,20 +12,24 @@
             router-link(v-bind:class="{ active: index===1 }" tag="label" v-for="(text, index) of menuText" v-bind:key="text" v-bind:to="'/' + urlText[index]" v-if="pc") {{text}}
             label(@click="openTab('https://docs.google.com/forms/d/e/1FAIpQLSdBW8m8SVm5YqwtsOGWAaMYwOWiMJ_RbjZTNMq4dJYYWCg85Q/viewform'); list = false;" v-if="pc") 我要報名
     div(class="dept_layout" )
-      div(class="dept_menu_mobile" v-if="!pc")
+      div(class="dept_layout_dropdown_top" v-if="dropdown_top")
+        router-link(class="dropdown_top_list" v-for="(item, index) in menuText" tag="label"  v-bind:key="text" v-bind:to="'/' + urlText[index]" v-bind:class="{ active: index==1 }") {{item}}
+        label(class="dropdown_top_list" @click="openTab('https://docs.google.com/forms/d/e/1FAIpQLSdBW8m8SVm5YqwtsOGWAaMYwOWiMJ_RbjZTNMq4dJYYWCg85Q/viewform'); list = false;") 我要報名
+      div(class="dept_menu_mobile" v-if="!pc & !dropdown_top & !rightshow")
         div(class="dropdown_top" )
           label() 文學院
           button(class="dropdown_btn" @click="dropdown=!dropdown;") ˇ
         div(class="dropdown_dept__menu" v-if="dropdown")
-          label( v-for="(item, index) of dept") {{item}}
+          label(v-for="(item, index) of dept" @click="deptIndex=index, rightshow=true; dropdown=false;") {{item}}
       div(class="dept_menu" v-if="pc")
           div(class="dept_title") -文學院-
           div(class="dept_class" v-show="pc")
             p(class="dept_class_item" v-for="(iter, index) in dept" @click="deptIndex=index" v-bind:class="{active: deptIndex === index}" ) {{iter}}
             router-link(tag="p" v-bind:to="'/department'") 回上頁
-      div(class="dept_right_show")
+      div(class="dept_right_show" v-if="pc | (!dropdown_top & rightshow &!dropdown)")
+        button(@click="rightshow=!rightshow;" v-if="!pc") 回上頁
         div(class="dept_intro")
-        div(class="dept_guide")
+        div(class="dept_guide" v-if="pc")
           button() 系館導覽報名表單
 </template>
 
@@ -46,6 +50,7 @@ export default {
       mode: 0,
       dropdown: false,
       dropdown_top: false,
+      rightshow: false,
       list: false,
       deptList: false,
       deptSlides: srcJson,
@@ -234,10 +239,31 @@ export default {
           }
       }
     }
+    
     .dept_layout{
       display: flex;
       flex-direction: column;
       height: 90vh;
+      align-items: center;
+      align-content: center;
+      .dept_layout_dropdown_top{
+        display: flex;
+        flex-direction: column;
+        width: 50vw;
+        align-items: center;
+        .dropdown_top_list{
+          width: 100%;
+          color: #0C3759;
+          font-size: 220%;
+          letter-spacing: 1.5vw;
+          margin: 3vh;
+          line-height: 8vh; 
+        }
+        .active{
+          font-weight: 700;
+          border-bottom: 1mm solid #0C3759;
+        }
+      }
       .dept_menu_mobile{
         display: flex;
         flex-direction: column;
@@ -273,19 +299,43 @@ export default {
         .dropdown_dept__menu{
           display: flex;
           flex-direction: column;
+          align-items: center;
           label{
-            width: 68vw;
+            width: 60vw;
             height: 6vh;
             margin: 0.3vh 0 0.3vh 0;
-            background: #DAD0F2;
+            background: white;
             color: #769BFF;
-            font-size: 140%;
+            font-size: 180%;
             line-height: 6vh;
+            border: #769BFF 1px solid;
+            // border-color: #769BFF;
+            border-radius: 15px;
           }
         }
       }
       .dept_right_show{
-
+        display: flex;
+        flex-direction: column;
+        button{
+          position: relative;
+          left: 52vw;
+          width: 38vw;
+          height: 5vh;
+          background: #769BFF;
+          border-radius: 15px;
+          border: none;
+          color: white;
+          font-size: 120%;
+          margin: 5vh 0 0.5vh 0;
+        }
+        .dept_intro{
+          width: 90vw;
+          height: 30vh;
+          background: #C4C4C4;
+          margin: 2vh 0 2vh 0;
+          border-radius: 10px;
+        }
       }
     }
   }
