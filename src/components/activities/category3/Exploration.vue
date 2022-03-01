@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(class="panel")
+  Panel
     h3 探索學習
     div.container
       div.column_item(
@@ -12,7 +12,11 @@
 </template>
 
 <script>
+import Panel from '../Panel.vue'
 export default {
+  components: {
+    Panel
+  },
   data: function () {
     return {
       columns: [
@@ -38,13 +42,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.panel {
-  box-sizing: border-box;
-  padding: 30px 40px;
-  background-color: #fff;
-  border-radius: 20px;
-  height: 100%;
-  overflow-y: scroll;
   h3 {
     font-size: 40px;
     text-align: left;
@@ -75,5 +72,4 @@ export default {
       }
     }
   }
-}
 </style>

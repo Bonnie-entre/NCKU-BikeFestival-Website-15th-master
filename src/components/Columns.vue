@@ -104,7 +104,7 @@ export default {
           title: '讀書秘笈',
           content: [
             {
-              text: '正確目標，更正確的方向',
+              text: '設立目標，找到讀書的最佳動力',
               url: 'https://bit.ly/偉大的目標伴你走更镸的路',
               imagePreivew: require('@/assets/columns/3-1.png')
             },
@@ -116,7 +116,7 @@ export default {
             {
               text: '休息，是為了更長遠的路',
               url: 'https://bit.ly/適當的放鬆可以走更長的路',
-              imagePreivew: require('@/assets/columns/3-2.png')
+              imagePreivew: require('@/assets/columns/3-3.jpeg')
             },
             {
               text: '保持專注的方法',

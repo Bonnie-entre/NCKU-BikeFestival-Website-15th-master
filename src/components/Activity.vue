@@ -25,10 +25,10 @@
                   v-bind:class="{ active2: categorylistIndex === i && categoryIndex===index }"
                 ) {{ topic }}
         .right_show1
+          Stage(v-if="categoryIndex === 0 && categorylistIndex === 0")
           Interview(v-if="categoryIndex === 0 && categorylistIndex === 2")
           Exploration(v-if="categoryIndex === 2 && categorylistIndex === 1")
           Show(v-if="categoryIndex === 1 && categorylistIndex === 1")
-          div(class="platform" v-if=" categorylistIndex===0") 舞台活動
           div(class="activities" v-if="categoryIndex===0 && categorylistIndex===3") 各種活動
           div(class="voice" v-if="categoryIndex===1 && categorylistIndex===3")
             div(class="voice_title")
@@ -157,9 +157,10 @@ import Waterfall from 'vue-waterfall/lib/waterfall'
 import WaterfallSlot from 'vue-waterfall/lib/waterfall-slot'
 
 import Header from '@/components/common/Header.vue'
-import Interview from '@/components/activities/Interview.vue'
-import Exploration from '@/components/activities/Exploration.vue'
-import Show from '@/components/activities/Show.vue'
+import Stage from '@/components/activities/category1/Stage.vue'
+import Interview from '@/components/activities/category1/Interview.vue'
+import Show from '@/components/activities/category2/Show.vue'
+import Exploration from '@/components/activities/category3/Exploration.vue'
 
 export default {
   components: {
@@ -168,7 +169,8 @@ export default {
     Interview,
     Exploration,
     Show,
-    Header
+    Header,
+    Stage
   },
   created () {
     window.addEventListener('resize', this.windowSizeChange)
@@ -211,7 +213,7 @@ export default {
         },
         {
           title: '未來想像，視界共好',
-          catgories: ['時空膠囊沈浸式體驗展區', '跨領域探索學習', '人生藍圖加值站', '新·南漂—線下行銷活動']
+          catgories: ['時空膠囊沈浸式體驗展區', '跨領域探索學習']
         }
       ],
       voice_leftBar: ['留聲機初衷', '他們的故事', '擺渡人們', '心理測驗'],
@@ -432,6 +434,7 @@ export default {
     justify-content: flex-start;
     align-items: center;
     height: 100%;
+    margin-top: 10px;
     .top_bar1 {
       display: flex;
       flex-direction: row;
@@ -471,7 +474,7 @@ export default {
     .content1 {
       display: flex;
       flex-direction: row;
-      width: 100%;
+      width: 90%;
       height: 74vh;
       box-sizing: border-box;
       padding: 20px;

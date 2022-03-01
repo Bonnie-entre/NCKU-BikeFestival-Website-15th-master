@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(class="panel")
+  Panel
     h3 模擬面試
     div.menu
       div.menu_item(
@@ -39,7 +39,11 @@
 </template>
 
 <script>
+import Panel from '../Panel.vue'
 export default {
+  components: {
+    Panel
+  },
   data: function () {
     return {
       menu: ['模擬面試', '經驗分享', '教授演講'],
@@ -75,13 +79,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.panel {
-  box-sizing: border-box;
-  padding: 30px 40px;
-  background-color: #fff;
-  border-radius: 20px;
-  height: 100%;
-  overflow-y: scroll;
   h3 {
     font-size: 40px;
     text-align: left;
@@ -162,5 +159,4 @@ export default {
       border: solid #CDBFEE 1px;
     }
   }
-}
 </style>

@@ -12,7 +12,7 @@
     div(class="intro_layout")
       div(class="intro_layout1")
         div(class="test")
-          div(class="intro_film" v-if="pc | dropdown==false")
+          iframe(class="intro_film" v-if="pc | dropdown==false" src='https://www.youtube.com/embed/KsXRN7AKDUI')
             div(class="black1")
               div(class="white_block" v-for="(block, i) of 16")
             div(class="black2")
@@ -29,13 +29,16 @@
               button(tag="button" @click="openTab('https://docs.google.com/forms/d/e/1FAIpQLSdBW8m8SVm5YqwtsOGWAaMYwOWiMJ_RbjZTNMq4dJYYWCg85Q/viewform'); list = false;" v-if="pc") 我要<br>報名
               router-link(tag="button" v-bind:to="'/column'") 主題<br>專欄
               router-link(tag="button" v-bind:to="'/sponsor'") 合作<br>單位
+      div(class="arrow") ▼
       div(class="intro_layout2" v-if="pc | dropdown==false")
-        div(class="show_info1")
-        div(class="show_info2")
+        img(class="show_info1" :src="frontImg")
+        img(class="show_info2" :src="backImg")
 </template>
 
 <script>
 //  import axios from 'axios'
+import frontImg from '../assets/main/front.png'
+import backImg from '../assets/main/back.png'
 export default {
   created () {
     window.addEventListener('resize', this.windowSizeChange)
@@ -45,13 +48,15 @@ export default {
   },
   data: function () {
     return {
-      menuText: [ '活動介紹', '科系資訊', '主題專欄', '合作單位'],
+      menuText: ['活動介紹', '科系資訊', '主題專欄', '合作單位'],
       urlText: ['activity', 'department', 'column', 'sponsor'],
       list: false,
       pc: this.isPC(),
       currentIndex: -1,
       loader: null,
-      dropdown: false
+      dropdown: false,
+      frontImg,
+      backImg
     }
   },
   mounted: async function () {
@@ -110,7 +115,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+  .arrow{
+    position: relative;
+    bottom: 40px;
+    font-size: 50px;
+    color: #CDBFEE;
+    -webkit-text-stroke: 5px white;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
    @media only screen and (max-width: 599px) {
      .main_page {
       display: flex;
@@ -237,7 +249,6 @@ export default {
                 background: white;
               }
             }
-          
           }
           .intro_menu {
             display: flex;
@@ -257,7 +268,6 @@ export default {
               color: #0C3759;
               font-size: 220%;
               letter-spacing: 1.5vw;
-              
               .label{
                 margin: 2vh;
                 padding: 20px;
@@ -349,7 +359,6 @@ export default {
           justify-content: center;
           align-content: center;
           align-items: center;
-          
           color: #0C3759;
           background: linear-gradient(to right, #FCDEE7 0%, #FCF4D3 100%);
           box-shadow: 0px 2px 2px 1px rgba(105, 103, 103, 0.424);
@@ -453,7 +462,6 @@ export default {
           align-items: center;
           margin: 3vh 0 3vh 1vw;
           z-index: 5;
-          
           .intro_menu_l {
             display: flex;
             flex-direction: column;
