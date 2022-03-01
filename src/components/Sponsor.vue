@@ -4,20 +4,27 @@
       div(class="live_top_bar_layout" @click="scroll()")
         router-link(class="top_logo" to="/")
         div(class="top_bar")
-          router-link(v-bind:class="{ active: index===3 }" tag="label" v-for="(text, index) of menuText" v-bind:key="text" v-bind:to="'/' + urlText[index]" v-if="pc") {{text}}
-          label(@click="openTab('https://docs.google.com/forms/d/e/1FAIpQLSdBW8m8SVm5YqwtsOGWAaMYwOWiMJ_RbjZTNMq4dJYYWCg85Q/viewform'); list = false;" v-if="pc") 我要報名
-    div(class="sponsor_layout_1" v-show="mode === 0" @click="list = false")
+          div(class="top_bar_mobile" v-if="!pc")
+            label() 合作單位
+            button( @click="dropdown_top = !dropdown_top")
+              div(class="list_btn" v-for="(l, index) of 3")
+          div(class="top_bar_pc" v-if="pc")
+            router-link(v-bind:class="{ active: index===2 }" tag="label" v-for="(text, index) of menuText" v-bind:key="text" v-bind:to="'/' + urlText[index]" v-if="pc") {{text}}
+            label(@click="openTab('https://docs.google.com/forms/d/e/1FAIpQLSdBW8m8SVm5YqwtsOGWAaMYwOWiMJ_RbjZTNMq4dJYYWCg85Q/viewform'); list = false;" v-if="pc") 我要報名
+    div(class="sponsor_layout_dropdown_top" v-if="dropdown_top")
+      router-link(class="dropdown_top_list" v-for="(item, index) in menuText" tag="label"  v-bind:key="text" v-bind:to="'/' + urlText[index]" v-bind:class="{ active: index==3 }") {{item}}
+      label(class="dropdown_top_list" @click="openTab('https://docs.google.com/forms/d/e/1FAIpQLSdBW8m8SVm5YqwtsOGWAaMYwOWiMJ_RbjZTNMq4dJYYWCg85Q/viewform'); list = false;") 我要報名
+    div(class="sponsor_layout_1" v-show="mode === 0" v-if="!dropdown_top" @click="list = false")
       section(class="sponsor_list")
         label(v-for="(iter, index) of sponsorLogo" v-bind:key="iter.name" v-bind:data-name="iter.name" v-bind:href="`${iter.link}`" target="_blank" v-bind:style="{'background-image': 'url(' + sponsorLogo[index].img + ')'}" v-on:click="currentIndex = index; mode = 1;")
         div(class="sponsor_list_empty")
-    div(class="sponsor_layout_2" v-if="mode === 1" @click="list = false")
+    div(class="sponsor_layout_2" v-if="mode === 1" v-show="!dropdown_top" @click="list = false")
       section(class="sponsor_info")
         p {{sponsor[currentIndex].name}}
         label(v-bind:style="{'background-image': 'url(' + sponsorLogo[currentIndex].img + ')'}" v-on:click="openSponsorTab(currentIndex)")
       section(class="sponsor_content")
         article(class="sponsor_content_article" v-html="sponsor[currentIndex].content")
         article(class="sponsor_content_info" v-html="sponsor[currentIndex].info")
-        //- label(class="sponsor_logo_small")
 </template>
 
 <script>
@@ -35,6 +42,7 @@ export default {
       list: false,
       pc: this.isPC(),
       currentIndex: -1,
+      dropdown_top: false,
       mode: 0,
       sponsorLogo: [
         {
@@ -362,11 +370,11 @@ export default {
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      justify-content: flex-start;
-      height: 100%;
-      width: 100%;
+      justify-items: flex-start;
+      height: 100vh;
+      width: 100vw;
       min-width: 1000px;
-      background: linear-gradient(180deg, #FCDBE3 0%, #DAD0F2 100%);
+      background-image: url("../assets/rwd_background.svg");
       overflow: hidden;
     }
     .live_top_bar {
@@ -441,7 +449,127 @@ export default {
         }
       }
     }
+    .sponsor_layout_dropdown_top{
+      display: flex;
+      flex-direction: column;
+      width: 50vw;
+      height: 70vh;
+      margin-top: 5vh;
+      align-items: center;
+      .dropdown_top_list{
+        width: 100%;
+        color: #0C3759;
+        font-size: 220%;
+        letter-spacing: 1.5vw;
+        margin: 3vh;
+        line-height: 8vh;
+        
+      }
+      .active{
+        font-weight: 700;
+        border-bottom: 1mm solid #0C3759;
+        }
+    }
+    .sponsor_layout_1 {  
+      height: 90vh;
+      width: 100%;
+      overflow-y: scroll;
+      .sponsor_list {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        label {
+          width: 200px;
+          height: 200px;
+          border: 5px solid transparent;
+          border-radius: 20px;
+          box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
+          background-position: 50% 50%;
+          background-size: contain;
+          background-color : white;
+          background-repeat: no-repeat;
+          margin: 2vh 0vw 1vh 0vw;
+          transition: .2s transform ease-in-out;
+          cursor: pointer;
+          &:hover {
+            &:before {
+              position:absolute;
+              display: block;
+              text-align: center;
+              content: '';
+              width: 10vw;
+              height: 10vw;
+              border-radius: 20px;
+              background-color: rgba(0, 0, 0, 0.66);
+              z-index: 20;
+            }
+            &:after {
+              position:absolute;
+              content: attr(data-name);
+              color: white;
+              text-align: center;
+              font-size: 20px;
+              margin-top: 3vh;
+              margin-left: -5vw;
+              width: 10vw;
+              height: 10vw;
+              z-index: 21;
+            }
+          }
+        }
+      }
+    }
+    .sponsor_layout_2 {
+        display: flex;
+        flex-direction: row;
+        width: 50%;
+        height: 90vh;
 
+        .sponsor_content {
+          grid-area: right;
+          display: grid;
+          grid-template-rows: 4fr 1.2fr 0.5fr 0.2fr;
+          grid-template-areas: "content" "info" "logo" ".";
+          justify-content: flex-start;
+          justify-items: flex-start;
+          align-content: flex-start;
+          align-items: flex-start;
+          padding: 8vh 2vw 3vh 4vw;
+          width: 100%;
+          height: 90%;
+
+          .sponsor_content_article {
+            padding: 0 10px 0 5px;
+            text-align: left;
+            line-height: 3.6vh;
+            grid-area: content;
+            width: 85%;
+            height: 52vh;
+            overflow-y: scroll;
+            &::-webkit-scrollbar {
+              width: 0.6vw;
+              border-radius: 0.5vw;
+            }
+            &::-webkit-scrollbar-thumb {
+              background: rgb(103, 192, 225);
+              border-radius: 0.5vw;
+            }
+          }
+          .sponsor_content_info {
+            grid-area: info;
+            padding: 12px 0 0 5px;
+            border-top: 3px solid rgb(254,241,217);
+            border-radius: 1px;
+            text-align: left;
+            width: 65%;
+            color: rgb(60, 60, 60);
+            font-size: 15px;
+            line-height: 25px;
+          }
+        }
+      }
   }
 
   @media only screen and (min-width: 600px){
@@ -535,7 +663,6 @@ export default {
         }
         }
       }
-
       .sponsor_layout_1 {  
         height: 84vh;
         width: 100%;
@@ -594,7 +721,6 @@ export default {
           }
         }
       }
-
       .sponsor_layout_2 {
         display: flex;
         flex-direction: row;

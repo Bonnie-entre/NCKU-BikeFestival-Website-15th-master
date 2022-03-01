@@ -1,12 +1,27 @@
 <template lang="pug">
   div(class="dept_page")
-    div(class="dept_top_bar_pc")
+    div(class="dept_top_bar")
       div(class="dept_top_bar_layout" @click="scroll()")
         router-link(class="top_logo" to="/")
         div(class="top_bar")
-          router-link(v-bind:class="{ active: index===1 }" tag="label" v-for="(text, index) of menuText" v-bind:key="text" v-bind:to="'/' + urlText[index]" v-if="pc") {{text}}
-          label(@click="openTab('https://docs.google.com/forms/d/e/1FAIpQLSdBW8m8SVm5YqwtsOGWAaMYwOWiMJ_RbjZTNMq4dJYYWCg85Q/viewform'); list = false;" v-if="pc") 我要報名
-    div(class="dept_layout" v-show="mode===0" @click="list = false;")
+          div(class="top_bar_mobile" v-if="!pc")
+            label() 科系資訊
+            button( @click="dropdown_top = !dropdown_top")
+              div(class="list_btn" v-for="(l, index) of 3")
+          div(class="top_bar_pc" v-if="pc")
+            router-link(v-bind:class="{ active: index===1 }" tag="label" v-for="(text, index) of menuText" v-bind:key="text" v-bind:to="'/' + urlText[index]" v-if="pc") {{text}}
+            label(@click="openTab('https://docs.google.com/forms/d/e/1FAIpQLSdBW8m8SVm5YqwtsOGWAaMYwOWiMJ_RbjZTNMq4dJYYWCg85Q/viewform'); list = false;" v-if="pc") 我要報名
+    div(class="dept_layout_mobile" v-if="!pc & !dropdown_top")
+      div(class="dropdown_top" )
+        label() {{tempClass}}
+        button(class="dropdown_btn" @click="dropdown=!dropdown;") ˇ
+      div(class="dropdown_dept__menu" v-if="dropdown")
+        router-link(tag="label" v-for="(dept, index) of classes" v-bind:to="'/Dept_' + classKeys[index]" ) {{dept}}
+    div(class="dept_layout_dropdown_top" v-if="dropdown_top")
+      router-link(class="dropdown_top_list" v-for="(item, index) in menuText" tag="label"  v-bind:key="text" v-bind:to="'/' + urlText[index]" v-bind:class="{ active: index==1 }") {{item}}
+      label(class="dropdown_top_list" @click="openTab('https://docs.google.com/forms/d/e/1FAIpQLSdBW8m8SVm5YqwtsOGWAaMYwOWiMJ_RbjZTNMq4dJYYWCg85Q/viewform'); list = false;") 我要報名
+    
+    div(class="dept_layout_pc" v-if="pc" v-show="mode===0" @click="list = false;")
       div(class="dept_layout_l")
         div(class="dept_menu_l")
           router-link(tag="button" v-bind:to="'/Dept_humanity'" ) 文學院
@@ -39,6 +54,8 @@ export default {
       menuText: [ '活動介紹', '科系資訊', '主題專欄', '合作單位'],
       urlText: ['activity', 'department', 'column', 'sponsor'],
       mode: 0,
+      dropdown: false,
+      dropdown_top: false,
       list: false,
       deptList: false,
       deptSlides: srcJson,
@@ -47,20 +64,8 @@ export default {
       tempDept: '',
       tempDeptFormal: '',
       pc: this.isPC(),
-      classes: ['規劃與設計學院', '社會科學院', '不分學院', '工學院', '理學院', '文學院', '醫學院', '管理學院', '電機資訊學院', '生物科學與科技學院'],
-      classKeys: ['design', 'social', 'undeclear', 'engineer', 'science', 'humanity', 'medicine', 'management', 'computer', 'biological'],
-      colleges: {
-        design: ['建築', '都計', '工設'],
-        social: ['政治', '經濟', '法律', '心理'],
-        undeclear: ['不分系學程'],
-        engineer: ['航太', '機械', '材料', '化工', '土木', '水利', '測量', '環工', '資源', '醫工', '能源', '工科', '系統'],
-        science: ['數學', '化學', '物理', '地科', '光電'],
-        humanity: ['中文', '外文', '歷史', '台文'],
-        medicine: ['醫學', '牙醫', '藥學', '護理', '物治', '職治', '醫技'],
-        management: ['會計', '統計', '企管', '交管', '工資管'],
-        computer: ['資訊', '電機'],
-        biological: ['生科', '生技']
-      },
+      classes: ['文學院','理學院', '管理學院', '生物科學與科技學院', '電機資訊學院',  '工學院',  '醫學院', '社會科學院', '規劃與設計學院', '不分學院'],
+      classKeys: [  'humanity', 'science', 'management', 'biological', 'computer', 'engineer', 'medicine', 'social', 'design', 'undeclear'],
       collegesFormal: {
         design: ['建築學系', '都市計劃學系', '工業設計學系'],
         social: ['政治學系', '經濟學系', '法律學系', '心理學系'],
@@ -163,6 +168,160 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @media only screen and (max-width: 599px){
+    .dept_page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      justify-items: flex-start;
+      height: 100vh;
+      width: 100vw;
+      min-width: 1000px;
+      background-image: url("../assets/rwd_background.svg");
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    .dept_top_bar {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      z-index: 100;
+      background: #FCDBE3;
+      width: 100%;
+      height: 10vh;
+      .dept_top_bar_layout {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        .top_logo{
+          width: 10%;
+          height: 100%;
+          margin: 0 2vw 0 2vw;
+          background-image: url("../assets/logoHome_white2.png");
+          background-repeat: no-repeat;
+          background-size: 45% 45%;
+          background-position: center;
+          transition: filter .8s ease;
+          cursor: pointer;
+            &:hover {
+              filter: brightness(105%);
+            }
+            &:active {
+              filter: brightness(80%);
+            }
+        }
+        .top_bar{
+          width: 30%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          .top_bar_mobile{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-around;
+            align-content: center;
+            label{
+              width: 60%;
+              font-size: 230%;
+              font-weight: 600;
+              letter-spacing: 1.5vw;
+              color: #769BFF;
+            }
+            button{
+              width: 20%;
+              height: 100%;
+              margin-right: 3vw;
+              display: flex;
+              flex-direction: column;
+              justify-content: space-around;
+              align-content: center;
+              border: none;
+              background: transparent;
+              .list_btn{
+                width: 100%;
+                height: 0.4vh;
+                background: white;
+              }
+            }
+          }
+        }
+      }
+    }
+    .dept_layout_mobile{
+      .dropdown_top{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        align-content: center;
+        justify-items: center;
+        justify-content: center;
+        margin: 2vh 0 1vh 0;
+        width: 68vw;
+        height: 8vh;
+        background: #FCF6B8;
+        border-radius: 15px;
+        box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
+        label{
+          color: #0C3759;
+          font-size: 200%;
+          margin: 0 2vw 0 0;
+        }
+        .dropdown_btn{
+          position: relative;
+          width: 10vw;
+          color: white;
+          background: transparent;
+          font-size: 200%;
+          border: none;
+          right: -10vw;
+          top: 1vh;
+        }
+      }
+      .dropdown_dept__menu{
+        display: flex;
+        flex-direction: column;
+        label{
+          width: 68vw;
+          height: 6vh;
+          margin: 0.3vh 0 0.3vh 0;
+          background: #DAD0F2;
+          color: #769BFF;
+          font-size: 140%;
+          line-height: 6vh;
+        }
+      }
+    }
+    .dept_layout_dropdown_top{
+      display: flex;
+      flex-direction: column;
+      width: 50vw;
+      height: 70vh;
+      margin-top: 5vh;
+      align-items: center;
+      .dropdown_top_list{
+        width: 100%;
+        color: #0C3759;
+        font-size: 220%;
+        letter-spacing: 1.5vw;
+        margin: 3vh;
+        line-height: 8vh;
+        
+      }
+      .active{
+        font-weight: 700;
+        border-bottom: 1mm solid #0C3759;
+        }
+    }
+  }
+  @media only screen and (min-width: 600px){
     .dept_page {
       display: flex;
       flex-direction: column;
@@ -176,7 +335,7 @@ export default {
       background: linear-gradient(180deg, #DAD0F2 0%, #FCDBE3 100%);
       // overflow-y: scroll;
     }
-    .dept_top_bar_pc {
+    .dept_top_bar {
       display: flex;
       flex-direction: row;
       justify-content: center;
@@ -246,7 +405,7 @@ export default {
       }
     }
     }
-    .dept_layout {
+    .dept_layout_pc {
       display: flex;
       flex-direction: row;
       width: 100%;
@@ -343,4 +502,5 @@ export default {
         }
       }
     }
+  }
 </style>

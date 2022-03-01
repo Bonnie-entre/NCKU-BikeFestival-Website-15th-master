@@ -26,7 +26,6 @@
                         p() {{ item.text }}
     div(class="column_layout_dropdown_top" v-if="dropdown_top")
       router-link(class="dropdown_top_list" v-for="(item, index) in menuText" tag="label"  v-bind:key="text" v-bind:to="'/' + urlText[index]" v-bind:class="{ active: index==2 }") {{item}}
-      //- router-link(v-bind:class="{ active: index===2 }" tag="label" v-for="(text, index) of menuText" v-bind:key="text" v-bind:to="'/' + urlText[index]" v-if="pc")
       label(class="dropdown_top_list" @click="openTab('https://docs.google.com/forms/d/e/1FAIpQLSdBW8m8SVm5YqwtsOGWAaMYwOWiMJ_RbjZTNMq4dJYYWCg85Q/viewform'); list = false;") 我要報名
     
 </template>
@@ -443,7 +442,7 @@ export default {
           align-content: center;
           justify-items: center;
           justify-content: center;
-          margin: 1vh 0 1vh 0;
+          margin: 2vh 0 1vh 0;
           width: 68vw;
           height: 8vh;
           background: #FCF6B8;
@@ -451,7 +450,7 @@ export default {
           box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
           label{
             color: #0C3759;
-            font-size: 160%;
+            font-size: 200%;
             margin: 0 2vw 0 0;
           }
           .dropdown_btn{
@@ -459,21 +458,21 @@ export default {
             width: 10vw;
             color: white;
             background: transparent;
-            font-size: 180%;
+            font-size: 200%;
             border: none;
-            right: -15vw;
+            right: -10vw;
             top: 1vh;
           }
         }
       }
       .dropdown_list{
         width: 60vw;
-        height: 5vh;
-        margin: 0.2vh 0 0.2vh 0;
+        height: 6vh;
+        margin: 0.3vh 0 0.3vh 0;
         color: #769BFF;
         background: #FFFBCE;
-        font-size: 140%;
-        line-height: 5vh;
+        font-size: 180%;
+        line-height: 6vh;
       }
       .column_layout_r{
         overflow-y: scroll;
