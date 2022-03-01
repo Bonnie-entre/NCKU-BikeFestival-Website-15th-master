@@ -24,14 +24,11 @@
                     a(:href="item.url")
                         div(class="film" :style="{ backgroundImage: 'url(' + item.imagePreivew + ')' }")
                         p() {{ item.text }}
-<<<<<<< HEAD
     div(class="column_layout_dropdown_top" v-if="dropdown_top")
       router-link(class="dropdown_top_list" v-for="(item, index) in menuText" tag="label"  v-bind:key="text" v-bind:to="'/' + urlText[index]" v-bind:class="{ active: index==2 }") {{item}}
       label(class="dropdown_top_list" @click="openTab('https://docs.google.com/forms/d/e/1FAIpQLSdBW8m8SVm5YqwtsOGWAaMYwOWiMJ_RbjZTNMq4dJYYWCg85Q/viewform'); list = false;") 我要報名
     
-=======
 
->>>>>>> ef22b21cc5397f18315676be01e5fbbc43f98247
 </template>
 
 <script>
@@ -694,11 +691,8 @@ export default {
             .film{
                 width: 90%;
                 height: 75%;
-<<<<<<< HEAD
                 // background-color: #C4C4C4;
-=======
                 background-color: transparent;
->>>>>>> ef22b21cc5397f18315676be01e5fbbc43f98247
                 background-position: center;
                 background-repeat: no-repeat;
                 background-size: contain;
