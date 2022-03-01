@@ -31,44 +31,7 @@
           Exploration(v-if="categoryIndex === 2 && categorylistIndex === 1")
           School(v-if="categoryIndex === 1 && categorylistIndex === 0")
           Show(v-if="categoryIndex === 1 && categorylistIndex === 2")
-          div(class="activities" v-if="categoryIndex===0 && categorylistIndex===3") 各種活動
-          div(class="voice" v-if="categoryIndex===1 && categorylistIndex===3")
-            div(class="voice_title")
-              p() 留聲機
-            div(class="voice_intro" ) 介紹
-            div(class="voice_btn")
-              button(class="btn" @click="voice=!voice;") 進入留聲機
-          div(class="lightening" v-if="categoryIndex===2 && categorylistIndex===3")
-            div(class="lightening_layout")
-              div(class="lightening_top_bar")
-                button(v-for="(btn, btn_i) in lighteningSrc" @click="lighteningIndex=btn_i" v-bind:class="{ active: lighteningIndex===btn_i}")  {{btn.topic}}
-              div(class="lightening_content")
-                div(class="item1")
-                div(class="item2")
-                div(class="item3")
-          div(class="interview" v-if="categoryIndex===3 && categorylistIndex===3")
-            div(class="interview_title")
-              p() 模擬面試
-            div(class="interview_intro" ) 介紹
-            div(class="film" )
-              div(class="film_lists")
-                div(class="film_list") 影片一
-                div(class="film_list") 影片二
-                div(class="film_list") 影片三
-              div(class="film_show") 影片
-          div(class="discover" v-if="categoryIndex===3 && categorylistIndex===4")
-            div(class="discover_title")
-              p() 探索學習
-            div(class="discover_content" )
-              div(class="discover_show")
-                div(class="discover_show_img")
-                div(class="discover_show_intro")
-              div(class="discover_show")
-                div(class="discover_show_img")
-                div(class="discover_show_intro")
-              div(class="discover_show")
-                div(class="discover_show_img")
-                div(class="discover_show_intro")
+          BikeEx(v-if="categoryIndex === 1 && categorylistIndex === 3")
 
       .content1_voice(v-show="voice!==false")
         .left_bar
@@ -164,6 +127,7 @@ import Exhibition from '@/components/activities/category1/Exhibition.vue'
 import Interview from '@/components/activities/category1/Interview.vue'
 import School from '@/components/activities/category2/School.vue'
 import Show from '@/components/activities/category2/Show.vue'
+import BikeEx from '@/components/activities/category2/BikeEx.vue'
 import Exploration from '@/components/activities/category3/Exploration.vue'
 
 export default {
@@ -176,7 +140,8 @@ export default {
     Header,
     Stage,
     Exhibition,
-    School
+    School,
+    BikeEx
   },
   created () {
     window.addEventListener('resize', this.windowSizeChange)
