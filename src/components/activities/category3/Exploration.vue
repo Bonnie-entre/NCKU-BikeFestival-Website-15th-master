@@ -56,10 +56,13 @@ export default {
       width: 25%;
       height: 100%;
       .title {
-        font-size: 28px;
+        font-size: 24px;
         color: #769BFF;
         font-weight: 700;
         margin: 20px 0;
+        background: transparent;
+        display: block;
+        height: 40px;
       }
       .content {
         color: #000;
@@ -67,7 +70,8 @@ export default {
         letter-spacing: 0.5px;
       }
       img{
-        height: 50%;
+        height: 150px;
+        object-fit: contain;
       }
     }
   }
