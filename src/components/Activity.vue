@@ -30,6 +30,7 @@
           Interview(v-if="categoryIndex === 0 && categorylistIndex === 3")
           Exploration(v-if="categoryIndex === 2 && categorylistIndex === 1")
           School(v-if="categoryIndex === 1 && categorylistIndex === 0")
+          Education(v-if="categoryIndex === 1 && categorylistIndex === 1")
           Show(v-if="categoryIndex === 1 && categorylistIndex === 2")
           BikeEx(v-if="categoryIndex === 1 && categorylistIndex === 3")
 
@@ -127,6 +128,7 @@ import Exhibition from '@/components/activities/category1/Exhibition.vue'
 import Interview from '@/components/activities/category1/Interview.vue'
 import School from '@/components/activities/category2/School.vue'
 import Show from '@/components/activities/category2/Show.vue'
+import Education from '@/components/activities/category2/Education.vue'
 import BikeEx from '@/components/activities/category2/BikeEx.vue'
 import Exploration from '@/components/activities/category3/Exploration.vue'
 
@@ -141,7 +143,8 @@ export default {
     Stage,
     Exhibition,
     School,
-    BikeEx
+    BikeEx,
+    Education
   },
   created () {
     window.addEventListener('resize', this.windowSizeChange)
