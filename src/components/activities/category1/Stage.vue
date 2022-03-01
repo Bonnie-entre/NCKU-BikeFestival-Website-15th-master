@@ -1,5 +1,5 @@
 <template lang="pug">
-  Panel
+  Panel(title="燭華｜舞台活動")
     div Stage
 </template>
 
