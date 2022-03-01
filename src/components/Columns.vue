@@ -4,12 +4,21 @@
       div(class="dept_top_bar_layout" @click="scroll()")
         router-link(class="top_logo" to="/")
         div(class="top_bar")
-          router-link(v-bind:class="{ active: index===2 }" tag="label" v-for="(text, index) of menuText" v-bind:key="text" v-bind:to="'/' + urlText[index]" v-if="pc") {{text}}
-          label(@click="openTab('https://docs.google.com/forms/d/e/1FAIpQLSdBW8m8SVm5YqwtsOGWAaMYwOWiMJ_RbjZTNMq4dJYYWCg85Q/viewform'); list = false;" v-if="pc") 我要報名
+          div(class="top_bar_mobile" v-if="!pc")
+            label() 主題專欄
+            button( @click="dropdown = !dropdown")
+              div(class="list_btn" v-for="(l, index) of 3")
+          div(class="top_bar_pc" v-if="pc")
+            router-link(v-bind:class="{ active: index===2 }" tag="label" v-for="(text, index) of menuText" v-bind:key="text" v-bind:to="'/' + urlText[index]" v-if="pc") {{text}}
+            label(@click="openTab('https://docs.google.com/forms/d/e/1FAIpQLSdBW8m8SVm5YqwtsOGWAaMYwOWiMJ_RbjZTNMq4dJYYWCg85Q/viewform'); list = false;" v-if="pc") 我要報名
     div(class="column_layout")
         div(class="column_layout_l")
-            button(v-bind:class="{ active: leftbarIndex===index }" v-for="(item, index) in info" @click="leftbarIndex=index") {{ item.title }}
-        div(class="column_layout_r")
+          button(v-if="pc" v-bind:class="{ active: leftbarIndex===index }" v-for="(item, index) in info" @click="leftbarIndex=index") {{ item.title }}
+          div(class="dropdown" v-if="!pc")
+            label() {{info[leftbarIndex].title}}
+            button(class="dropdown_btn" @click="dropdown=!dropdown;") ˇ
+        label(class="dropdown_list" v-if="dropdown" v-for="(item, index) in info" @click="leftbarIndex=index, dropdown=false;") {{ item.title }}
+        div(class="column_layout_r" v-if="pc | !dropdown")
             div(class="right_show")
                 div(class="film_background" v-for="(item, index) in info[leftbarIndex].content") 
                     a(:href="item.url")
@@ -234,6 +243,7 @@ export default {
         }
       ],
       mode: 0,
+      dropdown: false,
       list: false,
       deptList: false,
       deptSlides: srcJson,
@@ -338,10 +348,168 @@ export default {
       height: 100vh;
       width: 100vw;
       min-width: 1000px;
-      background: linear-gradient(180deg, #DAD0F2 0%, #FCDBE3 100%);
+      background-image: url("../assets/rwd_background.svg");
       margin: 0;
       padding: 0;
       overflow: hidden;
+    }
+    .dept_top_bar_pc {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      z-index: 100;
+      background: #FCDBE3;
+      width: 100%;
+      height: 10vh;
+      .dept_top_bar_layout {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        .top_logo{
+          width: 10%;
+          height: 100%;
+          margin: 0 2vw 0 2vw;
+          background-image: url("../assets/logoHome_white2.png");
+          background-repeat: no-repeat;
+          background-size: 45% 45%;
+          background-position: center;
+          transition: filter .8s ease;
+          cursor: pointer;
+            &:hover {
+              filter: brightness(105%);
+            }
+            &:active {
+              filter: brightness(80%);
+            }
+        }
+        .top_bar{
+          width: 30%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          .top_bar_mobile{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-around;
+            align-content: center;
+            label{
+              width: 60%;
+              font-size: 230%;
+              font-weight: 600;
+              letter-spacing: 1.5vw;
+              color: #769BFF;
+            }
+            button{
+              width: 20%;
+              height: 100%;
+              margin-right: 3vw;
+              display: flex;
+              flex-direction: column;
+              justify-content: space-around;
+              align-content: center;
+              border: none;
+              background: transparent;
+              .list_btn{
+                width: 100%;
+                height: 0.4vh;
+                background: white;
+              }
+            }
+          }
+        }
+      }
+    }
+    .column_layout{
+      display: flex;
+      flex-direction: column;
+      // justify-content: center;
+      // justify-items: center;
+      // align-content: center;
+      align-items: center;
+      height: 90vh;
+      .column_layout_l{
+        .dropdown{
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          align-content: center;
+          justify-items: center;
+          justify-content: center;
+          margin: 1vh 0 1vh 0;
+          width: 68vw;
+          height: 8vh;
+          background: #FCF6B8;
+          border-radius: 15px;
+          box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
+          label{
+            color: #0C3759;
+            font-size: 160%;
+            margin: 0 2vw 0 0;
+          }
+          .dropdown_btn{
+            position: relative;
+            width: 10vw;
+            color: white;
+            background: transparent;
+            font-size: 180%;
+            border: none;
+            right: -15vw;
+            top: 1vh;
+          }
+        }
+      }
+      .dropdown_list{
+        width: 60vw;
+        height: 5vh;
+        margin: 0.2vh 0 0.2vh 0;
+        color: #769BFF;
+        background: #FFFBCE;
+        font-size: 140%;
+        line-height: 5vh;
+      }
+      .column_layout_r{
+        overflow-y: scroll;
+        .right_show{
+          // height: 100%;
+          width: 90vw;
+          display: flex;
+          flex-direction: column;
+          // overflow-y: scroll;
+          .film_background a{
+            width: 100%;
+            height: 30vh;
+            background-color: white;
+            border-radius: 23px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            margin: 1vh 1vw 1vh 1vw;
+            text-decoration: none;
+            .film{
+                width: 90%;
+                height: 75%;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                border-radius: 20px;
+            }
+            p{
+                width: 90%;
+                text-align: left;
+                font-weight: 500;
+                font-size: 120%;
+                color: #000000;
+            }
+          }
+        }
+      }
     }
   }
   @media only screen and (min-width: 600px) {
@@ -503,7 +671,7 @@ export default {
             .film{
                 width: 90%;
                 height: 75%;
-                background-color: #C4C4C4;
+                // background-color: #C4C4C4;
                 background-position: center;
                 background-repeat: no-repeat;
                 background-size: cover;
