@@ -1,6 +1,6 @@
 <template lang="pug">
   div(class="panel")
-    div(class="title") {{title}}
+    div(v-if="title" class="title") {{title}}
     slot
 </template>
 

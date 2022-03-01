@@ -29,7 +29,8 @@
           Exhibition(v-if="categoryIndex === 0 && categorylistIndex === 2")
           Interview(v-if="categoryIndex === 0 && categorylistIndex === 3")
           Exploration(v-if="categoryIndex === 2 && categorylistIndex === 1")
-          Show(v-if="categoryIndex === 1 && categorylistIndex === 1")
+          School(v-if="categoryIndex === 1 && categorylistIndex === 0")
+          Show(v-if="categoryIndex === 1 && categorylistIndex === 2")
           div(class="activities" v-if="categoryIndex===0 && categorylistIndex===3") 各種活動
           div(class="voice" v-if="categoryIndex===1 && categorylistIndex===3")
             div(class="voice_title")
@@ -161,6 +162,7 @@ import Header from '@/components/common/Header.vue'
 import Stage from '@/components/activities/category1/Stage.vue'
 import Exhibition from '@/components/activities/category1/Exhibition.vue'
 import Interview from '@/components/activities/category1/Interview.vue'
+import School from '@/components/activities/category2/School.vue'
 import Show from '@/components/activities/category2/Show.vue'
 import Exploration from '@/components/activities/category3/Exploration.vue'
 
@@ -173,7 +175,8 @@ export default {
     Show,
     Header,
     Stage,
-    Exhibition
+    Exhibition,
+    School
   },
   created () {
     window.addEventListener('resize', this.windowSizeChange)
@@ -212,7 +215,7 @@ export default {
         },
         {
           title: '南方智匯，成就登程',
-          catgories: ['教育創新攤位', '閃電秀經驗分享', '單車體驗', '校園巡禮暨系館導覽']
+          catgories: ['校園巡禮暨系館導覽', '教育創新攤位', '閃電秀經驗分享', '單車體驗']
         },
         {
           title: '未來想像，視界共好',
