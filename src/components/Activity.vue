@@ -25,9 +25,9 @@
                   v-bind:class="{ active2: categorylistIndex === i && categoryIndex===index }"
                 ) {{ topic }}
         .right_show1
-          Stage(v-if="categoryIndex === 0 && categorylistIndex === 0")
-          Exhibition(v-if="categoryIndex === 0 && categorylistIndex === 1")
-          Interview(v-if="categoryIndex === 0 && categorylistIndex === 2")
+          Stage(v-if="categoryIndex === 0 && categorylistIndex === 1")
+          Exhibition(v-if="categoryIndex === 0 && categorylistIndex === 2")
+          Interview(v-if="categoryIndex === 0 && categorylistIndex === 3")
           Exploration(v-if="categoryIndex === 2 && categorylistIndex === 1")
           Show(v-if="categoryIndex === 1 && categorylistIndex === 1")
           div(class="activities" v-if="categoryIndex===0 && categorylistIndex===3") 各種活動
@@ -208,7 +208,7 @@ export default {
       leftBar: [
         {
           title: '扎根九十，學思賦能',
-          catgories: ['舞台活動—燭華', '日常展覽', '模擬面試', '科系攤位系所諮詢平台']
+          catgories: ['科系攤位系所諮詢平台', '舞台活動—燭華', '日常展覽', '模擬面試']
         },
         {
           title: '南方智匯，成就登程',
@@ -239,7 +239,8 @@ export default {
       // layout4AboutSrc: srcJson.about,
       pc: false,
       showSideBar: false,
-      showListIndex: -1
+      showListIndex: -1,
+      departmentGtUrl: 'https://app.gather.town/app/pQkmYUusyLNB6jhN/sampletest3'
     }
   },
   updated: function () {
@@ -287,6 +288,9 @@ export default {
       this.categorylistIndex = index
       this.categoryIndex = category
       this.showSideBar = false
+      if (category === 0 && index === 0) {
+        this.openTab(this.departmentGtUrl)
+      }
     },
     selectPageTopic: function (title, index) {
       var i, j
