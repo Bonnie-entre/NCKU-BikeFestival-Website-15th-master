@@ -48,50 +48,101 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  h3 {
-    font-size: 40px;
-    text-align: left;
-  }
+  @media only screen and (max-width: 599px){
+    h3 {
+      font-size: 40px;
+      text-align: left;
+    }
 
-  .menu {
-    display: flex;
-    justify-content: flex-start;
-    .menu_item {
-      cursor: pointer;
-      padding: 10px 26px;
-      margin: 20px;
-      font-size: 24px;
-      border-radius: 100px;
-      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-      &.active {
-        background-color: #DAD0F2;
+    .menu {
+      display: flex;
+      justify-content: flex-start;
+      .menu_item {
+        cursor: pointer;
+        padding: 10px 26px;
+        margin: 20px;
+        font-size: 24px;
+        border-radius: 100px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        &.active {
+          background-color: #DAD0F2;
+        }
+      }
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      height: 80%;
+      width: 100%;
+      .column_item {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 40%;
+        height: 90%;
+        text-decoration: none;
+        .title {
+          font-size: 120%;
+          color: #769BFF;
+          font-weight: 700;
+          background: transparent;
+          white-space: nowrap;
+        }
+        img {
+          height: 50%;
+          object-fit: contain;
+        }
       }
     }
   }
+  @media only screen and (min-width: 600px){
+    h3 {
+      font-size: 40px;
+      text-align: left;
+    }
 
-  .container {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 80%;
-    width: 100%;
-    .column_item {
+    .menu {
       display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      width: 25%;
-      height: 90%;
-      text-decoration: none;
-      .title {
-        font-size: 28px;
-        color: #769BFF;
-        font-weight: 700;
-        background: transparent;
-        white-space: nowrap;
+      justify-content: flex-start;
+      .menu_item {
+        cursor: pointer;
+        padding: 10px 26px;
+        margin: 20px;
+        font-size: 24px;
+        border-radius: 100px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        &.active {
+          background-color: #DAD0F2;
+        }
       }
-      img {
-        height: 50%;
-        object-fit: contain;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      height: 80%;
+      width: 100%;
+      .column_item {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 25%;
+        height: 90%;
+        text-decoration: none;
+        .title {
+          font-size: 28px;
+          color: #769BFF;
+          font-weight: 700;
+          background: transparent;
+          white-space: nowrap;
+        }
+        img {
+          height: 50%;
+          object-fit: contain;
+        }
       }
     }
   }

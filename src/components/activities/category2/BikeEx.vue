@@ -24,24 +24,48 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.secondary-title {
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 36px;
-  letter-spacing: 0.1em;
-  color: #769BFF;
-  padding: 0 20px;
-}
-.content {
-  text-align: start;
-  margin: 20px 0;
-  font-size: 18px;
-  line-height: 30px;
-  letter-spacing: 0.1em;
-  color: #0C3759;
-  padding: 0 20px;
-}
-.bike-rent {
-  width: 100%;
-}
+  @media only screen and (max-width: 599px){
+    .secondary-title {
+      font-weight: bold;
+      font-size: 120%;
+      line-height: 36px;
+      letter-spacing: 0.1em;
+      color: #769BFF;
+      padding: 0 20px;
+    }
+    .content {
+      text-align: start;
+      margin: 20px 0;
+      font-size: 100%;
+      line-height: 30px;
+      letter-spacing: 0.1em;
+      color: #0C3759;
+      padding: 0 20px;
+    }
+    .bike-rent {
+      width: 100%;
+    }
+  }
+  @media only screen and (min-width: 600px){
+    .secondary-title {
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 36px;
+      letter-spacing: 0.1em;
+      color: #769BFF;
+      padding: 0 20px;
+    }
+    .content {
+      text-align: start;
+      margin: 20px 0;
+      font-size: 18px;
+      line-height: 30px;
+      letter-spacing: 0.1em;
+      color: #0C3759;
+      padding: 0 20px;
+    }
+    .bike-rent {
+      width: 100%;
+    }
+  }
 </style>
