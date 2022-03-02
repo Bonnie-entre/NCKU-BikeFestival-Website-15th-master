@@ -75,25 +75,13 @@
         ) {{ item.topic }}
       div.map_block
         img.map_img(
-          v-bind:src="layout3MapSrc",
+          :src="require('@/assets/activity/map.png')",
           @click="layout3Index = !layout3Index"
         )
-
-    .activity_layout4(
-      v-show="currentIndex===3",
-      @click="list = false; titleBlock = false"
-    )
-      .top_bar4(v-show="pc")
-        button(
-          v-bind:class="{ active: currentIndex === index }",
-          v-for="(item, index) in introduceSrc",
-          @click="selectPageTopic(3, index), (currentIndex = index)"
-        ) {{ item.topic }}
-      .content4
 </template>
 
 <script>
-import srcJson from '../assets//activity/activity.json'
+import srcJson from '../assets/activity/activity.json'
 import Waterfall from 'vue-waterfall/lib/waterfall'
 import WaterfallSlot from 'vue-waterfall/lib/waterfall-slot'
 
@@ -1181,6 +1169,8 @@ export default {
     justify-content: flex-start;
     align-items: center;
     align-content: center;
+    overflow-y: scroll;
+    padding-bottom: 20px;
     .top_bar3 {
       display: flex;
       flex-direction: row;
@@ -1223,7 +1213,6 @@ export default {
       justify-items: center;
       align-items: center;
       align-content: center;
-
       z-index: 5;
       width: 80%;
       border-radius: 2vh;
