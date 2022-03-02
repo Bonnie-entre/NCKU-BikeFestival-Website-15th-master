@@ -1,6 +1,5 @@
 <template lang="pug">
-  div(class="panel")
-    h3 探索學習
+  Panel(title="探索學習")
     div.container
       div.column_item(
         v-for="col in columns"
@@ -12,7 +11,11 @@
 </template>
 
 <script>
+import Panel from '../Panel.vue'
 export default {
+  components: {
+    Panel
+  },
   data: function () {
     return {
       columns: [
@@ -38,13 +41,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.panel {
-  box-sizing: border-box;
-  padding: 30px 40px;
-  background-color: #fff;
-  border-radius: 20px;
-  height: 100%;
-  overflow-y: scroll;
   h3 {
     font-size: 40px;
     text-align: left;
@@ -60,10 +56,13 @@ export default {
       width: 25%;
       height: 100%;
       .title {
-        font-size: 28px;
+        font-size: 24px;
         color: #769BFF;
         font-weight: 700;
         margin: 20px 0;
+        background: transparent;
+        display: block;
+        height: 40px;
       }
       .content {
         color: #000;
@@ -71,9 +70,9 @@ export default {
         letter-spacing: 0.5px;
       }
       img{
-        height: 50%;
+        height: 150px;
+        object-fit: contain;
       }
     }
   }
-}
 </style>

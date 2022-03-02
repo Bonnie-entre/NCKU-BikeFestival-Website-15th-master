@@ -1,6 +1,5 @@
 <template lang="pug">
-  div(class="panel")
-    h3 閃電秀
+  Panel(title="閃電秀")
     div.menu
       div.menu_item(@click="activeIndex = 0" :class="{ active: activeIndex === 0 }") 大演講
       div.menu_item(@click="activeIndex = 1" :class="{ active: activeIndex === 1 }") 小演講
@@ -8,13 +7,18 @@
       a.column_item(
         v-for="col in columns"
         :href="activeIndex === 0 ? col.link_1 : col.link_2"
+        target="_blank"
       )
         img(:src="col.img")
         p.title {{ col.title }}
 </template>
 
 <script>
+import Panel from '../Panel.vue'
 export default {
+  components: {
+    Panel
+  },
   data: function () {
     return {
       activeIndex: 0,
@@ -44,12 +48,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.panel {
-  box-sizing: border-box;
-  padding: 30px 40px;
-  background-color: #fff;
-  border-radius: 20px;
-  height: 100%;
   h3 {
     font-size: 40px;
     text-align: left;
@@ -59,11 +57,12 @@ export default {
     display: flex;
     justify-content: flex-start;
     .menu_item {
-      background-color: #C4C4C4;
       cursor: pointer;
       padding: 10px 26px;
       margin: 20px;
       font-size: 24px;
+      border-radius: 100px;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
       &.active {
         background-color: #DAD0F2;
       }
@@ -75,6 +74,7 @@ export default {
     justify-content: space-around;
     align-items: center;
     height: 80%;
+    width: 100%;
     .column_item {
       display: flex;
       flex-direction: column;
@@ -86,11 +86,13 @@ export default {
         font-size: 28px;
         color: #769BFF;
         font-weight: 700;
+        background: transparent;
+        white-space: nowrap;
       }
       img {
         height: 50%;
+        object-fit: contain;
       }
     }
   }
-}
 </style>
