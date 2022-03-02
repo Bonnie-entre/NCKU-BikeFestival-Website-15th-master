@@ -14,8 +14,9 @@
     .activity_layout_dropdown(v-if="!pc && dropdown_top")
       router-link(class="dropdown_top_list" v-for="(item, index) in menuText" tag="label"  v-bind:key="text" v-bind:to="'/' + urlText[index]" v-bind:class="{ active: index==0 }") {{item}}
       label(class="dropdown_top_list" @click="openTab('https://docs.google.com/forms/d/e/1FAIpQLSdBW8m8SVm5YqwtsOGWAaMYwOWiMJ_RbjZTNMq4dJYYWCg85Q/viewform'); list = false;") 我要報名
-    
+    // 活動介紹
     .activity_layout1(v-show="currentIndex===0 && !dropdown_top")
+    
       .top_bar1(v-show="pc")
         button(
           v-for="(item, index) in introduceSrc",
@@ -67,7 +68,7 @@
           BikeEx(v-if="categoryIndex === 1 && categorylistIndex === 3")
           Phonograph(v-if="categoryIndex === 2 && categorylistIndex === 0" :handleOnClick="toggleVoice")
           Exploration(v-if="categoryIndex === 2 && categorylistIndex === 1")
-
+    // 時程表
     .activity_layout2(v-bind:key="currentIndex", v-show="currentIndex===1" v-if="!dropdown_top")
       .content1_voice(v-show="voice!==false")
         .left_bar
@@ -81,6 +82,7 @@
         People(v-show="leftbarIndex===2")
         PsyTest(v-show="leftbarIndex===3")
 
+    
       .top_bar2(v-show="pc")
         button(
           v-bind:class="{ active: currentIndex === index }",
@@ -112,7 +114,9 @@
           label(class="dropdown_list" @click="currentIndex=2, dropdown=false") 地圖
 
         .right_show2(v-if="!dropdown")
+        Schedule(:date="timeDate").right_show2
 
+    // 地圖
     .activity_layout3(
       v-show="currentIndex===2",
       @click="list = false; titleBlock = false"
@@ -171,6 +175,8 @@ import Story from '@/components/activities/category3/Phonograph/Story'
 import People from '@/components/activities/category3/Phonograph/People'
 import PsyTest from '@/components/activities/category3/Phonograph/PsyTest'
 
+import Schedule from '@/components/activities/Schedule'
+
 export default {
   components: {
     Waterfall,
@@ -188,7 +194,8 @@ export default {
     Motivation,
     Story,
     People,
-    PsyTest
+    PsyTest,
+    Schedule
   },
   created () {
     window.addEventListener('resize', this.windowSizeChange)
