@@ -113,8 +113,7 @@
           label(class="dropdown_list_category" v-for="(category, Index) in timeSrc" @click="currentIndex=1, timeDate = Index, dropdown=false;") {{category.topic}}
           label(class="dropdown_list" @click="currentIndex=2, dropdown=false") 地圖
 
-        .right_show2(v-if="!dropdown")
-        Schedule(:date="timeDate").right_show2
+        Schedule(:date="timeDate" v-if="!dropdown").right_show2 
 
     // 地圖
     .activity_layout3(
@@ -144,6 +143,7 @@
         div.map_block(v-if="!pc && !dropdown")
           img.map_img(
             v-bind:src="layout3MapSrc",
+            :src="require('@/assets/activity/map.png')",
             @click="layout3Index = !layout3Index"
           )
 
@@ -825,7 +825,7 @@ export default {
           align-content: center;
           z-index: 5;
           width: 92vw;
-          height: 50vh;
+          height: 30vh;
           border-radius: 2vh;
           .map_img {
             border-radius: 2vh;
