@@ -343,7 +343,7 @@ export default {
         }
         .dept_intro{
           width: 90vw;
-          height: 30vh;
+          height: 66vh;
           background: #C4C4C4;
           margin: 2vh 0 2vh 0;
           border-radius: 10px;
