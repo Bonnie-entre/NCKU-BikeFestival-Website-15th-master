@@ -28,7 +28,7 @@
             router-link(tag="p" v-bind:to="'/department'") 回上頁
       div(class="dept_right_show" v-if="pc | (!dropdown_top & rightshow &!dropdown)")
         button(@click="rightshow=!rightshow;" v-if="!pc") 回上頁
-        div(class="dept_intro")
+        iframe(class="dept_intro" :src="iframeSrc[deptIndex]")
         div(class="dept_guide" v-if="pc")
           button() 系館導覽報名表單
 </template>
@@ -45,7 +45,7 @@ export default {
   data: function () {
     return {
       deptIndex: 0,
-      menuText: [ '活動介紹', '科系資訊', '主題專欄', '合作單位'],
+      menuText: ['活動介紹', '科系資訊', '主題專欄', '合作單位'],
       urlText: ['activity', 'department', 'column', 'sponsor'],
       mode: 0,
       dropdown: false,
@@ -61,10 +61,27 @@ export default {
       pc: this.isPC(),
       classes: ['規劃與設計學院', '社會科學院', '不分學院', '工學院', '理學院', '文學院', '醫學院', '管理學院', '電機資訊學院', '生物科學與科技學院'],
       classKeys: ['design', 'social', 'undeclear', 'engineer', 'science', 'humanity', 'medicine', 'management', 'computer', 'biological'],
-      dept: [ '材料科學與工程學系','化學工程系', '土木工程系', '水利及海洋工程學系', '工程科學系', '系統及船舶機電工程學系','航空太空工程學系', '資源工程學系', '環境工程學系', '生物醫學工程學系', '測量及空間資訊學系', '能源國際學士學位學程','學院QA影片'],
-      dept_mobile: [ '材料系','化工系', '土木系', '水利系', '工科系', '系統系','航太系', '資源系', '環工系', '醫工系', '測量系', '能源系','學院QA影片1','學院QA影片2'],
+      dept: ['機械工程學系', '材料科學與工程學系', '化學工程系', '土木工程系', '水利及海洋工程學系', '工程科學系', '系統及船舶機電工程學系', '航空太空工程學系', '資源工程學系', '環境工程學系', '生物醫學工程學系', '測量及空間資訊學系', '能源國際學士學位學程', '學院QA影片1', '學院QA影片2'],
+      dept_mobile: ['機械系', '材料系', '化工系', '土木系', '水利系', '工科系', '系統系', '航太系', '資源系', '環工系', '醫工系', '測量系', '能源系', '學院QA影片1', '學院QA影片2'],
       currentIndex: -1,
-      check: false
+      check: false,
+      iframeSrc: [
+        'https://drive.google.com/file/d/1ldqWnO6xTXQPsHT0AMkCRo5aws0sfobX/preview',
+        'https://drive.google.com/file/d/16UQ7dLqKGlQWaU5NgaNFl92eCWhaaaCq/preview',
+        'https://drive.google.com/file/d/1RjYn3lAjp8oRHX-Or7F-OmQAJh5Ubnct/preview',
+        'https://drive.google.com/file/d/1awMr3UmH1nuSsbuZrT1qNtE4wBBjNKLo/preview',
+        'https://drive.google.com/file/d/1LVRKa4CH-HU5BZMoTeOOP2u_i6VVNXfm/preview',
+        'https://drive.google.com/file/d/1jy-IPH19JO5Q62ttwXj_-NoybX53FRtj/preview',
+        'https://docs.google.com/presentation/d/1VMHjjlF1tHnU55IuZv5QBnKUv8-J2tA3/preview',
+        'https://drive.google.com/file/d/1ePJQdXKGBdPz5ptGZWdYeIse7Dc1IEjZ/preview',
+        'https://drive.google.com/file/d/1k8kV70fKYTSCzhx_mGUN6nq4zlyBShTr/preview',
+        'https://drive.google.com/file/d/1ZJPA5hN6K1sS_BVM856sRsK07yeNrrty/preview',
+        'https://drive.google.com/file/d/1aneeu8vbsq1D3dquvtAmbybHUccY9Rj9/preview',
+        'https://drive.google.com/file/d/13mhy5nqmEvFX4dwhVa_6wxzp8dNlSJ8v/preview',
+        'https://drive.google.com/file/d/1aneeu8vbsq1D3dquvtAmbybHUccY9Rj9/preview',
+        '',
+        ''
+      ]
     }
   },
   computed: {
