@@ -463,14 +463,13 @@ export default {
         letter-spacing: 1.5vw;
         margin: 3vh;
         line-height: 8vh;
-        
       }
       .active{
         font-weight: 700;
         border-bottom: 1mm solid #0C3759;
         }
     }
-    .sponsor_layout_1 {  
+    .sponsor_layout_1 {
       height: 90vh;
       width: 100%;
       overflow-y: scroll;
@@ -493,14 +492,15 @@ export default {
           margin: 2vh 0vw 1vh 0vw;
           transition: .2s transform ease-in-out;
           cursor: pointer;
+          position: relative;
           &:hover {
             &:before {
               position:absolute;
               display: block;
               text-align: center;
               content: '';
-              width: 10vw;
-              height: 10vw;
+              width: 200px;
+              height: 200px;
               border-radius: 20px;
               background-color: rgba(0, 0, 0, 0.66);
               z-index: 20;
@@ -512,9 +512,9 @@ export default {
               text-align: center;
               font-size: 20px;
               margin-top: 3vh;
-              margin-left: -5vw;
-              width: 10vw;
-              height: 10vw;
+              margin-left: -100px;
+              width: 200px;
+              height: 200px;
               z-index: 21;
             }
           }
@@ -638,7 +638,6 @@ export default {
           justify-content: center;
           align-content: center;
           align-items: center;
-          
           color: #0C3759;
           background: linear-gradient(to right, #FCDEE7 0%, #FCF4D3 100%);
           box-shadow: 0px 2px 2px 1px rgba(105, 103, 103, 0.424);
@@ -663,7 +662,7 @@ export default {
         }
         }
       }
-      .sponsor_layout_1 {  
+      .sponsor_layout_1 {
         height: 84vh;
         width: 100%;
         justify-content: center;
@@ -690,8 +689,8 @@ export default {
             background-color : white;
             background-repeat: no-repeat;
             margin: 0.5vh 0.5vw 0.5vh 0.5vw;
-
             transition: .2s transform ease-in-out;
+            position: relative;
             cursor: pointer;
             &:hover {
               &:before {
@@ -699,8 +698,8 @@ export default {
                 display: block;
                 text-align: center;
                 content: '';
-                width: 10vw;
-                height: 10vw;
+                width: 140px;
+                height: 140px;
                 border-radius: 20px;
                 background-color: rgba(0, 0, 0, 0.66);
                 z-index: 20;
@@ -712,9 +711,9 @@ export default {
                 text-align: center;
                 font-size: 20px;
                 margin-top: 3vh;
-                margin-left: -5vw;
-                width: 10vw;
-                height: 10vw;
+                margin-left: -70px;
+                width: 140px;
+                height: 140px;
                 z-index: 21;
               }
             }
@@ -824,5 +823,5 @@ export default {
           }
         }
       }
-  } 
+  }
 </style>
