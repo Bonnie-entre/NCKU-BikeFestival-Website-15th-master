@@ -58,7 +58,7 @@
           label(class="dropdown_list_category" v-for="(category, Index) in timeSrc" @click="currentIndex=1, timeDate = Index, dropdown=false;") {{category.topic}}
           label(class="dropdown_list" @click="currentIndex=2, dropdown=false") 地圖
 
-        right_show1(v-if="!dropdown && (!categoryList | pc)")
+        right_show1(v-if="pc | (!dropdown && !categoryList )")
           Stage(v-if="categoryIndex === 0 && categorylistIndex === 1 ")
           Exhibition(v-if="categoryIndex === 0 && categorylistIndex === 2")
           Interview(v-if="categoryIndex === 0 && categorylistIndex === 3")
@@ -112,7 +112,7 @@
           label(class="dropdown_list_category" v-for="(category, Index) in timeSrc" @click="currentIndex=1, timeDate = Index, dropdown=false;") {{category.topic}}
           label(class="dropdown_list" @click="currentIndex=2, dropdown=false") 地圖
 
-        Schedule(:date="timeDate" v-if="!dropdown").right_show2 
+        Schedule(:date="timeDate" v-if="pc | !dropdown").right_show2 
 
     // 地圖
     .activity_layout3(
