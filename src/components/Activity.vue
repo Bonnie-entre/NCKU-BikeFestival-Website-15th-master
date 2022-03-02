@@ -68,8 +68,6 @@
           BikeEx(v-if="categoryIndex === 1 && categorylistIndex === 3")
           Phonograph(v-if="categoryIndex === 2 && categorylistIndex === 0" :handleOnClick="toggleVoice")
           Exploration(v-if="categoryIndex === 2 && categorylistIndex === 1")
-    // 時程表
-    .activity_layout2(v-bind:key="currentIndex", v-show="currentIndex===1" v-if="!dropdown_top")
       .content1_voice(v-show="voice!==false")
         .left_bar
           button(
@@ -81,6 +79,10 @@
         Story(v-show="leftbarIndex===1")
         People(v-show="leftbarIndex===2")
         PsyTest(v-show="leftbarIndex===3")
+
+    // 時程表
+    .activity_layout2(v-bind:key="currentIndex", v-show="currentIndex===1" v-if="!dropdown_top")
+      
 
     
       .top_bar2(v-show="pc")
