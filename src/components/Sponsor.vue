@@ -16,12 +16,21 @@
       label(class="dropdown_top_list" @click="openTab('https://docs.google.com/forms/d/e/1FAIpQLSdBW8m8SVm5YqwtsOGWAaMYwOWiMJ_RbjZTNMq4dJYYWCg85Q/viewform'); list = false;") 我要報名
     div(class="sponsor_layout_1" v-show="mode === 0" v-if="!dropdown_top" @click="list = false")
       section(class="sponsor_list")
-        label(v-for="(iter, index) of sponsorLogo" v-bind:key="iter.name" v-bind:data-name="iter.name" v-bind:href="`${iter.link}`" target="_blank" v-bind:style="{'background-image': 'url(' + sponsorLogo[index].img + ')'}" v-on:click="currentIndex = index; mode = 1;")
+        label(
+          v-for="(iter, index) of sponsorLogo"
+          v-bind:key="iter.name"
+          v-bind:data-name="iter.name"
+          v-bind:href="`${iter.link}`" target="_blank"
+          v-bind:style="{'background-image': 'url('+ require(`@/assets/sponsor/sponsor${index+1}.png`) + ')'}"
+        )
         div(class="sponsor_list_empty")
     div(class="sponsor_layout_2" v-if="mode === 1" v-show="!dropdown_top" @click="list = false")
       section(class="sponsor_info")
         p {{sponsor[currentIndex].name}}
-        label(v-bind:style="{'background-image': 'url(' + sponsorLogo[currentIndex].img + ')'}" v-on:click="openSponsorTab(currentIndex)")
+        label(
+          v-bind:style="{'background-image': 'url(' + sponsorLogo[currentIndex].img + ')'}"
+          v-on:click="openSponsorTab(currentIndex)"
+        )
       section(class="sponsor_content")
         article(class="sponsor_content_article" v-html="sponsor[currentIndex].content")
         article(class="sponsor_content_info" v-html="sponsor[currentIndex].info")
@@ -46,75 +55,99 @@ export default {
       mode: 0,
       sponsorLogo: [
         {
-          name: '馥貴春',
+          name: 'Batiste 乾洗髮',
           img: 'https://i.imgur.com/a2u62ZH.jpg'
         },
         {
-          name: '儕陞生化',
+          name: 'BioMask',
           img: 'https://i.imgur.com/nmO1E7M.png'
         },
         {
-          name: '萬鼎工程',
+          name: 'DOUGHNUT',
           img: 'https://i.imgur.com/cTmWDli.png'
         },
         {
-          name: '哈努曼',
+          name: 'HERSHEY’S',
           img: 'https://i.imgur.com/Nja12Ae.jpg'
         },
         {
-          name: '成大會館',
+          name: 'I’M COFFEE',
           img: 'https://i.imgur.com/IrFzqYk.jpg'
         },
         {
-          name: '川益科技',
+          name: 'IMC 精英人力資源股份有限公司',
           img: 'https://i.imgur.com/XDztEZK.jpg'
         },
         {
-          name: '馥貴春',
+          name: 'Snapask',
           img: 'https://i.imgur.com/a2u62ZH.jpg'
         },
         {
-          name: '馥貴春',
+          name: 'SOL',
           img: 'https://i.imgur.com/a2u62ZH.jpg'
         },
         {
-          name: '馥貴春',
+          name: 'VoiceTube',
           img: 'https://i.imgur.com/a2u62ZH.jpg'
         },
         {
-          name: '馥貴春',
+          name: 'Yes Online 線上英文家教',
           img: 'https://i.imgur.com/a2u62ZH.jpg'
         },
         {
-          name: '馥貴春',
+          name: '台南大飯店',
           img: 'https://i.imgur.com/a2u62ZH.jpg'
         },
         {
-          name: '馥貴春',
+          name: '台灣特有種實業社',
           img: 'https://i.imgur.com/a2u62ZH.jpg'
         },
         {
-          name: '馥貴春',
+          name: '民台科技',
           img: 'https://i.imgur.com/a2u62ZH.jpg'
         },
         {
-          name: '馥貴春',
+          name: '好日子',
           img: 'https://i.imgur.com/a2u62ZH.jpg'
         },
         {
-          name: '馥貴春',
+          name: '百氛苑',
           img: 'https://i.imgur.com/a2u62ZH.jpg'
         },
         {
-          name: '馥貴春',
+          name: '忌妒妳的美 IJEALOUS',
           img: 'https://i.imgur.com/a2u62ZH.jpg'
         },
         {
-          name: '馥貴春',
+          name: '法律白話文運動',
           img: 'https://i.imgur.com/a2u62ZH.jpg'
         },
         {
-          name: '馥貴春',
+          name: '旅讀',
+          img: 'https://i.imgur.com/a2u62ZH.jpg'
+        },
+        {
+          name: '野台系',
+          img: 'https://i.imgur.com/a2u62ZH.jpg'
+        },
+        {
+          name: '晶碩光學',
+          img: 'https://i.imgur.com/a2u62ZH.jpg'
+        },
+        {
+          name: '群聯電子',
+          img: 'https://i.imgur.com/a2u62ZH.jpg'
+        },
+        {
+          name: '簡單生活實驗室',
+          img: 'https://i.imgur.com/a2u62ZH.jpg'
+        },
+        {
+          name: '寶貝國際',
+          img: 'https://i.imgur.com/a2u62ZH.jpg'
+        },
+        {
+          name: 'KISS ME',
           img: 'https://i.imgur.com/a2u62ZH.jpg'
         }
       ],
@@ -493,6 +526,7 @@ export default {
           transition: .2s transform ease-in-out;
           cursor: pointer;
           position: relative;
+          line-height: 30px;
           &:hover {
             &:before {
               position:absolute;
@@ -691,6 +725,7 @@ export default {
             margin: 0.5vh 0.5vw 0.5vh 0.5vw;
             transition: .2s transform ease-in-out;
             position: relative;
+            line-height: 30px;
             cursor: pointer;
             &:hover {
               &:before {
