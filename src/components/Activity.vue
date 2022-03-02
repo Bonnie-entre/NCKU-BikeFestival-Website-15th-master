@@ -343,7 +343,7 @@ export default {
     },
     listSelector2: function (index) {
       this.categorylistIndex = index
-      if ( index === 0) {
+      if ( index === 0 && categoryIndex===0) {
         this.openTab(this.departmentGtUrl)
         this.categoryList = true
       }
