@@ -57,12 +57,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.schedule-block {
-  padding: 0px;
-  img {
-    width: 80%;
-    align-self: center;
-    padding-top: 20px;
+  @media only screen and (max-width: 599px){
+    .schedule-block {
+      padding: 0px;
+      img {
+        width: 120%;
+        align-self: center;
+        padding-top: 20px;
+      }
+    }
   }
-}
+  @media only screen and (min-width: 600px){
+    .schedule-block {
+      padding: 0px;
+      img {
+        width: 80%;
+        align-self: center;
+        padding-top: 20px;
+      }
+    }
+  }
 </style>

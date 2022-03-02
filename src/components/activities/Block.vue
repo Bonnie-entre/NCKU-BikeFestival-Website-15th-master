@@ -16,14 +16,14 @@ export default {
   @media only screen and (max-width: 599px){
     .block{
       box-sizing: border-box;
-      padding: 15px 20px;
+      padding: 0px 15px;
       background-color: #FFE9EE;
       border-radius: 20px;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       width: 100%;
-      margin: 20px 0;
+      margin: 2vh 0;
     }
     .title{
       font-weight: bold;

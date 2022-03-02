@@ -82,9 +82,6 @@
 
     // 時程表
     .activity_layout2(v-bind:key="currentIndex", v-show="currentIndex===1" v-if="!dropdown_top")
-      
-
-    
       .top_bar2(v-show="pc")
         button(
           v-bind:class="{ active: currentIndex === index }",
@@ -230,8 +227,8 @@ export default {
       lighteningIndex: 0,
       voice: false,
       dropdown_top: false,
-      dropdown: false,
-      categoryList: true,
+      dropdown: true,
+      categoryList: false,
       topbar: ['主題活動介紹', '時程表', '地圖'],
       leftBar_mobile:[
         [
@@ -650,6 +647,292 @@ export default {
             font-size: 120%;
             line-height: 6vh;
             // margin: 0.5vh;
+          }
+        }
+      }
+      .content1_voice {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        justify-items: flex-start;
+        align-content: center;
+        align-items: center;
+        // width: 100vw;
+        margin-top: 10px;
+        .left_bar {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+          justify-items: center;
+          align-content: center;
+          align-items: center;
+          width: 95vw;
+          button {
+            height: 10vh;
+            width: 25vw;
+            background: white;
+            border: none;
+            margin: 10px;
+            font-size: 120%;
+            color: #769bff;
+          }
+          .active {
+            background: #769bff;
+            color: #fffbfc;
+          }
+        }
+        .right_show0 {
+          width: 100%;
+          height: 500px;
+          background: #769BFF;
+          border-radius: 20px;
+          margin-top: 20px;
+          margin-bottom: 20px;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          justify-items: flex-start;
+          align-content: center;
+          align-items: center;
+          .right_show_title {
+            width: 80%;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            justify-items: flex-start;
+            margin: 30px;
+            margin-left: 10px;
+            p {
+              font-size: 28px;
+              font-weight: 600;
+              left: 2vw;
+            }
+          }
+          .right_show_content {
+            width: 85%;
+            height: 250px;
+            background: gray;
+            margin: 10px;
+          }
+          .right_show_intro {
+            width: 85%;
+            height: 80px;
+            background: gray;
+            margin: 10px;
+            font-size: 20px;
+            text-align: left;
+          }
+        }
+        .right_show_story {
+          width: 65%;
+          height: 500px;
+          background: #ffffff;
+          border-radius: 20px;
+          margin-top: 20px;
+          margin-bottom: 20px;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          justify-items: flex-start;
+          align-content: center;
+          align-items: center;
+          .right_show_title {
+            width: 80%;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            justify-items: flex-start;
+            margin: 30px;
+            margin-left: 10px;
+            p {
+              font-size: 28px;
+              font-weight: 600;
+              left: 2vw;
+            }
+          }
+          .right_show_intro {
+            width: 85%;
+            height: 60px;
+            background: gray;
+            margin: 10px;
+            font-size: 20px;
+            text-align: left;
+          }
+          .right_show_content {
+            width: 90%;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: center;
+            justify-items: center;
+            align-content: flex-start;
+            align-items: flex-start;
+            margin: 20px;
+            .img {
+              width: 170px;
+              height: 120px;
+              margin: 15px;
+              // margin-left: 10px;
+              background: gainsboro;
+            }
+          }
+        }
+        .right_show_people {
+          width: 65%;
+          height: 500px;
+          background: #ffffff;
+          border-radius: 20px;
+          margin-top: 20px;
+          margin-bottom: 20px;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          justify-items: flex-start;
+          align-content: center;
+          align-items: center;
+          .right_show_title {
+            width: 80%;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            justify-items: flex-start;
+            margin: 30px;
+            margin-left: 10px;
+            p {
+              font-size: 28px;
+              font-weight: 600;
+              left: 2vw;
+            }
+          }
+          .right_show_intro {
+            width: 85%;
+            height: 60px;
+            background: gray;
+            margin: 10px;
+            font-size: 20px;
+            text-align: left;
+          }
+          .right_show_content {
+            width: 90%;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: center;
+            justify-items: center;
+            align-content: flex-start;
+            align-items: flex-start;
+            margin: 10px;
+            .img {
+              width: 120px;
+              height: 130px;
+              margin: 12px;
+              // margin-left: 10px;
+              background: gainsboro;
+            }
+          }
+        }
+        .right_show_phsy {
+          width: 65%;
+          height: 1000px;
+          background: #ffffff;
+          border-radius: 20px;
+          margin-top: 30px;
+          margin-bottom: 30px;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          justify-items: flex-start;
+          align-content: center;
+          align-items: center;
+          .right_show_title {
+            width: 80%;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            justify-items: flex-start;
+            margin: 30px;
+            margin-left: 10px;
+            p {
+              font-size: 28px;
+              font-weight: 600;
+              left: 2vw;
+            }
+          }
+          .right_show_intro {
+            width: 85%;
+            height: 60px;
+            background: gray;
+            margin: 10px;
+            font-size: 20px;
+            text-align: left;
+          }
+          .right_show_content {
+            width: 90%;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            justify-content: flex-start;
+            justify-items: flex-start;
+            align-content: center;
+            align-items: center;
+            margin: 20px;
+            .phsy_content {
+              width: 100%;
+              height: 120px;
+              margin: 15px;
+              // margin-left: 10px;
+              background: gainsboro;
+            }
+            button {
+              width: 180px;
+              height: 50px;
+              background: #769bff;
+              margin: 20px;
+              font-size: 24px;
+              font-weight: 400;
+              color: white;
+              cursor: pointer;
+              &:hover {
+                filter: brightness(120%);
+              }
+              &:active {
+                filter: brightness(60%);
+                font-size: 2.6vh;
+              }
+            }
+          }
+        }
+        .right_show_phsyPage2 {
+          width: 70%;
+          height: 500px;
+          background: #ffffff;
+          border-radius: 20px;
+          margin-top: 30px;
+          margin-bottom: 30px;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          justify-items: flex-start;
+          align-content: center;
+          align-items: center;
+          .right_show_title {
+            width: 80%;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            justify-items: flex-start;
+            margin: 30px;
+            margin-left: 10px;
+            p {
+              font-size: 28px;
+              font-weight: 600;
+              left: 2vw;
+            }
+          }
+          .phsyPage2_content {
+            width: 80%;
+            height: 360px;
+            background: #dad0f2;
           }
         }
       }

@@ -58,67 +58,135 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container {
-  flex-grow: 1;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: column;
-  p {
-    letter-spacing: 0.1em;
-    font-size: 18px;
-    text-align: justify;
-    display: block;
-    margin: 0 20px;
-    line-height: 20px;
-  }
-  .btn-group {
-    flex-grow: 1;
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    row-gap: 20px;
-    padding: 20px;
-    button {
-      background: transparent;
-      border: none;
-      img {
-        width: 200px;
-        cursor: pointer;
+  @media only screen and (max-width: 599px){
+    .container {
+      flex-grow: 1;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: column;
+      p {
+        letter-spacing: 0.1em;
+        font-size: 100%;
+        text-align: justify;
+        display: block;
+        margin: 0 20px;
+        line-height: 20px;
+      }
+      .btn-group {
+        flex-grow: 1;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        row-gap: 20px;
+        padding: 20px;
+        button {
+          background: transparent;
+          border: none;
+          img {
+            width: 38vw;
+            cursor: pointer;
+          }
+        }
+      }
+      .story-container {
+        flex-grow: 1;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        position: relative;
+        img {
+          width: 200px;
+          position: absolute;
+          left: 0;
+          top: 40vh;
+        }
+        .story-content {
+          width: 500px;
+          height: 100%;
+          background-image: url('../../../../assets/activity/phonograph/storyBg.svg');
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center right;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          padding: 20px;
+          p {
+            display: block;
+            font-size: 100%;
+            text-align: justify;
+            letter-spacing: 0.1em;
+          }
+        }
       }
     }
   }
-  .story-container {
-    flex-grow: 1;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    position: relative;
-    img {
-      width: 200px;
-      position: absolute;
-      left: 0;
-    }
-    .story-content {
-      width: 500px;
-      height: 100%;
-      background-image: url('../../../../assets/activity/phonograph/storyBg.svg');
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center right;
+  @media only screen and (min-width: 600px){
+    .container {
+      flex-grow: 1;
+      width: 100%;
       display: flex;
+      justify-content: space-between;
+      align-items: center;
       flex-direction: column;
-      justify-content: center;
-      padding: 20px;
       p {
-        display: block;
+        letter-spacing: 0.1em;
         font-size: 18px;
         text-align: justify;
-        letter-spacing: 0.1em;
+        display: block;
+        margin: 0 20px;
+        line-height: 20px;
+      }
+      .btn-group {
+        flex-grow: 1;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        row-gap: 20px;
+        padding: 20px;
+        button {
+          background: transparent;
+          border: none;
+          img {
+            width: 200px;
+            cursor: pointer;
+          }
+        }
+      }
+      .story-container {
+        flex-grow: 1;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        position: relative;
+        img {
+          width: 200px;
+          position: absolute;
+          left: 0;
+        }
+        .story-content {
+          width: 500px;
+          height: 100%;
+          background-image: url('../../../../assets/activity/phonograph/storyBg.svg');
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center right;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          padding: 20px;
+          p {
+            display: block;
+            font-size: 18px;
+            text-align: justify;
+            letter-spacing: 0.1em;
+          }
+        }
       }
     }
   }
-}
 </style>

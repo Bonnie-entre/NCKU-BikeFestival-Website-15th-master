@@ -19,19 +19,37 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container {
-  margin-top: 40px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  p {
-    letter-spacing: 0.1em;
-    font-size: 20px;
-    text-align: justify;
-    line-height: 30px;
-    display: block;
-    margin: 0 40px;
+  @media only screen and (max-width: 599px){
+    .container {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      p {
+        letter-spacing: 0.1em;
+        font-size: 100%;
+        text-align: justify;
+        line-height: 30px;
+        display: block;
+        margin: 0 40px;
+      }
+    }
   }
-}
+  @media only screen and (min-width: 600px){
+    .container {
+      margin-top: 40px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      p {
+        letter-spacing: 0.1em;
+        font-size: 20px;
+        text-align: justify;
+        line-height: 30px;
+        display: block;
+        margin: 0 40px;
+      }
+    }
+  }
 </style>

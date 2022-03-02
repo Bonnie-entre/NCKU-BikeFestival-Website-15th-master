@@ -52,41 +52,87 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container {
-  flex-grow: 1;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  p {
-    letter-spacing: 0.1em;
-    font-size: 18px;
-    text-align: justify;
-    display: block;
-    margin: 0 20px;
-    line-height: 20px;
-  }
-  .answers {
-    margin-top: 20px;
-    flex-grow: 1;
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    img {
-      object-fit: contain;
+  @media only screen and (max-width: 599px){
+    .container {
+      flex-grow: 1;
+      width: 100%;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      cursor: pointer;
+      align-items: center;
+      p {
+        letter-spacing: 0.1em;
+        font-size: 110%;
+        text-align: justify;
+        display: block;
+        margin: 0 10px;
+        line-height: 20px;
+      }
+      .answers {
+        margin-top: 20px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        width: 200%;
+        justify-content: space-between;
+        align-content: center;
+        align-items: center;
+        overflow-x: hidden;
+        img {
+          margin: 3px;
+          width: 120%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          cursor: pointer;
+        }
+      }
+    }
+    .content {
+      text-align: justify;
+      margin: 20px 0;
+      font-size: 16px;
+      line-height: 30px;
+      letter-spacing: 0.1em;
+      color: #0C3759;
     }
   }
-}
-.content {
-  text-align: justify;
-  margin: 20px 0;
-  font-size: 16px;
-  line-height: 30px;
-  letter-spacing: 0.1em;
-  color: #0C3759;
-}
+  @media only screen and (min-width: 600px){
+    .container {
+      flex-grow: 1;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      p {
+        letter-spacing: 0.1em;
+        font-size: 18px;
+        text-align: justify;
+        display: block;
+        margin: 0 20px;
+        line-height: 20px;
+      }
+      .answers {
+        margin-top: 20px;
+        flex-grow: 1;
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        img {
+          object-fit: contain;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          cursor: pointer;
+        }
+      }
+    }
+    .content {
+      text-align: justify;
+      margin: 20px 0;
+      font-size: 16px;
+      line-height: 30px;
+      letter-spacing: 0.1em;
+      color: #0C3759;
+    }
+  }
 </style>

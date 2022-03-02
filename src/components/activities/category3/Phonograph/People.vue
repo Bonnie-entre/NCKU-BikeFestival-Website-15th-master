@@ -23,35 +23,70 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container {
-  flex-grow: 1;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  p {
-    letter-spacing: 0.1em;
-    font-size: 18px;
-    text-align: justify;
-    display: block;
-    margin: 0 20px;
-    line-height: 20px;
-  }
-  .people {
-    flex-grow: 1;
-    width: 100%;
-    margin: 20px 0;
-    display: grid;
-    gap: 30px;
-    grid-template-columns: repeat(4,1fr);
-    .person {
-      img {
+  @media only screen and (max-width: 599px){
+    .container {
+      flex-grow: 1;
+      // width: 90%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      p {
+        letter-spacing: 0.1em;
+        font-size: 100%;
+        text-align: justify;
+        display: block;
+        margin: 0 20px;
+        line-height: 20px;
+      }
+      .people {
+        flex-grow: 1;
         width: 100%;
-        border-radius: 15px;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        margin: 20px 0;
+        display: grid;
+        gap: 30px;
+        grid-template-columns: repeat(4,1fr);
+        .person {
+          img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          }
+        }
       }
     }
   }
-}
+  @media only screen and (min-width: 600px){
+    .container {
+      flex-grow: 1;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      p {
+        letter-spacing: 0.1em;
+        font-size: 18px;
+        text-align: justify;
+        display: block;
+        margin: 0 20px;
+        line-height: 20px;
+      }
+      .people {
+        flex-grow: 1;
+        width: 100%;
+        margin: 20px 0;
+        display: grid;
+        gap: 30px;
+        grid-template-columns: repeat(4,1fr);
+        .person {
+          img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          }
+        }
+      }
+    }
+  }
 </style>
