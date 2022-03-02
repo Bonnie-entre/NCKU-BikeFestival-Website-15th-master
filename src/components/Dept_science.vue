@@ -30,7 +30,7 @@
         button(@click="rightshow=!rightshow;" v-if="!pc") 回上頁
         iframe(class="dept_intro" :src="iframeSrc[deptIndex]")
         div(class="dept_guide" v-if="pc")
-          button() 系館導覽報名表單
+          button(v-show="guildForm[deptIndex]" @click="openTab(guildForm[deptIndex])") 系館導覽報名表單
 </template>
 
 <script>
@@ -70,6 +70,14 @@ export default {
         'https://drive.google.com/file/d/1e_V2tM7Kt0HC6oUtobMUI5jnOjtcx0w1/preview',
         'https://drive.google.com/file/d/1iEM8jIlgR3L43iIRy66HROWcuNIfxyOX/preview',
         'https://drive.google.com/file/d/1_yNCwuJ8Ttt3k_Didd6yxbjohzLNwKDX/preview',
+        ''
+      ],
+      guildForm: [
+        'https://reurl.cc/veQeXj',
+        '',
+        '',
+        '',
+        '',
         ''
       ]
     }
@@ -529,7 +537,8 @@ export default {
           button{
             height: 56px;
             width: 250px;
-            background: #C4C4C4;
+            background: #FFFBCE;
+            color: #7B61FF;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
             border: none;
             border-radius: 64px;
