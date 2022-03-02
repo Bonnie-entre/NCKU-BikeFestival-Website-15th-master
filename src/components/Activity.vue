@@ -28,11 +28,12 @@
           Stage(v-if="categoryIndex === 0 && categorylistIndex === 1")
           Exhibition(v-if="categoryIndex === 0 && categorylistIndex === 2")
           Interview(v-if="categoryIndex === 0 && categorylistIndex === 3")
-          Exploration(v-if="categoryIndex === 2 && categorylistIndex === 1")
           School(v-if="categoryIndex === 1 && categorylistIndex === 0")
           Education(v-if="categoryIndex === 1 && categorylistIndex === 1")
           Show(v-if="categoryIndex === 1 && categorylistIndex === 2")
           BikeEx(v-if="categoryIndex === 1 && categorylistIndex === 3")
+          Phonograph(v-if="categoryIndex === 2 && categorylistIndex === 0" :handleOnClick="toggleVoice")
+          Exploration(v-if="categoryIndex === 2 && categorylistIndex === 1")
 
       .content1_voice(v-show="voice!==false")
         .left_bar
@@ -41,36 +42,10 @@
             @click="(leftbarIndex = index), (phsyPage2 = false)",
             v-bind:class="{ active: leftbarIndex === index }"
           ) {{ leftBar.left_bar }}
-        .right_show0(v-show="leftbarIndex===0")
-          .right_show_title
-            p {{ voice_leftBar[leftbarIndex] }}
-          .right_show_content
-          .right_show_intro {{ voiceSrc[leftbarIndex].intro }}
-        .right_show_story(v-show="leftbarIndex===1")
-          .right_show_title
-            p {{ voice_leftBar[leftbarIndex] }}
-          .right_show_intro {{ voiceSrc[leftbarIndex].intro }}
-          .right_show_content
-            .img(v-for="(img, imgIndex) in voiceSrc[leftbarIndex].content") {{ img }}
-        .right_show_people(v-show="leftbarIndex===2")
-          .right_show_title
-            p {{ voice_leftBar[leftbarIndex] }}
-          .right_show_intro {{ voiceSrc[leftbarIndex].intro }}
-          .right_show_content
-            .img(v-for="(img, imgIndex) in voiceSrc[leftbarIndex].content") {{ img }}
-        .right_show_phsy(v-show="leftbarIndex===3 && phsyPage2===false")
-          .right_show_title
-            p {{ voice_leftBar[leftbarIndex] }}
-          .right_show_intro {{ voiceSrc[leftbarIndex].intro }}
-          .right_show_content
-            .phsy_content(
-              v-for="(phsy, phsyIndex) in voiceSrc[leftbarIndex].content"
-            ) {{ phsy }}
-            button(@click="phsyPage2 = !phsyPage2") 產生結果
-        .right_show_phsyPage2(v-show="leftbarIndex===3, phsyPage2!==false")
-          .right_show_title
-            p 心理測驗結果
-          .phsyPage2_content
+        Motivation(v-show="leftbarIndex===0")
+        Story(v-show="leftbarIndex===1")
+        People(v-show="leftbarIndex===2")
+        PsyTest(v-show="leftbarIndex===3")
 
     .activity_layout2(v-bind:key="currentIndex", v-show="currentIndex===1")
       .top_bar2(v-show="pc")
@@ -130,7 +105,13 @@ import School from '@/components/activities/category2/School.vue'
 import Show from '@/components/activities/category2/Show.vue'
 import Education from '@/components/activities/category2/Education.vue'
 import BikeEx from '@/components/activities/category2/BikeEx.vue'
+import Phonograph from '@/components/activities/category3/Phonograph.vue'
 import Exploration from '@/components/activities/category3/Exploration.vue'
+
+import Motivation from '@/components/activities/category3/Phonograph/Motivation'
+import Story from '@/components/activities/category3/Phonograph/Story'
+import People from '@/components/activities/category3/Phonograph/People'
+import PsyTest from '@/components/activities/category3/Phonograph/PsyTest'
 
 export default {
   components: {
@@ -144,7 +125,12 @@ export default {
     Exhibition,
     School,
     BikeEx,
-    Education
+    Phonograph,
+    Education,
+    Motivation,
+    Story,
+    People,
+    PsyTest
   },
   created () {
     window.addEventListener('resize', this.windowSizeChange)
@@ -362,6 +348,9 @@ export default {
         }
       }
       return flag
+    },
+    toggleVoice: function () {
+      this.voice = !this.voice
     }
   }
 }
@@ -799,7 +788,6 @@ export default {
       align-content: flex-start;
       align-items: flex-start;
       width: 100%;
-      overflow-y: scroll;
       margin-top: 10px;
       .left_bar {
         display: flex;
@@ -825,7 +813,7 @@ export default {
         }
       }
       .right_show0 {
-        width: 760px;
+        width: 65%;
         height: 500px;
         background: #ffffff;
         border-radius: 20px;
@@ -868,7 +856,7 @@ export default {
         }
       }
       .right_show_story {
-        width: 760px;
+        width: 65%;
         height: 500px;
         background: #ffffff;
         border-radius: 20px;
@@ -923,7 +911,7 @@ export default {
         }
       }
       .right_show_people {
-        width: 760px;
+        width: 65%;
         height: 500px;
         background: #ffffff;
         border-radius: 20px;
@@ -978,7 +966,7 @@ export default {
         }
       }
       .right_show_phsy {
-        width: 760px;
+        width: 65%;
         height: 1000px;
         background: #ffffff;
         border-radius: 20px;
@@ -1050,7 +1038,7 @@ export default {
         }
       }
       .right_show_phsyPage2 {
-        width: 760px;
+        width: 70%;
         height: 500px;
         background: #ffffff;
         border-radius: 20px;
