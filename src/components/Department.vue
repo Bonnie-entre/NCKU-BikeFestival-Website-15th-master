@@ -51,7 +51,7 @@ export default {
   },
   data: function () {
     return {
-      menuText: [ '活動介紹', '科系資訊', '主題專欄', '合作單位'],
+      menuText: ['活動介紹', '科系資訊', '主題專欄', '合作單位'],
       urlText: ['activity', 'department', 'column', 'sponsor'],
       mode: 0,
       dropdown: false,

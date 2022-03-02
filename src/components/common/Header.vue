@@ -13,7 +13,7 @@ export default {
   data: function () {
     return {
       urlText: ['activity', 'department', 'column', 'sponsor'],
-      menuText: [ '活動介紹', '科系資訊', '主題專欄', '合作單位'],
+      menuText: ['活動介紹', '科系資訊', '主題專欄', '合作單位'],
     }
   },
   methods: {

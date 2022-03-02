@@ -27,8 +27,6 @@
     div(class="column_layout_dropdown_top" v-if="dropdown_top")
       router-link(class="dropdown_top_list" v-for="(item, index) in menuText" tag="label"  v-bind:key="text" v-bind:to="'/' + urlText[index]" v-bind:class="{ active: index==2 }") {{item}}
       label(class="dropdown_top_list" @click="openTab('https://docs.google.com/forms/d/e/1FAIpQLSdBW8m8SVm5YqwtsOGWAaMYwOWiMJ_RbjZTNMq4dJYYWCg85Q/viewform'); list = false;") 我要報名
-    
-
 </template>
 
 <script>
@@ -42,7 +40,7 @@ export default {
   },
   data: function () {
     return {
-      menuText: [ '活動介紹', '科系資訊', '主題專欄', '合作單位'],
+      menuText: ['活動介紹', '科系資訊', '主題專欄', '合作單位'],
       urlText: ['activity', 'department', 'column', 'sponsor'],
       info: [
         {
@@ -527,7 +525,6 @@ export default {
         letter-spacing: 1.5vw;
         margin: 3vh;
         line-height: 8vh;
-        
       }
       .active{
         font-weight: 700;

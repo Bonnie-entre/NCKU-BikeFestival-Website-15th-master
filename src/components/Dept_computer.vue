@@ -28,7 +28,7 @@
             router-link(tag="p" v-bind:to="'/department'") 回上頁
       div(class="dept_right_show" v-if="pc | (!dropdown_top & rightshow &!dropdown)")
         button(@click="rightshow=!rightshow;" v-if="!pc") 回上頁
-        div(class="dept_intro")
+        iframe(class="dept_intro" :src="iframeSrc[deptIndex]")
         div(class="dept_guide" v-if="pc")
           button() 系館導覽報名表單
 </template>
@@ -45,7 +45,7 @@ export default {
   data: function () {
     return {
       deptIndex: 0,
-      menuText: [ '活動介紹', '科系資訊', '主題專欄', '合作單位'],
+      menuText: ['活動介紹', '科系資訊', '主題專欄', '合作單位'],
       urlText: ['activity', 'department', 'column', 'sponsor'],
       mode: 0,
       dropdown: false,
@@ -61,9 +61,14 @@ export default {
       pc: this.isPC(),
       classes: ['規劃與設計學院', '社會科學院', '不分學院', '工學院', '理學院', '文學院', '醫學院', '管理學院', '電機資訊學院', '生物科學與科技學院'],
       classKeys: ['design', 'social', 'undeclear', 'engineer', 'science', 'humanity', 'medicine', 'management', 'computer', 'biological'],
-      dept: [ '電機工程系','資訊工程學系','學院QA影片'],
+      dept: ['電機工程系', '資訊工程學系', '學院QA影片'],
       currentIndex: -1,
-      check: false
+      check: false,
+      iframeSrc: [
+        'https://drive.google.com/file/d/10HlXbbLIL_rWIEESz2ggxlG_bp_324WT/preview',
+        'https://drive.google.com/file/d/17JNg19AB_Vl6jwHkCbXO4CLeemNwgOok/preview',
+        ''
+      ]
     }
   },
   computed: {
