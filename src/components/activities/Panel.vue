@@ -18,7 +18,7 @@ export default {
     padding: 30px 20px;
     background-color: #fff;
     border-radius: 20px;
-    height: 100%;
+    height: 85vh;
     width: 95vw;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -42,7 +42,7 @@ export default {
     padding: 30px 40px;
     background-color: #fff;
     border-radius: 20px;
-    height: 100%;
+    height: 66vh;
     width: 62vw;
     overflow-y: scroll;
     display: flex;
