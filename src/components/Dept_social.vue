@@ -28,14 +28,19 @@
             router-link(tag="p" v-bind:to="'/department'") 回上頁
       div(class="dept_right_show" v-if="pc | (!dropdown_top & rightshow &!dropdown)")
         button(@click="rightshow=!rightshow;" v-if="!pc") 回上頁
-        iframe(class="dept_intro" :src="iframeSrc[deptIndex]")
+        iframe(v-if="iframeSrc[deptIndex]" class="dept_intro" :src="iframeSrc[deptIndex]")
+        ComingSoon(v-else class="dept_intro")
         div(class="dept_guide" v-if="pc")
           button(v-show="guildForm[deptIndex]" @click="openTab(guildForm[deptIndex])") 系館導覽報名表單
 </template>
 
 <script>
 import srcJson from '../assets//dept/dept.json'
+import ComingSoon from './common/ComingSoon.vue'
 export default {
+  components: {
+    ComingSoon
+  },
   created () {
     window.addEventListener('resize', this.windowSizeChange)
   },
@@ -493,16 +498,11 @@ export default {
             transition: filter .3s ease, border-width .2s ease, border-radius .2s ease;
             cursor: pointer;
             &:hover {
-                // border-width: 0.2vw;
-                // border-radius: 2vw;
-                // background-size: 90% 90%;
                 filter: brightness(150%);
             }
             &:active {
                 filter: brightness(50%);
             }
-            // }
-        
           }
           .active{
             text-decoration: underline;
@@ -514,7 +514,6 @@ export default {
       }
       .dept_right_show{
         width: 60%;
-        // height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -535,17 +534,14 @@ export default {
           flex-direction: row-reverse;
           justify-content: flex-start;
           justify-items: flex-start;
-          // align-items: center;
-          // align-content: flex-start;
           button{
             height: 50px;
             width: 240px;
-            background: #C4C4C4;
-            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            background: #FFFBCE;
+            color: #7B61FF;
             border: none;
             border-radius: 64px;
             margin: 20px;
-
             font-size: 20px;
             text-align: center;
             text-decoration: none;

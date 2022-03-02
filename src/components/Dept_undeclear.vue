@@ -28,14 +28,19 @@
             router-link(tag="p" v-bind:to="'/department'") 回上頁
       div(class="dept_right_show" v-if="pc | (!dropdown_top & rightshow &!dropdown)")
         button(@click="rightshow=!rightshow;" v-if="!pc") 回上頁
-        iframe(class="dept_intro" :src="iframeSrc[deptIndex]")
+        iframe(v-if="iframeSrc[deptIndex]" class="dept_intro" :src="iframeSrc[deptIndex]")
+        ComingSoon(v-else class="dept_intro")
         div(class="dept_guide" v-if="pc")
           button(v-show="guildForm[deptIndex]" @click="openTab(guildForm[deptIndex])") 系館導覽報名表單
 </template>
 
 <script>
 import srcJson from '../assets//dept/dept.json'
+import ComingSoon from './common/ComingSoon.vue'
 export default {
+  components: {
+    ComingSoon
+  },
   created () {
     window.addEventListener('resize', this.windowSizeChange)
   },
