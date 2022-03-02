@@ -2,6 +2,7 @@
 .activity_page
   Header
   .activity_layout(@click="list = false")
+    // 活動介紹
     .activity_layout1(v-show="currentIndex===0")
       .top_bar1(v-show="pc")
         button(
@@ -47,6 +48,7 @@
         People(v-show="leftbarIndex===2")
         PsyTest(v-show="leftbarIndex===3")
 
+    // 時程表
     .activity_layout2(v-bind:key="currentIndex", v-show="currentIndex===1")
       .top_bar2(v-show="pc")
         button(
@@ -61,8 +63,9 @@
             @click="timeDate = index",
             v-bind:class="{ active: timeDate === index }"
           ) {{ item.topic }}
-        .right_show2
+        Schedule(:date="timeDate").right_show2
 
+    // 地圖
     .activity_layout3(
       v-show="currentIndex===2",
       @click="list = false; titleBlock = false"
@@ -101,6 +104,8 @@ import Story from '@/components/activities/category3/Phonograph/Story'
 import People from '@/components/activities/category3/Phonograph/People'
 import PsyTest from '@/components/activities/category3/Phonograph/PsyTest'
 
+import Schedule from '@/components/activities/Schedule'
+
 export default {
   components: {
     Waterfall,
@@ -118,7 +123,8 @@ export default {
     Motivation,
     Story,
     People,
-    PsyTest
+    PsyTest,
+    Schedule
   },
   created () {
     window.addEventListener('resize', this.windowSizeChange)
@@ -1152,14 +1158,12 @@ export default {
         }
       }
       .right_show2 {
-        // display: flex;
-        // flex-direction: column;
         width: 900px;
         height: 500px;
-        background: #dad0f2;
         border-radius: 50px;
         margin-top: 20px;
         margin-bottom: 20px;
+        padding: 0 20px;
       }
     }
   }
