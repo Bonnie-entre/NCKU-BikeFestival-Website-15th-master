@@ -3,7 +3,8 @@
     div.container
       p {{content}}
       div.people
-        div.person(v-for="person in people")
+        div.person(v-for="(person, i) in people")
+          img(:src="require(`@/assets/activity/phonograph/people${i+1}.png`)")
 </template>
 
 <script>
@@ -45,9 +46,11 @@ export default {
     gap: 30px;
     grid-template-columns: repeat(4,1fr);
     .person {
-      background: rgba(218, 208, 242, .4);
-      border-radius: 15px;
-      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      img {
+        width: 100%;
+        border-radius: 15px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      }
     }
   }
 }
