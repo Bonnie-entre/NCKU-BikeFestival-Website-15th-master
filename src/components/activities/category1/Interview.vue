@@ -19,7 +19,7 @@
           @click="deptIndex = index"
           :class="{ active: deptIndex === index }"
         ) {{ dept }}
-      <iframe width="640" height="360" src="https://www.youtube.com/embed/videoseries?list=PLqUuGuTWwe_WTLkMgASWr8R0sH2lKurVU" title="成大單車節 | 經驗分享" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe width="100%" height="360" src="https://www.youtube.com/embed/videoseries?list=PLqUuGuTWwe_WTLkMgASWr8R0sH2lKurVU" title="成大單車節 | 經驗分享" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     div.speach(v-if="menuIndex === 2")
       div(v-for="(info, index) in speachInfo")
         div.section(v-if="index % 2 === 0")
@@ -78,84 +78,180 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  h3 {
-    font-size: 40px;
-    text-align: left;
-  }
-
-  .menu {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 30px 0;
-    .menu_item {
-      cursor: pointer;
-      padding: 16px 40px;
-      font-size: 24px;
-      color: #7B61FF;
-      background-color: #FCF4D3;
-      box-shadow: (0px 4px 4px rgba(0, 0, 0, 0.25));
-      border-radius: 50px;
-      &.active {
-        background-color: #7B61FF;
-        color: #fff;
-      }
+  @media only screen and (max-width: 599px){
+    h3 {
+      font-size: 40px;
+      text-align: left;
     }
-  }
 
-  .mock_interview {
-    .p1 {
-      font-size: 24px;
-      margin: 16px 0;
-    }
-    .p2 {
-      color: #C4C4C4;
-    }
-  }
-
-  .exp_sharing {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    height: 420px;
-    .dept_list {
-      width: 80%;
+    .menu {
+      width: 100%;
       display: flex;
       justify-content: space-around;
       align-items: center;
-      .dept {
+      margin: 10px 0;
+      .menu_item {
         cursor: pointer;
-        font-size: 20px;
-        padding: 0 5px;
+        padding: 16px 10px;
+        font-size: 120%;
+        color: #7B61FF;
+        background-color: #FCF4D3;
+        box-shadow: (0px 4px 4px rgba(0, 0, 0, 0.25));
+        border-radius: 40px;
+        margin: 1vw;
         &.active {
-          border-bottom: 1.3mm solid #CDBFEE;
+          background-color: #7B61FF;
+          color: #fff;
         }
       }
     }
-  }
 
-  .speach {
-    width: 70%;
-    margin: 0 auto;
-    .section {
+    .mock_interview {
+      width: 86vw;
+      img{
+        width: 82vw;
+      }
+      .p1 {
+        font-size: 100%;
+        margin: 16px 0;
+      }
+      .p2 {
+        color: #C4C4C4;
+      }
+    }
+
+    .exp_sharing {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      height: 420px;
+      width: 86vw;
+      .dept_list {
+        width: 80%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        .dept {
+          cursor: pointer;
+          font-size: 120%;
+          padding: 0 5px;
+          &.active {
+            border-bottom: 1.3mm solid #CDBFEE;
+          }
+        }
+      }
+    }
+
+    .speach {
+      width: 86vw;
+      margin: 0 auto;
+      .section {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        img {
+          height: 136px;
+          width: 130px;
+        }
+        div .title {
+          color: #769BFF;
+          font-size: 110%;
+        }
+        div .content {
+          font-size: 100%;
+        }
+      }
+      hr {
+        border: solid #CDBFEE 1px;
+      }
+    }
+  }
+  @media only screen and (min-width: 600px){
+    h3 {
+      font-size: 40px;
+      text-align: left;
+    }
+
+    .menu {
+      width: 100%;
       display: flex;
       justify-content: space-around;
       align-items: center;
-      img {
-        height: 150px;
-      }
-      div .title {
-        color: #769BFF;
-        font-size: 20px;
-      }
-      div .content {
-        font-size: 18px;
+      margin: 30px 0;
+      .menu_item {
+        cursor: pointer;
+        padding: 16px 40px;
+        font-size: 24px;
+        color: #7B61FF;
+        background-color: #FCF4D3;
+        box-shadow: (0px 4px 4px rgba(0, 0, 0, 0.25));
+        border-radius: 50px;
+        &.active {
+          background-color: #7B61FF;
+          color: #fff;
+        }
       }
     }
-    hr {
-      border: solid #CDBFEE 1px;
+
+    .mock_interview {
+      width: 86%;
+      img{
+        width: 86%;
+      }
+      .p1 {
+        font-size: 24px;
+        margin: 16px 0;
+      }
+      .p2 {
+        color: #C4C4C4;
+      }
+    }
+
+    .exp_sharing {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      height: 420px;
+      width: 56vw;
+      .dept_list {
+        width: 80%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        .dept {
+          cursor: pointer;
+          font-size: 20px;
+          padding: 0 5px;
+          &.active {
+            border-bottom: 1.3mm solid #CDBFEE;
+          }
+        }
+      }
+    }
+
+    .speach {
+      width: 70%;
+      margin: 0 auto;
+      .section {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        img {
+          height: 150px;
+        }
+        div .title {
+          color: #769BFF;
+          font-size: 20px;
+        }
+        div .content {
+          font-size: 18px;
+        }
+      }
+      hr {
+        border: solid #CDBFEE 1px;
+      }
     }
   }
 </style>

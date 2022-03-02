@@ -41,37 +41,76 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  h3 {
-    font-size: 40px;
-    text-align: left;
-  }
-  .container {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-    height: 90%;
-    .column_item {
+  @media only screen and (max-width: 599px){
+    h3 {
+      font-size: 120%;
+      text-align: left;
+    }
+    .container {
       display: flex;
-      flex-direction: column;
-      width: 25%;
-      height: 100%;
-      .title {
-        font-size: 24px;
-        color: #769BFF;
-        font-weight: 700;
-        margin: 20px 0;
-        background: transparent;
-        display: block;
-        height: 40px;
+      justify-content: space-around;
+      margin-top: 20px;
+      height: 90%;
+      width: 88vw;
+      .column_item {
+        display: flex;
+        flex-direction: column;
+        width: 30%;
+        height: 100%;
+        .title {
+          font-size: 120%;
+          color: #769BFF;
+          font-weight: 700;
+          margin: 20px 0;
+          background: transparent;
+          display: block;
+          height: 40px;
+        }
+        .content {
+          color: #000;
+          text-align: left;
+          letter-spacing: 0.5px;
+        }
+        img{
+          height: 150px;
+          object-fit: contain;
+        }
       }
-      .content {
-        color: #000;
-        text-align: left;
-        letter-spacing: 0.5px;
-      }
-      img{
-        height: 150px;
-        object-fit: contain;
+    }
+  }
+  @media only screen and (min-width: 600px){
+    h3 {
+      font-size: 40px;
+      text-align: left;
+    }
+    .container {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 20px;
+      height: 90%;
+      .column_item {
+        display: flex;
+        flex-direction: column;
+        width: 25%;
+        height: 100%;
+        .title {
+          font-size: 24px;
+          color: #769BFF;
+          font-weight: 700;
+          margin: 20px 0;
+          background: transparent;
+          display: block;
+          height: 40px;
+        }
+        .content {
+          color: #000;
+          text-align: left;
+          letter-spacing: 0.5px;
+        }
+        img{
+          height: 150px;
+          object-fit: contain;
+        }
       }
     }
   }

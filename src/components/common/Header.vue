@@ -2,12 +2,8 @@
   div(class="top_bar")
     div(class="top_bar_layout" @click="scroll()")
       router-link(class="top_logo" to="/")
-      div(class="top_bar" v-if="!pc")
-        div(class="top_bar_mobile")
-          label() 活動介紹
-          button( @click="dropdown_top = !dropdown_top")
-            div(class="list_btn" v-for="(l, index) of 3")
-      div(class="top_bar" v-if="pc")
+      
+      div(class="top_bar_pc" v-if="pc") 
         router-link(v-bind:class="{ active: index===0 }" tag="label" v-for="(text, index) of menuText" v-bind:key="text" v-bind:to="'/' + urlText[index]") {{text}}
         label(@click="openTab('https://docs.google.com/forms/d/e/1FAIpQLSdBW8m8SVm5YqwtsOGWAaMYwOWiMJ_RbjZTNMq4dJYYWCg85Q/viewform'); list = false;") 我要報名
 
@@ -155,7 +151,7 @@ export default {
               filter: brightness(80%);
             }
         }
-        .top_bar{
+        .top_bar_pc{
           width: 60%;
           height: 50%;
           display: flex;
@@ -189,4 +185,6 @@ export default {
       }
     }
   }
+  
+        
 </style>
