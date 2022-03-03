@@ -9,14 +9,14 @@
             button( @click="dropdown_top = !dropdown_top")
               div(class="list_btn" v-for="(l, index) of 3")
           div(class="top_bar_pc" v-if="pc")
-            router-link(v-bind:class="{ active: index===1 }" tag="label" v-for="(text, index) of menuText" v-bind:key="text" v-bind:to="'/' + urlText[index]" v-if="pc") {{text}}
+            router-link(v-bind:class="{ active: index===1 }" tag="label" v-for="(text, index) of menuText" v-bind:key="index" v-bind:to="'/' + urlText[index]" v-if="pc") {{text}}
             label(@click="openTab('https://docs.google.com/forms/d/e/1FAIpQLSdBW8m8SVm5YqwtsOGWAaMYwOWiMJ_RbjZTNMq4dJYYWCg85Q/viewform'); list = false;" v-if="pc") 我要報名
     div(class="dept_layout_mobile" v-if="!pc & !dropdown_top")
       div(class="dropdown_top" )
         label() {{tempClass}}
         button(class="dropdown_btn" @click="dropdown=!dropdown;") ˇ
       div(class="dropdown_dept__menu" v-if="dropdown")
-        router-link(tag="label" v-for="(dept, index) of classes" v-bind:to="'/Dept_' + classKeys[index]" ) {{dept}}
+        router-link(tag="label" v-for="(dept, index) of classes" v-bind:to="'/Dept_' + classKeys[index]" v-bind:key="index" ) {{dept}}
     div(class="dept_layout_dropdown_top" v-if="dropdown_top")
       router-link(class="dropdown_top_list" v-for="(item, index) in menuText" tag="label"  v-bind:key="text" v-bind:to="'/' + urlText[index]" v-bind:class="{ active: index==1 }") {{item}}
       label(class="dropdown_top_list" @click="openTab('https://docs.google.com/forms/d/e/1FAIpQLSdBW8m8SVm5YqwtsOGWAaMYwOWiMJ_RbjZTNMq4dJYYWCg85Q/viewform'); list = false;") 我要報名

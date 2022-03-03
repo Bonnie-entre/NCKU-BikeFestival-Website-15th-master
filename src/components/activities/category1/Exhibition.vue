@@ -2,7 +2,8 @@
   Panel(:title="title")
     div(class="secondary-title") {{secondaryTitle}}
     Block(
-      v-for="block in blocks",
+      v-for="(block, index) in blocks",
+      :key="index"
       :title="block.title",
       :content="block.content"
     )

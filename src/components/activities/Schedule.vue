@@ -1,7 +1,8 @@
 <template lang="pug">
   Panel
     Block(
-      v-for="data in datas[date]"
+      v-for="(data, index) in datas[date]"
+      :key="index"
       :title="data.title"
       :content="data.content"
       style="background: transparent;"
