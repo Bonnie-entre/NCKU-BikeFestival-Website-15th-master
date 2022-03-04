@@ -971,8 +971,8 @@ export default {
             cursor: pointer;
           }
           p {
-            color: rgb(48,182,245);
-            font-size: 40px;
+            color: #0C3759;
+            font-size: 30px;
             letter-spacing: 4px;
             padding: 10px;
           }
