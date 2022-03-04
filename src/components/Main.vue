@@ -14,10 +14,15 @@
         div(class="test")
           div.preview
             div.monitor
-              div.block 空氣品質 
-                span {{ `${PM25} (PM2.5)` }}
+              div.block 
+                span 空氣品質 
+                span.loader(v-if="PM25 === -1")
+                span.data(v-else) &nbsp;{{ PM25 }} &nbsp;
+                span.data {{ ` (pm2.5)` }}
               div.block 入場人數 
-                span {{ `${population} (人)` }}
+                span.loader(v-if="population === -1")
+                span.data(v-else) &nbsp;{{ population }} &nbsp;
+                span.data {{ ` (人)` }}
             iframe(class="intro_film" v-if="pc | dropdown==false" src='https://www.youtube.com/embed/KsXRN7AKDUI')
           div(class="intro_menu" v-if="pc | dropdown==true" @click="dropdown=false;" )
             div(class="list" v-if="dropdown==true" @click="dropdown=false;")
@@ -38,7 +43,6 @@
 </template>
 
 <script>
-//  import axios from 'axios'
 import frontImg from '../assets/main/front.png'
 import backImg from '../assets/main/back.png'
 export default {
@@ -60,8 +64,8 @@ export default {
       dropdown: false,
       frontImg,
       backImg,
-      population: 0,
-      PM25: 0
+      population: -1,
+      PM25: -1
     }
   },
   mounted: async function () {
@@ -216,6 +220,26 @@ export default {
       overflow-x: hidden;
       .intro_layout1{
         .test{
+          .monitor{
+            margin: 2vh 0 0 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            .block{
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              width: 48%;
+              background-color: #fff;
+              line-height: 30px;
+              border-radius: 30px;
+              font-size: 15px;
+              color: #7B61FF;
+              .data{
+                color: #FF6187;
+              }
+            }
+          }
           .intro_film{
             margin: 4vh 1vw 2vh 0;
             height: 26vh;
@@ -414,13 +438,16 @@ export default {
             justify-content: space-around;
             align-items: center;
             .block{
+              display: flex;
+              justify-content: center;
+              align-items: center;
               width: 30%;
               background-color: #fff;
               line-height: 60px;
               border-radius: 30px;
               font-size: 24px;
               color: #7B61FF;
-              span{
+              .data{
                 color: #FF6187;
               }
             }
@@ -563,4 +590,69 @@ export default {
       }
     }
   }
+
+.loader {
+  font-size: 8px;
+  margin: 3px;
+  text-indent: -9999em;
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
+  background: #FF6187;
+  background: -moz-linear-gradient(left, #FF6187 10%, rgba(255, 255, 255, 0) 42%);
+  background: -webkit-linear-gradient(left, #FF6187 10%, rgba(255, 255, 255, 0) 42%);
+  background: -o-linear-gradient(left, #FF6187 10%, rgba(255, 255, 255, 0) 42%);
+  background: -ms-linear-gradient(left, #FF6187 10%, rgba(255, 255, 255, 0) 42%);
+  background: linear-gradient(to right, #FF6187 10%, rgba(255, 255, 255, 0) 42%);
+  position: relative;
+  -webkit-animation: load3 1.4s infinite linear;
+  animation: load3 1.4s infinite linear;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+}
+.loader:before {
+  width: 50%;
+  height: 50%;
+  background: #FF6187;
+  border-radius: 100% 0 0 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '';
+}
+.loader:after {
+  background: #ffffff;
+  width: 75%;
+  height: 75%;
+  border-radius: 50%;
+  content: '';
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+@-webkit-keyframes load3 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes load3 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
 </style>
