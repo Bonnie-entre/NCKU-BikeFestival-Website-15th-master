@@ -18,11 +18,11 @@
                 span 空氣品質 
                 span.loader(v-if="PM25 === -1")
                 span.data(v-else) &nbsp;{{ PM25 }} &nbsp;
-                span.data {{ ` (pm2.5)` }}
+                span.data.unit {{ ` (pm2.5)` }}
               div.block 入場人數 
                 span.loader(v-if="population === -1")
                 span.data(v-else) &nbsp;{{ population }} &nbsp;
-                span.data {{ ` (人)` }}
+                span.data.unit {{ ` (人)` }}
             iframe(class="intro_film" v-if="pc | dropdown==false" src='https://www.youtube.com/embed/KsXRN7AKDUI')
           div(class="intro_menu" v-if="pc | dropdown==true" @click="dropdown=false;" )
             div(class="list" v-if="dropdown==true" @click="dropdown=false;")
@@ -237,6 +237,9 @@ export default {
               color: #7B61FF;
               .data{
                 color: #FF6187;
+              }
+              .unit{
+                font-size: 10px;
               }
             }
           }
