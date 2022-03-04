@@ -60,10 +60,8 @@ export default {
       list: false,
       pc: this.isPC(),
       currentIndex: -1,
-      //-1
       dropdown_top: false,
       mode: 0,
-      //0
       sponsorLogo: [
         {
           name: 'Batiste 乾洗髮',
