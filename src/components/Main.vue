@@ -51,6 +51,7 @@ export default {
       menuText: ['活動介紹', '科系資訊', '主題專欄', '合作單位'],
       urlText: ['activity', 'department', 'column', 'sponsor'],
       list: false,
+      airQuality: 0,
       pc: this.isPC(),
       currentIndex: -1,
       loader: null,
@@ -61,13 +62,18 @@ export default {
   },
   mounted: async function () {
     this.pc = this.isPC()
-    this.setBarHeight()
     setInterval(this.timeCounter, 1000)
     this.numberDom1 = document.querySelector('#news_number_1')
     this.numberDom2 = document.querySelector('#news_number_2')
     this.timeCounter()
     this.loader = this.$loading.show()
     this.loader.hide()
+
+    fetch('http://140.116.68.48:8081/bikeData').then((res) => {
+      return res.json().then((jsonData) => {
+        console.log(jsonData);
+      })
+    })
   },
   methods: {
     windowSizeChange: function (event) {
