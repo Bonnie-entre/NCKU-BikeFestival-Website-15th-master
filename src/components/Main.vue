@@ -73,7 +73,7 @@ export default {
     this.loader = this.$loading.show()
     this.loader.hide()
 
-    fetch('http://140.116.68.48:8081/bikeData').then((res) => {
+    fetch('https://nckubike.ainimal.io/').then((res) => {
       return res.json().then((jsonData) => {
         this.population = jsonData['光復'] + jsonData['光復到榕園'] + jsonData['榕園']
         this.PM25 = jsonData['PM2.5']
