@@ -84,8 +84,8 @@ export default {
         'https://drive.google.com/file/d/1aneeu8vbsq1D3dquvtAmbybHUccY9Rj9/preview',
         'https://drive.google.com/file/d/13mhy5nqmEvFX4dwhVa_6wxzp8dNlSJ8v/preview',
         'https://drive.google.com/file/d/1aneeu8vbsq1D3dquvtAmbybHUccY9Rj9/preview',
-        '',
-        ''
+        'https://drive.google.com/file/d/146b9N5xX6ztzHpXlx1fK-mjipkqGNjtu/preview',
+        'https://drive.google.com/file/d/1GsfygERK0MZYXOz8tJM4gMAy9Ryl8fm0/preview'
       ],
       guildForm: [
         '',

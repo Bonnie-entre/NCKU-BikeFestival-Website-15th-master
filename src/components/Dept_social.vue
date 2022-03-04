@@ -74,7 +74,7 @@ export default {
         'https://drive.google.com/file/d/1HzeHV6x8QrOIXwtP_okqm1-aFAHRZZgX/preview',
         'https://drive.google.com/file/d/1zYCW7SeJKx3WWs5kFNmFJARRKfbmlwBg/preview',
         'https://drive.google.com/file/d/1wRlC4xP-57lp82GNg4lmhBE8zKTUit77/preview',
-        ''
+        'https://drive.google.com/file/d/1x0VjM-pIYTW8dxDJsZDhC_0A5H2FMyZ7/preview'
       ],
       guildForm: [
         '',
