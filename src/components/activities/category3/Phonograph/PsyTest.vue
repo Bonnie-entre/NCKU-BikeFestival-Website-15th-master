@@ -56,16 +56,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.back-btn{
-  position: absolute;
-  left: 40px;
-  font-size: 20px;
-  cursor: pointer;
-  &:hover {
-    text-shadow: 0 0 4px #fcdbe3, 0 0 5px #dad0f2;
-  }
-}
+
   @media only screen and (max-width: 599px){
+    .back-btn{
+      position: absolute;
+      left: 30px;
+      top: 10px;
+      font-size: 20px;
+      cursor: pointer;
+      &:hover {
+        text-shadow: 0 0 4px #fcdbe3, 0 0 5px #dad0f2;
+      }
+    }
     .container {
       flex-grow: 1;
       width: 100%;
@@ -110,6 +112,15 @@ export default {
     }
   }
   @media only screen and (min-width: 600px){
+    .back-btn{
+      position: absolute;
+      left: 40px;
+      font-size: 20px;
+      cursor: pointer;
+      &:hover {
+        text-shadow: 0 0 4px #fcdbe3, 0 0 5px #dad0f2;
+      }
+    }
     .container {
       flex-grow: 1;
       width: 100%;
