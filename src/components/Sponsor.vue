@@ -217,7 +217,7 @@ export default {
             疫情期間，口罩成為日常出門的必備品，不僅要能保護自己與他人的安全，也要兼顧時尚潮流，除了一般款式外，BioMask 抓住年輕族群的心，推出了聯名款，為你每日穿搭增添亮點。 熱銷的蠟筆小新聯名款連口罩盒子都是精心設計，有小新的玩具箱、巧克比餅乾盒、幼稚園的貓咪校車，甚至還有 2021 蠟筆小新電影限量聯名款，真的超級可愛！超級燒！各位小新粉們快快動起來，點進下方連結： https://24h.m.pchome.com.tw/prod/search/?q=biomask&scope=all&sort=sale%2Fdc 近期新推出的 Charmmy kitty 聯名款、小熊學校聯名款、一般素色款式、BioMask 自創款式、其他聯名款，都可以在以上連結購買呦~
             </p>
 
-            <div style="height: 10vh; background-image: url("../assets/sponsor/bio1.png"); background-position: left 10% center; background-repeat: no-repeat; background-size: 50%;">
+            <img src="../assets/sponsor/bio1.jpg" width="500" height="300"  /> 
             <p style="padding: 5px 0; font-size: 22px; line-height: 28px; font-weight: bold; color: black; letter-spacing: 4.5px; margin-top: 20px;">
             嚴格把關，安全無虞 
             </p>
@@ -535,6 +535,291 @@ export default {
             <p>IG：@onething_official.tw  </p>
             <p>Line官方帳號：@onethingtaiwan</p>
             </p>
+            `
+        },
+        {
+          name: '民台科技',
+          content: `
+            <p align="left">
+
+            <div></div>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            KOKUYO(國譽)為日本第一文具品牌，成立至今已經超過 110 年的歷史。以效率、創新、高品質的特色，成為日本人心中的國民品牌，也是日本人最想進入企業之一。 </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            KOKUYO 一直致力於創造有用又好用的商品，其絕大多數的產品皆通過 UD(Universal Design) 通用設計，不論小孩、老人都能安心使用，也讓它成為日本 Good Design 大賞的得獎常客。 </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            印有「Campus」字樣封面的筆記本，可說是 KOKUYO 的明星商品，也是許多日本人學生時代共同的記憶。至今已發展出大小各種不同與適合不同用途的系列，總銷售量高達 17 億本，平均每三位東大生中就有一位使用！ </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            從當年的小舖子到現在的國際公司，從文具製品到物流、家具、資訊等各個領域，百年老店的 KOKUYO 一方保存著優良傳統，同時也不斷嘗試新的可能
+            </p>
+            
+            <img></img>
+            <div style=" width:100%; height: 4px; border-top: 3px solid #CDBFEE; margin-top: 20px; "> </div>
+            <p align="center">
+            <p style="color:#7B61FF; letter-spacing: 2px; font-weight: bold; font-size: 2.5vh; line-height: 4.5vh; margin-top: 2vh;">民台科技 </p>
+            <p>IG：<a href="https://www.instagram.com/kokuyo_stationery_tw/">https://www.instagram.com/kokuyo_stationery_tw/</a> </p>
+            <p>FB粉絲團：<a href="https://www.facebook.com/KOKUYOtaiwan/">https://www.facebook.com/KOKUYOtaiwan/</a></p>
+            </p>
+            `
+        },
+        {
+          name: '民台科技',
+          content: `
+            <p align="left">
+
+            <div></div>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            好日子 agooday </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            「用設計的力量，讓減塑變得更簡單。」 每個人都知道應該要環保，只是不知道該如何在生活中實踐。 </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            好日子 agooday 希望能夠做這個橋樑，設計好用的產品，讓環保從理念落實到每天生活當中，減少製造一次性塑膠垃圾。 </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            並且把減塑的理念，提升為一種生活風格我們期許自己可以為台灣這片土地做出更多更棒的產品。 </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            而帶著這份理念，好日子曾在 2018 年榮獲金點設計獎標章肯定，在 2019 年入選 Shopping design 雜誌「Best 100」 </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            ＿＿＿＿ </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            Pockeat 食物袋 </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            讓你輕鬆加入無痕飲食的行列 </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            適合台灣人飲食習慣的食物袋，能裝各種常吃的台灣食物，耐熱防水不擔心湯湯水水外漏！ 只要輕鬆捲動黏扣帶，Pockeat 可以依照內容物變化大小。 </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            獨特暗袋設計，可將袋體收成約一包面紙大小暗袋也可放入保冷袋延長食物保鮮時間重量約三支鑰匙，隨身攜帶零負擔！</p>
+            
+            <div style=" width:100%; height: 4px; border-top: 3px solid #CDBFEE; margin-top: 20px; "> </div>
+            <p align="center">
+            <p style="color:#7B61FF; letter-spacing: 2px; font-weight: bold; font-size: 2.5vh; line-height: 4.5vh; margin-top: 2vh;">好日子</p>
+            <p>官網：<a href="https://agooday.com">https://agooday.com</a> </p>
+            </p>
+            `
+        },
+        {
+          name: '百氛苑',
+          content: `
+            <p align="left">
+
+            <img/>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            百氛苑品牌主張：「⽣活裡必備⼀種微笑的味道，隨時喚起無需理由，簡單的快樂，輕鬆⾃在」，⾹氣是展現對⽣活的態度，如果每天可以在⾹氣中醒來，無時無刻都散發著⼀種簡單、快樂、輕鬆⾃在的⾹調，是多幸福的⼀件事！2019年成⽴於台北的「百氛苑」，從這塊⼟地由衷散發的友善獲得滋養，⿃瞰、細觀台北的⽂化⾵情，創造「百氛苑」專屬的氣味輪廓。
+            </p>
+
+            <img/>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            ⾹味是最有溫度的深度陪伴，明亮的「⽇光微笑」適合與書卷氣的「傾聽寂靜」，兩款經典的氣味疊⾹噴灑，揉合為清爽沈穩的豐沛層次，肌膚縈繞著迷⼈氣息，擦上疊⾹，隨著時間變化產⽣令⼈驚喜的氣味轉換，成為情⼈之間互相探索的樂趣。
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            百氛苑的調⾹設計師，召喚⼀閃即逝的美，勾勒出氣味靈光。想像⼒逬發鮮活⾹調，輕盈碰撞；細緻琢磨，迴蘊⽣活裡的每⼀刻。
+            </p>
+            <div style=" width:100%; height: 4px; border-top: 3px solid #CDBFEE; margin-top: 20px; "> </div>
+            <p align="center">
+            <p style="color:#7B61FF; letter-spacing: 2px; font-weight: bold; font-size: 2.5vh; line-height: 4.5vh; margin-top: 2vh;">百氛苑</p>
+            <p>銷售通路：台北誠品信義店2F / 百氛苑專櫃 </p>
+            <p>官⽅網站：<a href="https://www.100phantom.com">https://www.100phantom.com</a> </p>
+            <p>誠品線上：<a href="https://reurl.cc/yQQ35D">https://reurl.cc/yQQ35D</a></p>
+            <p>Pinkoi：<a href="https://reurl.cc/2DDnMn">https://reurl.cc/2DDnMn</a></p>
+            `
+        },
+        {
+          name: '忌妒妳的美 IJEALOUS',
+          content: `
+            <p align="left">
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            忌妒妳的美 IJEALOUS 成立於 2016 年，以生產及銷售保養品為主，堅持使用上質原料和有效配方。 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            IJEALOUS 不僅以專注的精神不斷研發，並結合白兔的構思企劃創造更多元化的產品，如：獨家的胡蘿蔔面膜系列產品，深受市場喜愛。不只產品原料講究，更以高標準的規格挑選瓶器和製作包裝，透過與設計師合作，以打造出特色鮮明的白兔形象產品。 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            IJEALOUS 始終努力耕耘，未來將持續以白兔溫柔鮮明的形象推廣產品，期望透過簡單且有效的程序，讓人人可以輕鬆在家享受 SPA 般的保養。
+            </p>
+            <div style=" width:100%; height: 4px; border-top: 3px solid #CDBFEE; margin-top: 20px; "> </div>
+            <p align="center">
+            <p style="color:#7B61FF; letter-spacing: 2px; font-weight: bold; font-size: 2.5vh; line-height: 4.5vh; margin-top: 2vh;">忌妒妳的美 IJEALOUS</p>
+            <p>官網網址：<a href="https://www.ijealous.com.tw/">https://www.ijealous.com.tw/</a> </p>
+            `
+        },
+        {
+          name: '法律白話文運動',
+          content: `
+            <p align="left">
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            在你的江湖，補充你的法力。只有中華民國才寫得出來的斷交史，和台灣人自己的台灣法曆，舉世獨步的島嶼，卻不正常的島嶼，有著自己的故事，和不正常的憲法，因此憲政熱映中。不正常國家的法律，讀了再久，還是忍不住罵一句 What the 法。 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            書寫我們自己的法律故事，法律白話文運動全書系熱賣中，任選三本以上 79 折。
+            </p>
+            <div style=" width:100%; height: 4px; border-top: 3px solid #CDBFEE; margin-top: 20px; "> </div>
+            <p align="center">
+            <p style="color:#7B61FF; letter-spacing: 2px; font-weight: bold; font-size: 2.5vh; line-height: 4.5vh; margin-top: 2vh;">法律白話文運動</p>
+            <p>點這裡購買👉：<a href="store.plianlaw.me">store.plianlaw.me</a> </p>
+            <p>粉絲專頁：<a href="https://www.facebook.com/plainlaw.me">https://www.facebook.com/plainlaw.me</a> </p>
+            <p>電子信箱：<a href="business@plainlaw.me">business@plainlaw.me</a></p>
+            `
+        },
+        {
+          name: '旅讀',
+          content: `
+            <p align="left">
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            「On the Road」在路上，閱讀生活的溫度。 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            期許成為「最富知識的人文行旅雜誌」 ── 《 旅讀 》 月刊以知識為最重要的內容，懷著悲天憫人、溫柔敦厚的精神， 和讀者一起探索有情世界， 撒播知識，收穫品味 。 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            如果你喜歡深度旅行，那就請不要錯過《旅讀》能帶給你 的「體驗式閱讀」，一起揹起知識行囊，探索生活版圖。
+            </p>
+            `
+        },
+        {
+          name: '野台系',
+          content: `
+            <p align="left">
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            在你的江湖，補充你的法力。只有中華民國才寫得出來的斷交史，和台灣人自己的台灣法曆，舉世獨步的島嶼，卻不正常的島嶼，有著自己的故事，和不正常的憲法，因此憲政熱映中。不正常國家的法律，讀了再久，還是忍不住罵一句 What the 法。 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            書寫我們自己的法律故事，法律白話文運動全書系熱賣中，任選三本以上 79 折。
+            </p>
+            <div style=" width:100%; height: 4px; border-top: 3px solid #CDBFEE; margin-top: 20px; "> </div>
+            <p align="center">
+            <p style="color:#7B61FF; letter-spacing: 2px; font-weight: bold; font-size: 2.5vh; line-height: 4.5vh; margin-top: 2vh;">野台系</p>
+            <p>點這裡購買👉：<a href="store.plianlaw.me">store.plianlaw.me</a> </p>
+            <p>粉絲專頁：<a href="https://www.facebook.com/plainlaw.me">https://www.facebook.com/plainlaw.me</a> </p>
+            <p>電子信箱：<a href="business@plainlaw.me">business@plainlaw.me</a></p>
+            `
+        },
+        {
+          name: '晶碩光學',
+          content: `
+            <p align="left">
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            晶碩光學第一間直營門市於2011年開幕，獨家創新晶友制度、統一價格及安心購買服務，直至今日，累計超過40萬消費群眾，並不停擴點，目前已有近50間門市，遍及台北桃園、新竹、台中、台南、高雄鬧區，儼然成為廣為人知的地標。 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            2014年開始提供APP配送服務，2015年拓展銷售通路，在屈臣氏及眼鏡行也可以購買到晶碩製造的產品，擴大服務到其他購物習慣的消費者。在創新力、設計力、品質力、服務力等四個品牌力上秉持著特有的堅持與態度，努力成為持續提供最佳解決方案的隱形眼鏡品牌。 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            在中國，我們以消費者需求為導向持續提升，在款式及規格上提供多樣化的選擇；並以台灣穩固的品牌基礎及行銷經驗應用至中國，服務中國區顧客。 2015年於中國天貓旗艦店開賣。每年上架的新品大約是2~4款，讓消費者可以更快速地與流行時尚接軌，以中國在地消費習慣為基準，提供100%台灣製造生產的產品，與台灣新品上架時間零時差。 面對日益變化的全球市場需求，晶碩秉持著不斷創新、追求卓越的精神，期許成為解決顧客配戴需求的領導品牌。
+            </p>
+            <div style=" width:100%; height: 4px; border-top: 3px solid #CDBFEE; margin-top: 20px; "> </div>
+            <p align="center">
+            <p style="color:#7B61FF; letter-spacing: 2px; font-weight: bold; font-size: 2.5vh; line-height: 4.5vh; margin-top: 2vh;">晶碩光學</p>
+            <p>官網：<a href="https://tw.pegavision.com/">https://tw.pegavision.com/</a> </p>
+            `
+        },
+        {
+          name: '群聯電子',
+          content: `
+            <p align="left">
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            群聯電子，是一家致力於研發與設計快閃記憶體控制晶片的臺灣半導體公司， 成立於 2000 年，如今已成為全球控制晶片領域的領頭者。群聯電子所 提供的快閃記憶體涵蓋消費性市場、工控市場、企業應用及自駕車規，群聯也持續新技術的創新，在全球電子產品供應鏈中可以說是不可或缺的重要角色！</p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            群聯傑出的經營策略構成了具競爭力的條件。透過優秀的研發團隊、領先業界的技術、有效率且通過 ISO 認證的製造過程、有力的專利佈局、完整的行銷策略 、具競爭力的產品加上出色的客戶支援，打造出第一流的產品。不論是 IC 設計、系統整合、客製化服務或是製造，我們都能提供客戶最好的服務。這也使得 群聯能夠成功打入包含中國、北美、南美、歐洲、非洲、澳洲、俄羅斯、日本、韓國、印度、東協及台灣等在內的全球市場。</p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            群聯電子領先全球的技術，展現在各式各樣的產品應用上，包含了「全球最快 PCIe SSD Gen4X4 控制晶片」、「全球最大容量固態硬碟(SSD)」、「全球最大容量 SD 卡」、「全球最高市占車用崁入式多媒體存儲卡」。更連續兩年獲得「全 球最佳 SSD 控制晶片」。</p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            群聯更不忘善盡企業社會責任，在新冠肺炎疫情升溫的 情況下，捐贈超紫光滅菌機器人，不僅代表著政府、醫院、與民間企業同心團結，共同推動防疫工作，也期望能強化醫護人員的防護品質，也採購了十年的綠電協議書，為身為地球村一份子盡一份心力。相信群聯電子往後也能繼續創新，帶領台灣走向全球，成為下一個台灣的護國神山！</p>          
+            `
+        },
+        {
+          name: '簡單生活實驗室',
+          content: `
+            <p align="left">
+            <p style="padding: 5px 0; font-size: 22px; line-height: 28px; font-weight: bold; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            ▲簡單生活實驗室—為什麼我們關注嗅覺香氛？▲ 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            大腦科學告訴我們，嗅覺直接連結了感性腦、即邊緣系統， 掌管著感受力與情感覺知，是五感中唯一不受大腦控制的感官。 嗅覺的直覺性，呼應著情緒與情感，每種香味都代表著喜愛他的人的一份獨特。 我們鼓勵女人抹香、正是透過香味『低調地表達』。 表達我是誰、我的情緒、我的情感，更是表達我的獨特、我的選擇。 
+            </p>
+            <p style="padding: 5px 0; font-size: 22px; line-height: 28px; font-weight: bold; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            ▲簡單生活實驗室—品牌定位▲ 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            2015年成立的【SLL簡單生活實驗室】，定位為『個人隨身香氛』品牌。 我們把生活視為培養皿、將商品提案當作一場實驗， 持續陪伴學習愛自己的女性，透過香味、一起找到屬於自己的那份獨特。 我們主張『香味，是一種低調的表達』。 Keep trying, 找到你的簡單生活！ 
+            </p>
+            <p style="padding: 5px 0; font-size: 22px; line-height: 28px; font-weight: bold; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            ▲簡單生活實驗室—為什麼SLL主張使用固體香水(香膏)？▲ 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            香水的液態性，使得防腐劑的使用變成必然。 加上香水的香味是具酒精揮發性的，容易過於濃郁，殘留在已經離開的空間。而且又容易噴灑不均、液態也不易攜帶。 固體香水(香膏)，以天然蜜蠟及植物蠟為基底、輔以凡士林，即便溫度隨天候變化，仍穩定地以固態劑型呈現，因為固態也就無需使用防腐劑。 固體香水(香膏)不含酒精、香味透過體溫揮發，讓淡淡的清香、慢慢釋放，讓香氛成為陪伴自己、卻又不過於打擾他人的美好！ 
+            </p>
+            <p style="padding: 5px 0; font-size: 22px; line-height: 28px; font-weight: bold; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            ▲簡單生活實驗室—商品特點▲ 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            香味難以言喻，卻極有個性！ 所以，【SLL簡單生活實驗室】從創辦以來， 每款香味商品，都與台灣新銳插畫創作者合作， 透過插圖裡的情境故事，加以表達每一個香味的特點。 我們希望陪伴每位女性找到屬於自己的味道， 每個不同時刻，都能活出獨特！
+            </p>          
+            <div style=" width:100%; height: 4px; border-top: 3px solid #CDBFEE; margin-top: 20px; "> </div>
+            <p align="center">
+            <p style="color:#7B61FF; letter-spacing: 2px; font-weight: bold; font-size: 2.5vh; line-height: 4.5vh; margin-top: 2vh;">簡單生活實驗室</p>
+            <p>購買連結： <a href="https://www.pinkoi.com/store/sll-2015?fbclid=IwAR3k_Mitj1hU8LnplDGulwVheFKZjqrC8iQ0FQsG5vVYvR_53WIEJCV_HoE&tab=story">https://www.pinkoi.com/store/sll-2015?fbclid=IwAR3k_Mitj1hU8LnplDGulwVheFKZjqrC8iQ0FQsG5vVYvR_53WIEJCV_HoE&tab=story</a> </p>
+            <p>臉書官網： <a href="https://www.facebook.com/SimpleLifeLaboratory/">https://www.facebook.com/SimpleLifeLaboratory/</a></p>
+            `
+        },
+        {
+          name: '寶貝國際',
+          content: `
+            <p align="left">
+            <p style="padding: 5px 0; font-size: 22px; line-height: 28px; font-weight: bold; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            最值得信賴的美國品牌 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            樹頂(TreeTop)於 1960 年創建以來，一直堅持使用美國最優質的蘋果來製造每一瓶蘋果汁。堅持初衷，嚴選全美品質最佳的蘋果，成為全美最值得信賴的品牌之一。 台灣於 1988 年開始販售，以新鮮絶佳口感聞名於市場，堅持給消費者最優質的果汁飲品，並成為台灣蘋果汁市佔率第一的品牌。 目前多款系列: 樹頂 100% 純果汁系列/樹頂活果茶系列/樹頂 Functional 系列，產品選擇多樣化，一次滿足消費者不同需求。 
+            </p>
+            <p style="padding: 5px 0; font-size: 22px; line-height: 28px; font-weight: bold; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            產品介紹：樹頂藍莓茶 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            樹頂藍莓果茶：將藍莓果汁與綠茶完美比例結合，無添加色素及防腐劑，口味自然甘甜、健康美味，深受消費者信賴和喜愛。 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 10px;">
+            ● 美國第一大品牌 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 10px;">
+            ● 全美最值得信賴的品牌 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 10px;">
+            ● 口味層次豐富 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 10px;">
+            ● 健康清新果茶 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 10px;">
+            ● 無添加色素、及無防腐劑
+            </p>
+            
+            <img/>
+            <div style=" width:100%; height: 4px; border-top: 3px solid #CDBFEE; margin-top: 20px; "> </div>
+            <p align="center">
+            <p style="color:#7B61FF; letter-spacing: 2px; font-weight: bold; font-size: 2.5vh; line-height: 4.5vh; margin-top: 2vh;">寶貝國際</p>
+            <p>FB粉絲專頁：<a href="https://www.facebook.com/TreeTop.Taiwan/">https://www.facebook.com/TreeTop.Taiwan/</a> </p>
+            <p>Tree Top樹頂 IG：<a href="https://www.instagram.com/treetop.tw/">https://www.instagram.com/treetop.tw/</a> </p>
+            <p>寶貝國際線上購物：<a href="https://www.babicorp.com/tw/brands_ii.html?bID=9">https://www.babicorp.com/tw/brands_ii.html?bID=9</a></p>
+            `
+        },
+        {
+          name: 'KISS ME',
+          content: `
+            <p align="left">
+
+            <img/>
+            <p style="padding: 5px 0; font-size: 22px; line-height: 28px; font-weight: bold; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            【KISSME 花漾美姬】 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            KISSME 花漾美姬，KISSME 奇士美化粧品旗下的彩妝品牌， 來自日本的「全眼妝專家」，為了讓女孩實現對美麗的渴望，綻放如花朵般的光芒， 為魅力眼神提供各種秘密武器，致力於發展 #眼線、#睫毛膏、#眉彩系列彩妝， 讓每位女性都能自信展現各種樣貌、裝扮各式花漾。 美姬公主自 2021 年，由甜美公主蛻變為時尚女王， 象徵著她已從期盼美好愛情降臨的可愛女孩，成長為勇敢追尋心之所嚮、重視自我成長的自信女人。 鼓勵女性不論妝容、生活，甚至是愛情，都該追求更精緻、獨立、堅強及自信的境地， 使自己勇敢蛻變為迷人亮眼的女主角。 秉持著「花若盛開，蝴蝶自來」的信念， 完美詮釋追尋自我盛放的模樣， 滋養為盛開的玫瑰，由內而外散發自信光芒，無論何時都保持完美無瑕， 就讓花漾美姬成就妳的獨特魅力。
+            </p>
+            <img/>
+            <p style="padding: 5px 0; font-size: 22px; line-height: 28px; font-weight: bold; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            【KISSME 奇士美化粧品】  
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            日本原裝進口 KISSME 化妝品，囊括多個彩妝與保養品系列：市占第一名全眼妝專家的 KISSME 「花漾美姬」系列、以大人系全彩妝為主的「FERME」系列。保養品則有「KISSME 奇士美」、「Vivant Joie 畢凡娃」及「Puravida」等系列。採用高品質、有效的原料，堅持不添加香料等刺激成分，商品通過日本皮膚科醫師監督之貼布測試，敏弱肌也適用。滿足妳的美麗需求，共同締造妳的美麗奇蹟。 台灣奇士美是與日本伊勢半集團合資之化粧品公司，正式於 1966 年在台開始營運。伊勢半是日本美妝前十大品牌，在日本美妝界深具影響力，並致力於女性在美的展現。創立於 1825 年至今，近 200 年專業的經驗。一路走來，始終堅持提供功能卓越、品質優異，並有日式美學的商品。以日式職人精神專注地投入在美妝保養商品的研發，擁有專門的研究所和製造工廠，為妳的美麗肌膚嚴格把關。
+            </p>         
             `
         }
       ]
