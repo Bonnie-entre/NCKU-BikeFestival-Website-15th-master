@@ -10,30 +10,39 @@
               div(class="list_btn" v-for="(l, index) of 3")
           div(class="top_bar_pc" v-if="pc")
             router-link(v-bind:class="{ active: index===3 }" tag="label" v-for="(text, index) of menuText" v-bind:key="text" v-bind:to="'/' + urlText[index]" v-if="pc") {{text}}
-            label(@click="openTab('https://docs.google.com/forms/d/e/1FAIpQLSdBW8m8SVm5YqwtsOGWAaMYwOWiMJ_RbjZTNMq4dJYYWCg85Q/viewform'); list = false;" v-if="pc") 我要報名
+            label(@click="openTab('https://docs.google.com/forms/d/e/1FAIpQLSdBW8m8SVm5YqwtsOGWAaMYwOWiMJ_RbjZTNMq4dJYYWCg85Q/viewform'); list = false;" v-if="pc") 我要報名 
     div(class="sponsor_layout_dropdown_top" v-if="dropdown_top")
       router-link(class="dropdown_top_list" v-for="(item, index) in menuText" tag="label"  v-bind:key="text" v-bind:to="'/' + urlText[index]" v-bind:class="{ active: index==3 }") {{item}}
       label(class="dropdown_top_list" @click="openTab('https://docs.google.com/forms/d/e/1FAIpQLSdBW8m8SVm5YqwtsOGWAaMYwOWiMJ_RbjZTNMq4dJYYWCg85Q/viewform'); list = false;") 我要報名
-    div(class="sponsor_layout_1" v-show="mode === 0" v-if="!dropdown_top" @click="list = false")
-      section(class="sponsor_list")
+    div(class="sponsor_layout_1" v-if=" mode === 0 && !dropdown_top" @click="list = false")
+      //- 
+      div(class="sponsor_list" v-if="pc && mode === 0")
         label(
           v-for="(iter, index) of sponsorLogo"
           v-bind:key="iter.name"
           v-bind:data-name="iter.name"
           v-bind:href="`${iter.link}`" target="_blank"
           v-bind:style="{'background-image': 'url('+ require(`@/assets/sponsor/sponsor${index+1}.png`) + ')'}"
-        )
-        div(class="sponsor_list_empty")
-    div(class="sponsor_layout_2" v-if="mode === 1" v-show="!dropdown_top" @click="list = false")
-      section(class="sponsor_info")
-        p {{sponsor[currentIndex].name}}
+          v-on:click="openSponsorLayout2(index)"
+        ) 
+      div(class="sponsor_list" v-if="!pc && mode === 0")
         label(
-          v-bind:style="{'background-image': 'url(' + sponsorLogo[currentIndex].img + ')'}"
-          v-on:click="openSponsorTab(currentIndex)"
-        )
+          v-for="(iter, index) of sponsorLogo"
+          v-bind:key="iter.name"
+          v-bind:data-name="iter.name"
+          v-bind:href="`${iter.link}`" target="_blank"
+          v-bind:style="{'background-image': 'url('+ require(`@/assets/sponsor/sponsor${index+1}.png`) + ')'}"
+        ) 
+    div(class="sponsor_layout_2" v-if="pc && mode == 1" v-show="!dropdown_top" @click="list = false")
+      section(class="sponsor_info" )
+        button(@click="mode=0;") x
+        label(
+          v-bind:style="{'background-image': 'url('+ require(`@/assets/sponsor/sponsor${currentIndex+1}.png`) + ')'}"
+         )
+        p {{sponsor[currentIndex].name}}
       section(class="sponsor_content")
-        article(class="sponsor_content_article" v-html="sponsor[currentIndex].content")
-        article(class="sponsor_content_info" v-html="sponsor[currentIndex].info")
+        div(class="sponsor_content_article" v-html="sponsor[currentIndex].content")
+        //- div(class="sponsor_content_info" v-html="sponsor[currentIndex].info")
 </template>
 
 <script>
@@ -51,8 +60,10 @@ export default {
       list: false,
       pc: this.isPC(),
       currentIndex: -1,
+      //-1
       dropdown_top: false,
       mode: 0,
+      //0
       sponsorLogo: [
         {
           name: 'Batiste 乾洗髮',
@@ -153,211 +164,380 @@ export default {
       ],
       sponsor: [
         {
-          name: '馥貴春',
-          link: 'http://www.afuque.com/',
+          name: 'Batiste 乾洗髮',
           content: `
+            <p align="left">
+            <p style="padding: 5px 0; font-size: 22px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px;">
+            來自英國品牌Batiste秀髮乾洗噴劑，目前在台灣已經深耕第8年。
+            <span style="padding: 5px 0; font-weight: bold; font-size: 22px; line-height: 28px;  color: black; letter-spacing: 4.5px;">
+            30多年來，Batiste一直是英國銷售排名第一的乾洗髮品牌。
+            </span>
+            為消費者提供最快速，最簡單的方法來打造美麗的秀髮。我們全系列的產品讓頭髮不僅好看也好聞。所以無論生活多麼匆忙，都人手一罐乾洗髮方便又快速。
+            </p>
+           <p style="padding: 5px 0; font-size: 22px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 10px;">
+            Batiste秀髮乾洗噴劑的核心就是
+            <span style="padding: 5px 0; font-size: 22px; line-height: 28px; font-weight: bold; color: black; letter-spacing: 4.5px; margin-top: 10px;">
+            使用創新「不用水」的米澱粉配方
+            </span>
+            。配合妳的頭髮需求，鎖定出油部份，幫助從髮根消除過多油脂。無需用水就能改造暗淡無生氣的頭髮。只要噴一噴，輕輕按摩然後變換造型，就是這麼簡單！
+            </p>
+
+            <p style="padding: 5px 0; font-size: 22px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 10px;">
+            我們以研發出如此高品質，讓60多個國家數以百萬的消費者滿意的創新產品感到自豪。
+            </p>
+
+            <p style="padding: 5px 0; font-size: 22px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 10px;">
+            Batiste向所有消費者保證我們的
+            <span style="padding: 5px 0; font-size: 22px; line-height: 28px; font-weight: bold; color: black; letter-spacing: 4.5px; margin-top: 10px;">
+            產品符合最嚴格的歐洲安全法規
+            </span>
+            。所有產品在上市銷售之前都在獨立試驗室進行了最嚴謹的安全性評估，
+            <span style="padding: 5px 0; font-size: 22px; line-height: 28px; font-weight: bold; color: black; letter-spacing: 4.5px; margin-top: 10px;">
+            Batiste的產品都已通過歐盟檢測並證明是安全的
+            </span>
+            。惟美容產品，不管是用在頭髮、身體或者臉上會對少數人產生過敏反應。
+            </p>
+            `
+        },
+        {
+          name: 'BioMask',
+          content: `
+            <p align="left">
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px;">
+            身處疫情時代，口罩儼然已經成為每個人日常生活不可或缺的好夥伴，BioMask 知道消費者在乎的不只是功能，有越來越多人將口罩視為時尚配件，追求各式各樣的顏色和圖樣，所以除了常見的素色款外，BioMask 也自創各種活潑的塗鴉款式、文青路線的大理石款、以及低調穩重的牛仔丹寧款……等。 
+            </p>
+            <p style="padding: 5px 0; font-size: 22px; line-height: 28px; font-weight: bold; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            疫情之下國人健康的守護神──亞太醫聯 Asia HealthCare Inc. 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 10px;">
+            亞太醫聯擁有豐富的20年醫療耗材背景經驗，於 2001 年創立BioMask 保盾品牌，致力成為大家身心靈的保護盾牌，20 年來陪伴大家走過 SARS、H1N1 及新冠肺炎等重大公衛危機。 亞太醫聯目前為台灣主要的醫療耗材供應商之一，積極推廣拋棄式醫療用衣物，定期舉辦研討會與醫護一起提升台灣感控品質。其旗下拋棄式醫療用衣物產品品牌如 BioCover 防護衣、隔離衣、BioMask 口罩等以最高品質著稱，並獲全球近 500 家醫學中心採用。
+            </p>
+            <p style="padding: 5px 0; font-size: 22px; line-height: 28px; font-weight: bold; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            聯名款──年輕潮流時尚新定位 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 10px;">
+            疫情期間，口罩成為日常出門的必備品，不僅要能保護自己與他人的安全，也要兼顧時尚潮流，除了一般款式外，BioMask 抓住年輕族群的心，推出了聯名款，為你每日穿搭增添亮點。 熱銷的蠟筆小新聯名款連口罩盒子都是精心設計，有小新的玩具箱、巧克比餅乾盒、幼稚園的貓咪校車，甚至還有 2021 蠟筆小新電影限量聯名款，真的超級可愛！超級燒！各位小新粉們快快動起來，點進下方連結： https://24h.m.pchome.com.tw/prod/search/?q=biomask&scope=all&sort=sale%2Fdc 近期新推出的 Charmmy kitty 聯名款、小熊學校聯名款、一般素色款式、BioMask 自創款式、其他聯名款，都可以在以上連結購買呦~
+            </p>
+
+            <div style="height: 10vh; background-image: url("../assets/sponsor/bio1.png"); background-position: left 10% center; background-repeat: no-repeat; background-size: 50%;">
+            <p style="padding: 5px 0; font-size: 22px; line-height: 28px; font-weight: bold; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            嚴格把關，安全無虞 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 10px;">
+            BioMask 台灣製造的醫療級口罩，外層面料如絲綢般光滑平順，中間層材質採用高品質熔噴布，加上內層親膚舒適，擁有多項專業認證，成為許多消費者的指定品牌： ●TTRI 紡研所 功能性檢測 CNS14774 通過 ●衛部醫器製壹字號第 009048 號 ●符合 CNS15290 規範檢測產品 ●通過全國公證不含偶氮重金屬甲醛檢測
+            </p>
+            <p>
+
+            <div style="background-image: url("../assets/sponsor/bio2.png"); background-position: left 10% center; background-repeat: no-repeat; background-size: 50%;">
+            <p style="padding: 5px 0; font-size: 22px; line-height: 28px; font-weight: bold; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            客製化合作──口罩也要 dress code BioMask 
+            </p>
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 10px;">
+            在口罩客製化上有豐富經驗，受到許多企業、藝人及網紅的青睞，此外，BioMask 也樂於與學生合作，像這次單車節也利用口罩來凝聚團隊精神，工作人員們配戴的口罩正是委託 BioMask 為此次活動所製造的，不僅被大家直呼「好好看~」，材質也很親膚，長時間配戴也不會覺得勒耳朵。
+            </p>
+
+            <div style="background-image: url("../assets/sponsor/bio3.png"); background-position: right 10% center; background-repeat: no-repeat; background-size: 50%;">
+            <p style="padding: 5px 0; font-size: 22px; line-height: 28px; font-weight: bold; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            『BioMask 希望能成為大家身心靈的保護盾牌，提高所有人的保護力』
+            </p>
+
+            <div style=" width:100%; height: 4px; border-top: 3px solid #CDBFEE; margin-top: 20px; "> </div>
             <p align="center">
-            <p style="padding: 10px 0; font-size: 18px; line-height: 25px; font-weight: bold; color: rgb(46,183,245); letter-spacing: 2px;">
-            藏著滿滿孝心的人氣馥貴春重乳酪蛋糕。
+            <p style="color:#7B61FF; letter-spacing: 2px; font-weight: bold; font-size: 2.5vh; line-height: 4.5vh; margin-top: 2vh;">BioMask</p>
+            <p>Pchome連結：<a href="https://24h.pchome.com.tw/store/DABCK0">https://24h.pchome.com.tw/store/DABCK0</a> </p>
+            <p>momo連結：<a href="https://www.momoshop.com.tw/search/searchShop.jsp?keyword=biomask&searchType=1&curPage=1&_isFuzzy=0&showType=chessboardType">https://www.momoshop.com.tw/search/searchShop.jsp?keyword=biomask&searchType=1&curPage=1&_isFuzzy=0&showType=chessboardType</a></p>
+            <p>momo購物網、PChome線上購物、Yahoo!購物中心、pinkoi皆有販售</p>
             </p>
-            <p style="padding: 5px 0; font-size: 15px; line-height: 22px; color: rgb(120, 120, 120); letter-spacing: 2px;">
-            &nbsp &nbsp &nbsp &nbsp 台南的人氣美食馥貴春重乳酪蛋糕，除了美味背後還藏著女兒對父母的孝心。馥貴春創辦人葉小姐說，馥貴春從開始就困難重重，父母一直是她的後盾，支持馥貴春走過五個年頭，也讓越來越多人知道馥貴春重乳酪蛋糕的美味。
+            `
+        },
+        {
+          name: 'DOUGHNUT',
+          content: `
+            <p align="left">
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px;">
+            來自香港的設計品牌 —— DOUGHNUT，十年前，因創辦人買不到理想的畢業旅行背包，而誤打誤撞地創立，從2個包到100個包，再從100包到跨國企業的品牌。因此 DOUGHNUT 深信，在你把事情完成之前，它往往看似不可能，但，只要想得到，就做得到。 秉持十年前的創立初衷，堅持以顧客角度出發，致力於設計「時裝與機能」完美融合的包款，品牌以 ”PACK YOUR DREAM” 為宗旨， 希望產品能承載每位旅者的夢想，一起展開實踐夢想的旅程。 對於夢想，我們有著不同的解構：夢想不一定要很大，有時候只是你想要的生活形式。人生，想玩就去玩，想試就去試，只要不要白過每日就可以。 DOUGHNUT 品牌永續目標：自2020年起，以「可持續性」為設計核心，進行產品研發，重視永續發展，採用回收寶特瓶、海洋廢棄漁網、GOTS 認證有機棉等材料設計包款，除了材料永續，更開發機能性強、耐用且能一包多用的包包。並計劃未來在產品上增加「碳足跡標籤」，讓消費者在選擇時尚的同時，也用消費改變世界。
             </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px;">
+            夢想不一定要很大，有時候只是你想要的生活形式。Go Dreaming！
             </p>
-            <p style="padding: 5px 0; font-size: 15px; line-height: 22px; color: rgb(120, 120, 120); letter-spacing: 2px;">
-            &nbsp &nbsp &nbsp &nbsp 一塊有著金黃的自然色澤，從外觀就看得出不凡的重乳酪蛋糕，品嚐的瞬間更是能感受到它綿密的口感。甚至是目前網路知名的人氣台南伴手禮、隱藏版美食，它就是馥貴春重乳酪蛋糕。而製作出如此精緻重乳酪蛋糕的，是一位七年級女生憑著毅力與堅持，更是出自對爸爸的孝心，自行創業並打響「馥貴春重乳酪蛋糕」的招牌。
-            </p>
-            <p style="padding: 5px 0; font-size: 15px; line-height: 22px; color: rgb(120, 120, 120); letter-spacing: 2px;">
-            &nbsp &nbsp &nbsp &nbsp 淬鍊兩年，爭取到晶華酒店實習機會馥貴春重乳酪蛋糕的創辦人──在台南長大的葉小姐，因為從小就喜歡烘培與烹飪，靠著努力進入知名的國立高雄餐旅大學就讀，經過不斷認真學習，培養相當程度的廚藝。在大三時、兩年的校內學習後，爭取到國際五星級飯店台北晶華酒店101館外餐廳的實習機會，並被派到點心檯，遇到了生命中最大的貴人。
-            </p>
-            <p style="padding: 5px 0; font-size: 15px; line-height: 22px; color: rgb(120, 120, 120); letter-spacing: 2px;">
-            &nbsp &nbsp &nbsp &nbsp 小小年紀，便能跟在烘焙界的翹楚「黃師父」身邊學習，是七年級生葉小姐想都沒想到的幸運事，黃師父是全台獲獎無數的點心名廚，烘焙經驗累積數十年，是業界相當權威的蛋糕點心代表高手，而黃師傅所製作的蛋糕點心中，「重乳酪蛋糕」是最令大家嘖嘖稱奇、難以忘懷的名品，只要有幸吃到一口，便能體會「舌尖上的幸福」真正的含意。許多客人到台北晶華酒店101館外餐廳用餐，甚至只為吃到黃師傅所製作的重乳酪蛋糕，可想而知，有多美味珍貴。
-            </p>
-            <p style="padding: 5px 0; font-size: 15px; line-height: 22px; color: rgb(120, 120, 120); letter-spacing: 2px;">
-            &nbsp &nbsp &nbsp &nbsp 囡仔，以後自己要好好加油跟在黃師傅身邊學習的日子，非常地充實與戰戰兢兢，黃師傅對葉小姐的教學相當嚴厲，卻也真心疼愛她。但天下無不散的筵席，某天，黃師傅突然語重心長地對她說：「囡仔，師父我老了、也累了，要從飯店退休。以後妳自己要好 好地加油。」縱使不捨至極，眼淚欲出，葉小姐也明白黃師傅終究已做好退休打算。想到自此無法天天看到師傅、品嚐到師傅親手製作的蛋糕，就讓葉小姐萬分感傷，而就在黃師傅退休的前一天，在葉小姐的央求下，因為她總是勤奮而認真的態度，黃師傅答應教她這獨門的「重乳酪蛋糕」，而師傅親傳手藝的重乳酪蛋糕，是葉小姐從黃師傅身上學到的最後一個蛋糕，卻也是改變她人生最重要的一個 蛋糕。
-            </p>
-            <p style="padding: 5px 0; font-size: 15px; line-height: 22px; color: rgb(120, 120, 120); letter-spacing: 2px;">
-            &nbsp &nbsp &nbsp &nbsp 台北實習一年後，葉小姐回到高雄繼續就讀國立高雄餐旅大學。畢業前夕，爸爸正好面臨牙齒整修期，根本無法嚼食硬性食物，看著喜歡吃甜食的父親無法盡情享用，為了體貼父親，母親常常購買好入口的蛋糕，好讓父親滿足口慾，但看在葉小姐眼裡，這些蛋糕都不夠營養美味。為了讓父親在享受甜點美食的同時，也能更加健康，葉小姐決定製作跟黃師傅學習的重乳酪蛋糕，讓父親當作日常餐點，卻沒意料到，親手製作、冷凍過後的重乳酪蛋糕，不僅受到父母親的肯定，連前來家裡拜訪的客人都驚為天人，甚至在同年母親節前夕，特地致電來委託訂購重乳酪蛋糕。
-            </p>
-            <p style="padding: 5px 0; font-size: 15px; line-height: 22px; color: rgb(120, 120, 120); letter-spacing: 2px;">
-            &nbsp &nbsp &nbsp &nbsp 重乳酪蛋糕的好滋味，就這樣傳了出去，沒預計未來會創業的葉小姐，在當次的母親節，居然接到10盒重乳酪蛋糕的訂單。因為沒設備、沒器具的情況下，葉小姐求助學校老師幫忙，利用學校設備製作蛋糕，卻偏偏受到某位老師的刁難……，總是默默支持她的父親，在得知這樣的狀況發生後，安慰並鼓勵她：「沒關係，別難過。不如我們買一台烤箱，自己在家做，就當做是妳畢業後的創業」。
-            </p>
-            <p><img src="https://i.imgur.com/sJZNB1D.jpg") style="border:2px white solid;padding:5px; min-width: 250px; min-height: 250px; height:35vw;"></p>
-            <p style="padding: 10px 0; font-size: 18px; line-height: 25px; font-weight: bold; color: rgb(46,183,245); letter-spacing: 2px;">
-            藏著滿滿孝心的人氣馥貴春重乳酪蛋糕。
-            </p>
-            <p style="padding: 5px 0; font-size: 15px; line-height: 22px; color: rgb(120, 120, 120); letter-spacing: 2px;">
-            &nbsp &nbsp &nbsp &nbsp 在全家人的肯定與支持下，葉小姐在畢業後開啟了創業之路，為了專心製作重乳酪蛋糕，目前先推出的商品，就是傳承於黃師傅手藝的美味重乳酪蛋糕，然後自己再從中研發、改良，並一手包辦馥貴春蛋糕外盒包裝、與蛋糕上的手工拉花設計。身為七年級生，獨自踏上創業之路非常地艱辛，常遇到挫折和失敗。但葉小姐擁有七年級少見的韌性和堅持，一開始因為知名度還沒打開，資金有周轉不靈的情形，但她沒有因此被打敗，仍是每天堅持用最好的原料做出重乳酪蛋糕，總是有多少資金就做多少重乳酪蛋糕，甚至到處請人試吃，讓更多人發現馥貴春的美味，漸漸地，馥貴春的知名度也從台南向台灣各地飄香出去。
-            </p>
-            <p style="padding: 5px 0; font-size: 15px; line-height: 22px; color: rgb(120, 120, 120); letter-spacing: 2px;">
-            &nbsp &nbsp &nbsp &nbsp 爸媽總是看著葉小姐做蛋糕粗糙的手，心疼地掉淚。應該是擦上漂亮指甲油或和朋友四處遊玩的年紀，但葉文玉為了堅持夢想即使是炎熱的天氣，仍舊在悶熱的中央廚房努力耕耘著。看著女兒把馥貴春做得有聲有色，父母也漸漸放心，心中常掛心的孩子，已經是一個獨立而且擁有自己品牌的女兒。
-            </p>
-            <p style="padding: 5px 0; font-size: 15px; line-height: 22px; color: rgb(120, 120, 120); letter-spacing: 2px;">
-            &nbsp &nbsp &nbsp &nbsp 葉小姐說，這些辛苦和父母小時候養育我們的辛苦比，根本不算什麼，她認為將馥貴春重乳酪蛋糕做好，不只是對馥貴春這個品牌的責任，更是她想好好孝順父母的禮物。
-            </p>
-            <p style="padding: 5px 0; font-size: 15px; line-height: 22px; color: rgb(120, 120, 120); letter-spacing: 2px;">
-            &nbsp &nbsp &nbsp &nbsp 「只要妳有心，我相信妳就能克服這些難題。」父親的話，是葉小姐不放棄的動 力，這原先單純為了父親而製作的蛋糕，目前在台南已有兩家人氣實體店面。無數網友、台南居民都肯定的美味馥貴春，正在一步步茁壯，以堅持師承台北晶華酒店──黃師傅手藝的蛋糕好滋味，讓大家都能品嚐到綿密、入口幸福感湧現的馥貴春重乳酪蛋糕，終於，在今日闖出了自己的一片天。
-            </p>
-            `,
-          info: `
+            <div style=" width:100%; height: 4px; border-top: 3px solid #CDBFEE; margin-top: 20px; "> </div>
             <p align="center">
-            <p style="color:rgb(42,186,243); letter-spacing: 2px; font-weight: bold; font-size: 2.5vh; line-height: 3.8vh;">馥貴春</p>
-            <p>官網 : <a href="http://www.res.com.tw/"> http://www.res.com.tw/</a></p>
-            <p>地址 : 台南市永康區永大五路151號</p>
-            <p>營業時間 : 10:00-21:00</p>
+            <p style="color:#7B61FF; letter-spacing: 2px; font-weight: bold; font-size: 2.5vh; line-height: 4.5vh; margin-top: 2vh;">DOUGHNUT</p>
+            <p>▎來自香港的設計品牌 —— DOUGHNUT </p>
+            <p>▎WEB：<a href="https://www.doughnut.com.tw/">https://www.doughnut.com.tw/</a></p>
+            <p>▎Pack your Dream</p>
+            </p>
+            `
+        },
+        {
+          name: 'HERSHEY’S',
+          content: `
+            <p align="left">
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px;">
+            「美國百年歷史經典巧克力，每一塊都值得細細品味」
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+             HERSHEY’S 好時成立於 1894 年，為全美第一大零食生產商、全球糖巧前五強，駐足全球 93 國家，生產並擁有品牌 Hershey, Kisses, Brookside, Reese's 與其他著名巧克力與零食品牌。 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            Milton S. Hershey 好時先生於美國賓州創立好時巧克力，以「只有讓別人更快樂，自己也才會越快樂」的信念，用巧克力溫暖人心傳送給全世界，並在好時鎮創立學校、慈善機構、醫療機構幫助弱勢族群。
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            甜而不膩的巧克力，是許多女生的愛好之一，好時巧克力不僅價格超甜，還能吃到豐富口感的巧克力風味，除了 Hershey’s 經典的 Kisses 水滴巧克力，另外還有金磚巧克力和片狀巧克力，每種都濃郁可口，值得我們細細品嚐！
+            </p>
+            <div style=" width:100%; height: 4px; border-top: 3px solid #CDBFEE; margin-top: 20px; "> </div>
+            <p align="center">
+            <p style="color:#7B61FF; letter-spacing: 2px; font-weight: bold; font-size: 2.5vh; line-height: 4.5vh; margin-top: 2vh;">HERSHEY’S </p>
+            <p>官網 : <a href="https://www.falken.com.tw/hersheys/kisses/">https://www.falken.com.tw/hersheys/kisses/</a></p>
+            <p>粉絲專頁 : <a href="https://www.facebook.com/hersheytaiwan">https://www.facebook.com/hersheytaiwan</a></p>
+            <p>Instagram : <a href="https://www.instagram.com/hersheystw/">https://www.instagram.com/hersheystw/</a></p>
             </p>`
         },
         {
-          name: '儕陞生化',
-          link: 'https://www.charsire.com.tw/',
+          name: 'I’M COFFEE',
           content: `
-            <p align="center">
-            <p style="padding: 10px 0; font-size: 18px; line-height: 25px; font-weight: bold; color: rgb(46,183,245); letter-spacing: 2px;">
-            儕陞生化以CORE LGF 黑科技於2021亞太美業精品獎中榮獲「產業標竿獎」殊榮。
+            <p align="left">
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px;">
+            「I'M CoFFEE 是台南咖啡連鎖品牌，是高中、大學生平時K書做報告的好去處。其品牌靈感來自於聖經衍生出I am what I am！ 
             </p>
-            <p style="padding: 5px 0; font-size: 15px; line-height: 22px; color: rgb(120, 120, 120); letter-spacing: 2px;">
-            &nbsp &nbsp &nbsp &nbsp 在國內以研究阿茲海默症、血管性失智藥品以及用於潰瘍傷口用藥逐漸開啟企業品牌知名度的儕陞生化技術公司，110年新春開紅盤，除於2021亞太美業精品獎中獲頒「產業標竿獎」外，更獲得台灣衛福部認證用於創傷與燒傷的二類醫材上市許可，該醫材也是台灣第一支植物性二類醫材；由於研產銷在地化，預計，將能快速滿足國內各大醫療院所於外用敷料的高度使用。
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            每個個體都有獨一無二，無法被取代的價值，透過不斷的自我追尋，發現存在的意義，就像每支咖啡豆，擁有先天獨自特色，經過不同咖啡師的沖煮，再呈現更強烈的自我風格。
             </p>
-            <p style="padding: 5px 0; font-size: 15px; line-height: 22px; color: rgb(120, 120, 120); letter-spacing: 2px;">
-            &nbsp &nbsp &nbsp &nbsp 該公司總經理翁志宜表示，儕陞生化是一家以植物新藥作為醫藥研發的生技公司，所開發的小分子萃取技術，係從天然植物中取得所需物質且要求極低負作用下所新創；現階段已有阿茲海默症及血管型失智症新藥已完成美國FDA 核准之二期臨床試驗，另糖尿病潰瘍傷口藥品已完成國內二期臨床解盲，整體研發進度如質如實的進行中。
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            I’M COFFEE 目前在台南共有4家門市，南美店、大學店、崇學店、成功店。以一貫的簡潔空間設計為基礎，搭配鮮明的紅色驚嘆號，化繁為簡刨去外在的干擾，讓品味咖啡感官更立體，尤其採用獨家的「金杯短萃」萃取法，使得咖啡喝來回甘有亮點，完全顛覆了味蕾對咖啡的記憶，也讓咖啡成為千變萬化的質感飲品。 
             </p>
-            <p style="padding: 5px 0; font-size: 15px; line-height: 22px; color: rgb(120, 120, 120); letter-spacing: 2px;">
-            &nbsp &nbsp &nbsp &nbsp 翁志宜指出，正由於二十年來的堅持與不懈怠，研發成果得已從實驗室走向應用市場；此次從素有生技美容界奧斯卡美譽的2021亞太美業精品獎中獲「產業標竿獎」，正是儕陞生化的重要里程；該大獎主要是嚴選在業界具代表性的廠商，以企業業績成長值、通路布局全球化及產業未來發展性等三大方向作為主要評選依據。
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            而除了義式咖啡之外，I’M COFFEE 亦隨著第三波精品咖啡浪潮，提供顧客更為講究的手沖咖啡選擇，包括消費者接受度最高的耶加雪菲，或是要價不菲的藍標藝妓咖啡，選豆同時滿足大眾與小眾喜好。藉由咖啡師不同的沖煮手法，精準地將豆子的風味保留和呈現出來，全然尊重咖啡性格，也讓品味成了自我對話，再次演繹了 I AM WHAT I AM 的價值所在。　　
             </p>
-            <p style="padding: 5px 0; font-size: 15px; line-height: 22px; color: rgb(120, 120, 120); letter-spacing: 2px;">
-            &nbsp &nbsp &nbsp &nbsp 翁志宜坦言，要站穩生物醫藥市場，必須要有專精的生物技術，而儕陞生化所獨創的植物萃取黑科技，至今已超過二十年，該生物技術能精確提煉有效成分CORE LGF，經臨床實驗交叉證明，CORE LGF能夠激活PDGF。
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            I’M COFFEE 是一家咖啡店，是質感生活、環保意識 、共享時光的咖啡場域。近期也推出了一系列蜜戀哈密瓜的產品，包括哈密瓜雪球氣泡飲以及哈密瓜雪花冰沙提供消費者選擇。 I’M COFFEE 大學店位於成功大學勝利校區，想要享受悠閒的早晨，輕鬆的下午嗎，I’M COFFEE 絕對是你的理想型 !
             </p>
-            <p style="padding: 5px 0; font-size: 15px; line-height: 22px; color: rgb(120, 120, 120); letter-spacing: 2px;">
-            &nbsp &nbsp &nbsp &nbsp 而PDGF在許多科學研究中發現，是由特定細胞所分泌的生長因子，在微血管維護上扮演重要角色，具有刺激特定細胞群分裂增殖的能力，可強化微循環系統，同時能協助膠原蛋白不斷機轉，是研究如何保養肌膚輕彈的關鍵因素。
-            </p>
-            <p style="padding: 5px 0; font-size: 15px; line-height: 22px; color: rgb(120, 120, 120); letter-spacing: 2px;">
-            &nbsp &nbsp &nbsp &nbsp 事實上，儕陞團隊運用黑科技，在新藥開發、醫療器材外用敷料、醫美保養品及外用保健產品等已有顯著進展，如失智及糖尿病潰瘍傷口與放療皮膚損傷治療，分別完成美國FDA二期臨床試驗及台灣衛福部一期臨床臨床試驗外，近日更獲得台灣衛福部通過二類醫材認證，這是台灣目前第一支植物性二類醫材，適用於創傷與燒傷，由於係本土廠商自行成功研發製造，除極低負作用，並可在地即時供應，將有效舒緩國內外用敷料的高度使用；另，同時在越南也通過二類醫材認證，對拓展東南亞市場，相信可以更加順利。
-            </p>
-            `,
-          info: `
-            <p align="center">
-            <p style="color:rgb(42,186,243); letter-spacing: 2px; font-weight: bold; font-size: 2.5vh; line-height: 3.8vh;">儕陞生化</p>
-            <p>官網 : <a href="https://www.charsire.com.tw/"> https://www.charsire.com.tw/</a></p>
-            <p>地址 : 744台南市新市區南科二路13號</p>
-            </p>`
+            `
         },
         {
-          name: '萬鼎工程',
-          link: 'http://www.rei.ctci.com/',
+          name: 'IMC 人力資源 股份有限公司',
           content: `
-            <p align="center">
-            <p style="padding: 5px 0; font-size: 15px; line-height: 22px; color: rgb(120, 120, 120); letter-spacing: 2px;">
-            &nbsp &nbsp &nbsp &nbsp 萬鼎工程服務股份有限公司為CTCI中鼎集團成員，成立於1984年。萬鼎的工程經驗豐富，深度了解業主需求及當地環境特色，為土地營造新願景。 萬鼎工程是工程統包之領導廠商，提供公共工程統包解決方案，尤其在土木建築和交通工程領域累積豐富的工程經驗和技術。服務內容涵蓋工程規劃、設計、興建、測試、驗證，並專精冰凍工法以及智能頂進工法。
+            <p align="left">
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px;">
+            IMC 精英集團致力於滿足人力資源服務產業的動態平衡，為人才規劃生涯各階段最適宜的發展舞台，為企業提供合適人才更同時兼顧時效性與質/量的要求。業務集中於大中華地區，涵蓋台北、新竹、台中、台南、高雄、上海、北京、天津...等地，協助人才找工作；提供企業求才、委外服務、人才發展、專家派遣、居家照顧、生命禮儀等多樣服務。
             </p>
-            <p style="padding: 5px 0; font-size: 15px; line-height: 22px; color: rgb(120, 120, 120); letter-spacing: 2px;">
-            &nbsp &nbsp &nbsp &nbsp 萬鼎工程積極經營建築、交通、大地、潛盾、水利、環境、電機、土地開發等市場，穩居台灣統包工程產業領先地位。
+            <p style="padding: 5px 0; font-size: 22px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            IMC 精英服務特色：
             </p>
-            </p>`,
-          info: `
+            <p style="padding: 5px 0; font-size: 22px; line-height: 28px; font-weight: bold; color: black; letter-spacing: 4.5px; margin-top: 10px;">
+            在地品牌，跨地域完整服務 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 10px;">
+            本土人力資源公司，最了解大中華地區人才特色及企業人才需求。 公司根基穩固，支持各地因應產業及環境需要，提供更靈活彈性的近距離服務。 近 30 年的豐富產業資歷及實務經驗，即時解決客戶及人才不同面向問題。 
+            </p>
+            <p style="padding: 5px 0; font-size: 22px; line-height: 28px; font-weight: bold; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            團隊作戰，專業分工 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 10px;">
+            招募計畫專業分工，團隊具備產業及職能知識(如:金融/保險/電信…等；業務/客服/門市人員…等)求職/求才效率最佳化。 以資深專業顧問群帶領熱情充滿活力的精英團隊，發揮團隊力量，齊心達成客戶交付任務。 顧問團隊透過定期教育訓練，培養面對客戶與人才的專業服務實力，更能貼近需求。 團隊合作為後盾，搭配單一窗口客製化服務，客戶與人才的問題能達到立即回覆。 
+            </p>
+            <p style="padding: 5px 0; font-size: 22px; line-height: 28px; font-weight: bold; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            客戶(人才＆企業)優先，服務至上 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 10px;">
+            提供精準的推薦函，展現履歷中看不到的經驗能力，為企業發掘精英。 細心耐心用心篩選合適人才，教導人才面試技巧，提高錄取機率，期許客戶雙贏。 堅持正當合法，提供專業諮詢及貼心服務，態度親切誠懇實在，不做誇大不實工作描述。 自行研發管理系統，有效招募 自有專業招募與資料庫管理系統，能提升後續作業的便利性及效率。 系統依據作業流程標準化導入，具防呆除錯設計，並嚴密的審核與品質控管，讓資料安全無疑慮。 
+            </p>
+            <p>
+            <p style="padding: 5px 0; font-size: 22px; line-height: 28px; font-weight: bold; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            以「人」為本，關注生涯每階段 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 10px;">
+            從人才角度悉心分析工作合適性，真誠提供職涯及生涯規劃協助。 求學期及就業起步期可考慮彈性靈活的短期、兼職性質工作，累積更多元的職場經驗。 具備產業專業知識的淬鍊期及成熟期，可透過 IMC 精英中高階獵才及職涯諮詢服務，創造事業巔峰。 步入屆齡退休期，IMC 精英邀請您進入 5070 社會型企業，借助您豐富的產業經驗及社會歷練，協助企業傳承、解決困境。 IMC 精英先一步看見社會需求，提供全方位的居家照顧，唯有家庭安全無虞，自己及家人才有安心工作的條件，工作與生活達成平衡。
+            </p>
+            <p>
+            <div style=" width:100%; height: 4px; border-top: 3px solid #CDBFEE; margin-top: 20px; "> </div>
             <p align="center">
-            <p style="color:rgb(42,186,243); letter-spacing: 2px; font-weight: bold; font-size: 2.5vh; line-height: 3.8vh;">萬鼎工程</p>
-            <p>官網 : <a href="http://www.rei.ctci.com/"> http://www.rei.ctci.com/</a></p>
-            <p>台北辦公室-地址: 台北市南港路三段48號4樓</p>
-            <p>高雄辦公室-地址: 高雄市橋頭區成功路163號</p>
-            </p>`
+            <p style="color:#7B61FF; letter-spacing: 2px; font-weight: bold; font-size: 2.5vh; line-height: 4.5vh; margin-top: 2vh;">IMC 人力資源 股份有限公司</p>
+            <p>官網：<a href="https://www.imc.com.tw/?lang=zh_TW">https://www.imc.com.tw/?lang=zh_TW</a></p> 
+            <p>台北總部：</p>
+            <p>台北市105松山區敦化南路一段2號10樓</p> 
+            <p>10F, No.2, Sec. 1, Dunhua S. Rd., Songshan District,</p> 
+            <p>Taipei City 105, Taiwan (R.O.C.)</p> 
+            <p>TEL：(8862)2578-2420 </p>
+            <p>FAX：(8862)7706-0822 </p>
+            <p>E-mail：contact@imc.com.tw</p>
+            </p>
+            `
         },
         {
-          name: '哈努曼',
-          link: 'https://www.facebook.com/HANUMAN20181203/?ref=page_internal',
+          name: 'Snapask',
           content: `
-            <p align="center">
-            <p style="padding: 5px 0; font-size: 15px; line-height: 22px; color: rgb(120, 120, 120); letter-spacing: 2px;">
-            &nbsp &nbsp &nbsp &nbsp 哈努曼泰茶裡，販售的不只是飲品，更有滿滿的大小故事等您來挖掘，泰奶風潮得掘起，能見度大展開，想喝泰奶不在是件難事，但您喝到的是泰奶，還是把香氣不到位，不甜合理化的台泰奶呢？
+            <p align="left">
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px;  margin-top: 20px;">
+            在家複習課業或是復習到一半時，有時會遇上卡住的觀念、問題，而也許是一個小小的觀念就讓整體觀念無法暢通，不僅複習起來效率不高，有問題時無法立即解決都是自己讀書時的硬傷。
             </p>
-            <p style="padding: 5px 0; font-size: 15px; line-height: 22px; color: rgb(120, 120, 120); letter-spacing: 2px;">
-            &nbsp &nbsp &nbsp &nbsp 一樣的茶葉但調理後的味道大大不同，就如一樣學習考試測驗，用心學習懂的精髓的成績當然好，有樣學樣、只懂皮毛的成績當然差強人意，哈努曼泰茶也就是單純的想把家鄉的味道，好好的留存，給各位好朋友們品嚐，不以最大的獲利率為出發點，而是以－最完整的家鄉味與故事來跟各位分享傳遞！
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            而 Snapask 時課問正是為此而生，Snapask 相信：「學生的疑問如果能即時獲得解答，便能夠防止不敢問、害怕學習的狀況。Snapask 正是為了學生提供無縫隙的學習體驗。」能夠針對個人化的提問，並即時的配對老師解決學生問題，以達到最高學習效率。 
             </p>
-            <p style="padding: 5px 0; font-size: 15px; line-height: 22px; color: rgb(120, 120, 120); letter-spacing: 2px;">
-            坊間泰奶能給您的，哈努曼絕對能給您的感受更多，就是要讓您深刻感受～🙏🙏🙏
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            國高中生首選的全科線上學習平台 Snapask 時課問是一個致力於幫助學生解決課業問題的全方位線上學習平台，不只提供內容豐富的線上課程，更有一對一線上真人家教 24Ｈ 解題服務，幫助學生解決學習上所遇到的問題與困難，讓學生在學習的路上暢行無阻。
             </p>
-            <pre padding: 5px 0; font-size: 15px; line-height: 22px; color: rgb(120, 120, 120); letter-spacing: 2px;">
-            </pre>
-            <div style="background-image: url('https://i.imgur.com/035EwTG.png'); background-position: right 10% center; background-repeat: no-repeat; background-size: 50%;">
-            <pre style="padding: 5px 0; font-size: 15px; line-height: 22px; color: rgb(120, 120, 120); letter-spacing: 2px;">
-……………………………………………………………
-台南地區
-首間泰式飲品專賣店
-道地泰式手工茶飲
-純正泰國人經營
-隱身在小巷弄裡
-堅守著純正的味道
-打造純正泰國的氛圍感受
-一秒瞬間融身泰國
-🇹🇭🇹🇭🇹🇭🇹🇭🇹🇭🇹🇭🇹🇭🇹🇭🇹🇭🇹🇭🇹🇭🇹🇭🇹🇭 
-台南喝泰式飲品
-首選當然就是哈努曼泰茶
-沒喝到哈努曼泰茶前
-別對泰式奶茶輕易妥協
-不跟隨熱鬧 只專精門道
-你終究要喝泰奶的
-那為什麼不一開始就來哈努曼泰？
-想喝杯泰奶不需要冒生命危險
-來趟哈努曼就能滿足您想喝泰奶的慾望
-……………………………………………………………
-            </pre>
-            </div>
-            </p>`,
-          info: `
-            <p align="center">
-            <p style="color:rgb(42,186,243); letter-spacing: 2px; font-weight: bold; font-size: 2.5vh; line-height: 3.8vh;">哈努曼</p>
-            <p>粉絲專頁 : <a href="https://www.facebook.com/HANUMAN20181203/?ref=page_internal"> https://www.facebook.com/HANUMAN20181203/?ref=page_internal</a></p>
-            <p>地址 : 701 臺南市東區崇善二街12號</p>
-            <p>營業時間：10:00-21:30（每週二固定公休）</p>
-            </p>`
+            `
         },
         {
-          name: '成大會館',
-          link: 'http://www.zendasuites.com.tw/zh-tw',
+          name: 'SOL HELMETS',
           content: `
+            <p align="left">
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px;  margin-top: 20px;">
+            SOL HELMETS 是台灣在地安全帽及人身部品品牌，公司及工廠皆位於台南，堅持 MIT 台灣製造，並銷售至中國、韓國、印度、俄羅斯、菲律賓、智利等國家。 MIT 的堅持，讓我們可以用最快的速度服務消費者，客服品質業界聞名。
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            從 1976 年開始，公司歷經 30 多年代工歷練，2005 年成立自有品牌 SOL HELMETS。 SOL 在拉丁文中的意思為「太陽」，象徵品牌的年輕與熱血，是您出遊與通勤時的好戰友，也是守護者。
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            身為守護者，安全性是基本要求。SOL HELMETS 針對不同使用者提供不同樣式及防護等級的帽款，共同點則是全數通過安全認證，包括美國 DOT、台灣 CNS，部份 CNS 加強型與歐洲 ECE，在車禍中保護許多使用者的人身安全。
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            在安全性外，突顯個人風格的安全帽彩繪也很重要。
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            彩繪是 SOL HELMETS 的強項之一，最知名的彩繪獨角獸，是許多人入手的第一款 SOL HELMETS 產品。 我們以時尚品牌的角度設計彩繪，不論是大膽率性的主題彩繪，簡潔俐落的色塊風格，或是適合女性的清新風格，SOL HELMETS 都能滿足您的需求。
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            在企業社會責任方面，除了 MIT 台灣製造，SOL HELMETS 也無償地到大專院校進行交通安全宣導，內容包含「如何正確挑選安全帽」，及「如何正確配戴安全帽」等內容，教導使用者作好騎乘前的防護工作，降低事故傷害。
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            SOL HELMETS 陪伴許多消費者成長，從學生到上班族，從騎車到開車，您的平安就是 SOL HELMETS 最大的價值。
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            同時，我們也持續徵求合作夥伴，如果您有代理或經銷意願，歡迎與我們聯繫，共同為道路安全盡一份心力。
+            </p>
+            <div style=" width:100%; height: 4px; border-top: 3px solid #CDBFEE; margin-top: 20px; "> </div>
             <p align="center">
-            <p style="padding: 5px 0; font-size: 15px; line-height: 22px; color: rgb(120, 120, 120); letter-spacing: 2px;">
-            &nbsp &nbsp &nbsp &nbsp 成大會館位於綠意盎然的成大校區內，客房內皆可觀看美麗的校園美景，每年花季，燦爛美麗的木棉花、黃花風鈴木、阿勃勒、鳳凰花等依時序綻放，美不勝收是大城市裡十分難得的住宿地點。其外觀承襲成大校舍原有的橘紅色系建築，與校園的景致融為一體，搭配上仿巴洛克式的樑柱與白色拱門，散發著台南古都的歷史韻味，常吸引遊客駐足留影。
+            <p style="color:#7B61FF; letter-spacing: 2px; font-weight: bold; font-size: 2.5vh; line-height: 4.5vh; margin-top: 2vh;">SOL HELMETS </p>
+            <p>官網網址：<a href="https://www.solhelmets.com/">https://www.solhelmets.com/</a> </p>
+            <p>SOL臉書粉專：<a href="https://www.facebook.com/SOLHELMETS">https://www.facebook.com/SOLHELMETS</a></p> 
             </p>
-            <p style="padding: 5px 0; font-size: 15px; line-height: 22px; color: rgb(120, 120, 120); letter-spacing: 2px;">
-            &nbsp &nbsp &nbsp &nbsp 會館客房擁有12坪的寬敞空間，是小家庭及三五好友出遊的最佳選擇。兩張KING SIZE的大床搭配高級的羽毛絨被套組，讓您一覺好眠。大片的落地窗，放眼望去就是成功大學的美麗校景，坐在窗邊的沙發上，或看書、或喝杯咖啡，就能體會度假的悠閒。
-            </p>
-            <p style="padding: 5px 0; font-size: 15px; line-height: 22px; color: rgb(120, 120, 120); letter-spacing: 2px;">
-            &nbsp &nbsp &nbsp &nbsp 早餐區聘請飯店主廚，製作美味的提供中西式自助早餐，供餐的空間雖不大，內容卻十分豐富；不但可吃到港式的燒賣，美式的大亨堡，日式的喬麥麵與中式的清粥小菜，而府城在地的傳統小吃，如米糕、鹹粥、碗粿、肉躁飯等，更是每天在此輪番上陣，不但讓您吃得飽足、營養、有精神，更透過美食讓您體驗一遭府城的常民美食文化。
-            </p>
-            <p style="padding: 5px 0; font-size: 15px; line-height: 22px; color: rgb(120, 120, 120); letter-spacing: 2px;">
-            &nbsp &nbsp &nbsp &nbsp 步出會館即進入校區，校園內的列級古蹟及歷史文物相當多，如成大博物館即以日治時代的行政大樓改建，內部設有校史室；光復校園的大成館則是國定的百年古蹟，面對著成大著名的景點－榕園；而楊柳婆娑的成功湖，古色古香的歷史博物館，及歷經烽火存留下來的小西門遺址，都是您不可錯過的悠遊景點。
-            </p>
-            </p>`,
-          info: `
-            <p align="center">
-            <p style="color:rgb(42,186,243); letter-spacing: 2px; font-weight: bold; font-size: 2.5vh; line-height: 3.8vh;">成大會館</p>
-            <p>官網 : <a href="http://www.zendasuites.com.tw/zh-tw"> http://www.zendasuites.com.tw/zh-tw</a></p>
-            <p>地址 : 701台南市東區大學路2號</p>
-            <p>電話 : 06 275 8999</p>
-            </p>`
+            `
         },
         {
-          name: '川益科技',
-          link: 'https://www.kingslide.com/',
+          name: 'VoiceTube',
           content: `
-            <p align="center">
-            <p style="padding: 5px 0; font-size: 15px; line-height: 22px; color: rgb(120, 120, 120); letter-spacing: 2px;">
-            &nbsp &nbsp &nbsp &nbsp 於2006年成立在高雄科學園區內的川益科技，以創造消費需求而創立， 結合ID設計元素及專業研發人才研究與開發頂尖的先進製程技術與材料應用並投入電子零組件與消費性電子產品產業， 運用多種嶄新技術研發製造出精度高、觸感佳、質感優的金屬配件，成功引領3C產品朝向多樣化與個性化的方向發展。 卓越的研發技術與優良品質使King Slide品牌不僅在雲端產業與高階廚具產業獲得業界翹楚之指定品牌，在邁入消費性電子產品的領域發展之際， King Slide功能性機構產品已朝向全方位應用端發展，現已成為各高科技大廠及各行業翹楚指名的長期合作伙伴。
+            <p align="left">
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px;  margin-top: 20px;">
+            「VoiceTube 看影片學英語」目前全球擁有450萬使用者，是台灣最大的科技語言學習平台。 
             </p>
-            </p>`,
-          info: `
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            自上線以來，我們一直期望能建立一個跳脫教科書框架的環境，讓大家從看自己有興趣的影片開始，接觸英文、喜歡英文，然後自然而然學好英文。一路走來，有許多用戶告訴我們，在看完影片後，希望有能更有系統的學習，把英文練好。為了幫用戶解決練好英文的問題，我們進而催生出「VoiceTube Hero」這套更完整的線上英語學習系統。
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            Hero 延續「看影片學英語」的方式，以多元主題的影片搭配涵蓋英文聽說讀寫的題型，全面性地提升使用者的英文能力，此外於2022年開始新增線上真人家教的方案，讓大家在完成智能系統課程後，搭配真人口說更有效幫助提升敢開口說的能力，在生動活潑的各式情境教材中，透過聆聽/模仿/理解 ， 無形中增強語感，學習好道地英文。並且從影片中挑選重點單字與文句，利用互動作答延伸英語技能訓練，聽力、口說更有專業老師講解，讓你輕鬆理解學習重點。此外，採取多樣且價格平實的課程方案，讓每個人都能在此追求「付得起的夢想」。
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            有系統的學好英文，更能擴大視野、擁抱世界，追求屬於自己的夢想，讓自己藉由英文與世界連結，產生無比的樂趣與成就感。想要有效的學習好英文，以及最佳的英文課程推薦，VoiceTube課程，是您最佳的選擇。 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            Connect. Have fun!
+            </p>
+            <div style=" width:100%; height: 4px; border-top: 3px solid #CDBFEE; margin-top: 20px; "> </div>
             <p align="center">
-            <p style="color:rgb(42,186,243); letter-spacing: 2px; font-weight: bold; font-size: 2.5vh; line-height: 3.8vh;">川益科技</p>
-            <p>官網 : <a href="https://www.kingslide.com/"> https://www.kingslide.com/</a></p>
-            <p>地址 : 82151台灣高雄市路竹區路科九路6號</p>
-            <p>電話 : +886-7-976-1688</p>
-            </p>`
+            <p style="color:#7B61FF; letter-spacing: 2px; font-weight: bold; font-size: 2.5vh; line-height: 4.5vh; margin-top: 2vh;">VoiceTube </p>
+            <p>官網： <a href="https://tw.voicetube.com/">https://tw.voicetube.com/</a> </p>
+            <p>Hero課程：<a href="https://hero.voicetube.com/solutions">https://hero.voicetube.com/solutions</a></p> 
+            </p>
+            `
         },
         {
-          name: '',
-          link: '',
-          contetn: '',
-          info: ''
+          name: 'Yes Online 線上英文家教',
+          content: `
+            <p align="left">
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            良好的英文能力是現代人的必備技能，不管是工作、旅遊，或甚至是追劇時，都需要使用到，但忙碌的生活步調使得我們很難有機會再重回補習班學習英文，這時YesOnline線上英文家教的平台就可說是一大福音，YesOnline線上英文家教不僅可依照自己的時間安排並預約排課，同時也能客製化自己的學習內容，接著透過一對一的線上真人家教，使得學習英文也能變成一件有趣的事情。 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            此外，YesOnline線上英文家教現在更推出了「大學生優惠方案」，只要出示學生證明，便能享有優惠的價格來學習英文，在這裡，不管是生活英文、商業英文或時事英文都有對應的內容，課程內容十分多元，更有著定期的評量可檢視自己的學習成果，循序漸進的學習方式不僅讓大學生們沒有任何的學習壓力，將來在面對原文書及英文考題時，也不會再感到害怕或沒自信，有關此方案更詳細的內容，都在底下的網址，有興趣的朋友快來一起報名吧！ 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            大學生優惠方案：<a href="https://www.yesonlineeng.com/student-plan/">https://www.yesonlineeng.com/student-plan/</a>
+            </p>
+            `
+        },
+        {
+          name: '台南大飯店',
+          content: `
+            <p align="left">
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            台南大飯店於西元 1964 年開幕營運， 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            地處三級古蹟台南車站正前方， 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            多年來默默守護返鄉的遊子們、恭迎他鄉的旅人們。 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            我們見證府城的璀璨歲月，是台南歷史的一部分。 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            152 間溫馨簡約客房，悉心照料每位到訪的旅人們。 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            頂尖廚師團隊，供應著道地府城風味。 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            走訪鄰近古蹟景點、百貨商圈感受府城在地人情味。 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            漫遊府城街景，體驗人文風情，品嚐台南美食，就從台南大飯店開始。
+            </p>
+            <div style=" width:100%; height: 4px; border-top: 3px solid #CDBFEE; margin-top: 20px; "> </div>
+            <p align="center">
+            <p style="color:#7B61FF; letter-spacing: 2px; font-weight: bold; font-size: 2.5vh; line-height: 4.5vh; margin-top: 2vh;">台南大飯店 </p>
+            <p>■官方網站：<a href="https://www.hotel-tainan.com.tw/">https://www.hotel-tainan.com.tw/</a> </p>
+            <p>■美食購線上購物：<a href="https://www.yummygo.com.tw/">https://www.yummygo.com.tw/</a> </p>
+            <p>■官方 FB：<a href="https://www.facebook.com/HotelTainan.Since1964/">https://www.facebook.com/HotelTainan.Since1964/</a> </p>
+            <p>■訂位/訂購專線：06-2249886 </p>
+            <p>■訂房專線：06-2232857</p>
+            </p>
+            `
+        },
+        {
+          name: '台灣特有種實業社',
+          content: `
+            <p align="left">
+
+            <div></div>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            丟棄大眾定義的美學，提倡專注一件事、一種成分 和 唯一的自己 </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            找尋 你 / 妳 的原生美麗，珍惜自己獨一無二的特質 </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            合理的費用、知情的資訊、以高公信力的標準替使用者把關 </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            就是為了讓每個人的肌膚維持健康平衡的狀態 </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            發揮自身最佳的美 </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            你 / 妳 就是最閃耀的那顆新星✨ ✨You are your superstar</p>
+            
+            <div></div>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            〈ONE THING 萃取液 化妝水〉﻿天然綠色原料，純素認證 </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            🌿野茉莉的清香、🌿積雪草的安撫、🌿艾草的冷靜 </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            🌿綠茶的鮮萃、🌿金盞花的鎮定、🌿薏仁的淨亮 </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            🌿花椰的舒敏、🌿魚腥草的強健</p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            👉還有更多功效產品 等著被發現 </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            ONE THING 官網 <a href="https://bit.ly/3m2s5aU">https://bit.ly/3m2s5aU</a> </p>
+            
+            <div style=" width:100%; height: 4px; border-top: 3px solid #CDBFEE; margin-top: 20px; "> </div>
+            <p align="center">
+            <p style="color:#7B61FF; letter-spacing: 2px; font-weight: bold; font-size: 2.5vh; line-height: 4.5vh; margin-top: 2vh;">台灣特有種實業社 </p>
+            <p>FB粉專：@onethingofficialtw </p>
+            <p>IG：@onething_official.tw  </p>
+            <p>Line官方帳號：@onethingtaiwan</p>
+            </p>
+            `
         }
       ]
     }
@@ -391,6 +571,10 @@ export default {
     },
     openSponsorTab: function (index) {
       window.open(this.sponsor[index].link)
+    },
+    openSponsorLayout2: function (index) {
+      this.currentIndex = index;
+      this.mode = 1;
     }
   }
 }
@@ -770,7 +954,22 @@ export default {
           align-content: center;
           align-items: center;
           background-color: linear-gradient(180deg, #DAD0F2 0%, #FCDBE3 100%);
-          box-shadow: 0 0 3px 2px rgba(100, 100, 100, 0.3);;
+          box-shadow: 0 0 3px 2px rgba(100, 100, 100, 0.3);
+          button{
+            position: absolute;
+            top: 18vh;
+            left: 2vw;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border:2px solid #769BFF;
+            background: transparent;
+            color: #769BFF;
+            font-size: 40px;
+            // line-height: 10px;
+            padding: 0vh 0vw 1vh 0vw;
+            cursor: pointer;
+          }
           p {
             color: rgb(48,182,245);
             font-size: 40px;
@@ -788,74 +987,69 @@ export default {
             border-radius: 30px;
             box-shadow: 1px 1px 2px 1px rgba(55, 55, 55, 0.3);
             border: 15px solid transparent;
-            transform: skewX(-3deg);
+            // transform: skewX(-3deg);
             margin: 1vh;
-            cursor: pointer;
-            transition: .2s transform ease-in-out;
-            &:hover {
-              // transform: scale(1.05) skewX(-3deg);
-              transform: scale(1.05);
-            }
-            &:after {
-              position: absolute;
-              display: inline-block;
-              content: '';
-              width: 3vw;
-              height: 3vw;
-              background-image: url("../assets//mouse.svg");
-              background-position: 50% 50%;
-              background-size: contain;
+            // cursor: pointer;
+            // transition: .2s transform ease-in-out;
+            // &:hover {
+            //   // transform: scale(1.05) skewX(-3deg);
+            //   transform: scale(1.05);
+            // }
+            // &:after {
+            //   position: absolute;
+            //   display: inline-block;
+            //   content: '';
+            //   width: 3vw;
+            //   height: 3vw;
+            //   background-image: url("../assets//mouse.svg");
+            //   background-position: 50% 50%;
+            //   background-size: contain;
 
-              margin-left: 10vw;
-              margin-top: 20vw;
-              animation: mouse .5s ease-in-out infinite alternate;
-            }
+            //   margin-left: 10vw;
+            //   margin-top: 20vw;
+            //   animation: mouse .5s ease-in-out infinite alternate;
+            // }
           }
         }
 
         .sponsor_content {
-          grid-area: right;
-
-          display: grid;
-          grid-template-rows: 4fr 1.2fr 0.5fr 0.2fr;
-          grid-template-areas: "content" "info" "logo" ".";
+          display: flex;
+          flex-direction: column;
           justify-content: flex-start;
           justify-items: flex-start;
           align-content: flex-start;
           align-items: flex-start;
-          padding: 8vh 2vw 3vh 4vw;
-
+          padding: 4vh 2vw 4vh 4vw;
+          background: white;
           width: 100%;
           height: 90%;
 
           .sponsor_content_article {
-            padding: 0 10px 0 5px;
             text-align: left;
             line-height: 3.6vh;
-            grid-area: content;
-            width: 85%;
-            height: 52vh;
             overflow-y: scroll;
-            &::-webkit-scrollbar {
-              width: 0.6vw;
-              border-radius: 0.5vw;
-            }
-            &::-webkit-scrollbar-thumb {
-              background: rgb(103, 192, 225);
-              border-radius: 0.5vw;
-            }
+            width: 100%;
+            // height: 52vh;
+            font-weight: 200;
+            // &::-webkit-scrollbar {
+            //   width: 0.6vw;
+            //   border-radius: 0.5vw;
+            // }
+            // &::-webkit-scrollbar-thumb {
+            //   background: rgb(103, 192, 225);
+            //   border-radius: 0.5vw;
+            // }
           }
-          .sponsor_content_info {
-            grid-area: info;
-            padding: 12px 0 0 5px;
-            border-top: 3px solid rgb(254,241,217);
-            border-radius: 1px;
-            text-align: left;
-            width: 65%;
-            color: rgb(60, 60, 60);
-            font-size: 15px;
-            line-height: 25px;
-          }
+          // .sponsor_content_info {
+          //   padding: 12px 0 0 5px;
+          //   // border-top: 3px solid rgb(254,241,217);
+          //   border-radius: 1px;
+          //   text-align: left;
+          //   width: 65%;
+          //   color: rgb(60, 60, 60);
+          //   font-size: 15px;
+          //   line-height: 25px;
+          // }
         }
       }
   }
