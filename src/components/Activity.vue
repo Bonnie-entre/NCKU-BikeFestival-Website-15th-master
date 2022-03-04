@@ -288,7 +288,7 @@ export default {
       pc: false,
       showSideBar: false,
       showListIndex: -1,
-      departmentGtUrl: 'https://app.gather.town/app/pQkmYUusyLNB6jhN/sampletest3'
+      departmentGtUrl: 'https://app.gather.town/app/hThINhaQRLpjVNy3/NCKU-BikeFestival'
     }
   },
   updated: function () {

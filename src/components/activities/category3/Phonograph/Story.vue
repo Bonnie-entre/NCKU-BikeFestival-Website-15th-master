@@ -1,5 +1,9 @@
 <template lang="pug">
-  Panel(title="他們的故事")
+  Panel(title="他們的故事" style="position: relative")
+    div.back-btn(
+      v-show="storyIndex != -1"
+      @click="storyIndex = -1"
+    ) ← 回上頁
     div.container
       p {{content}}
       div.btn-group(v-if="storyIndex === -1")
@@ -58,6 +62,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.back-btn{
+  position: absolute;
+  left: 40px;
+  font-size: 20px;
+  cursor: pointer;
+  &:hover {
+    text-shadow: 0 0 4px #fcdbe3, 0 0 5px #dad0f2;
+  }
+}
   @media only screen and (max-width: 599px){
     .container {
       flex-grow: 1;

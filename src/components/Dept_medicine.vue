@@ -77,7 +77,7 @@ export default {
         'https://drive.google.com/file/d/1dgbrGP04OaYVyG9r1JDFiWolrwlc4XuE/preview',
         'https://drive.google.com/file/d/1rfcuqbmt2UVAvAN-q2evIwqeaHrT2HNl/preview',
         'https://drive.google.com/file/d/1bzDvYQYaUyL-CX8uSM8LuyTyQc9F6f08/preview',
-        ''
+        'https://drive.google.com/file/d/1XDfLkiS9YGGZzXwaz0teYn32_5SjyeHY/preview'
       ],
       guildForm: [
         '',
@@ -404,7 +404,7 @@ export default {
           margin-right: 0.5%;
           background-image: url("../assets//logoHome_white.png");
           background-repeat: no-repeat;
-          background-size: 85% 46%;
+          background-size: contain;
           background-position: center;
           transition: filter .8s ease;
           cursor: pointer;

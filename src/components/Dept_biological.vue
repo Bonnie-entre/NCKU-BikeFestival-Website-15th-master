@@ -72,7 +72,7 @@ export default {
       iframeSrc: [
         'https://drive.google.com/file/d/1ymHBRe03I5p_x82uGVpm5zl549UHI1cZ/preview',
         'https://drive.google.com/file/d/1RzjIO8kz3FrH1y7NBaHSfIavYa_jiasi/preview',
-        ''
+        'https://drive.google.com/file/d/1dxvqY1dqQmolRW3L7PzwHcbhSIk52bHP/preview'
       ],
       guildForm: [
         '',
@@ -392,7 +392,7 @@ export default {
           margin-right: 0.5%;
           background-image: url("../assets//logoHome_white.png");
           background-repeat: no-repeat;
-          background-size: 85% 46%;
+          background-size: contain;
           background-position: center;
           transition: filter .8s ease;
           cursor: pointer;

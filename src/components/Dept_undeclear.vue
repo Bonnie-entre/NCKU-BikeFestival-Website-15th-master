@@ -70,7 +70,7 @@ export default {
       check: false,
       iframeSrc: [
         'https://drive.google.com/file/d/1tuUJ8bgILhYyyDPsBEbjQTnMtU_t81vW/preview',
-        ''
+        'https://drive.google.com/file/d/1aRv_xE0PLCSMpKPWZ3dqH2l2hOr3lf_j/preview'
       ],
       guildForm: [
         '',
@@ -391,7 +391,7 @@ export default {
           margin-right: 0.5%;
           background-image: url("../assets//logoHome_white.png");
           background-repeat: no-repeat;
-          background-size: 85% 46%;
+          background-size: contain;
           background-position: center;
           transition: filter .8s ease;
           cursor: pointer;

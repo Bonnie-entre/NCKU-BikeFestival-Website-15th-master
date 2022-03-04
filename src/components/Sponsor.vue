@@ -835,7 +835,7 @@ export default {
           margin-right: 0.5%;
           background-image: url("../assets//logoHome_white.png");
           background-repeat: no-repeat;
-          background-size: 85% 46%;
+          background-size: contain;
           background-position: center;
           transition: filter .8s ease;
           cursor: pointer;
@@ -969,8 +969,8 @@ export default {
             cursor: pointer;
           }
           p {
-            color: rgb(48,182,245);
-            font-size: 40px;
+            color: #0C3759;
+            font-size: 30px;
             letter-spacing: 4px;
             padding: 10px;
           }
