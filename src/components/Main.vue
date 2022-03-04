@@ -12,11 +12,13 @@
     div(class="intro_layout")
       div(class="intro_layout1")
         div(class="test")
-          iframe(class="intro_film" v-if="pc | dropdown==false" src='https://www.youtube.com/embed/KsXRN7AKDUI')
-            div(class="black1")
-              div(class="white_block" v-for="(block, i) of 16")
-            div(class="black2")
-              div(class="white_block" v-for="(block, i) of 16")
+          div.preview
+            div.monitor
+              div.block 空氣品質 
+                span {{ `${PM25} (PM2.5)` }}
+              div.block 入場人數 
+                span {{ `${population} (人)` }}
+            iframe(class="intro_film" v-if="pc | dropdown==false" src='https://www.youtube.com/embed/KsXRN7AKDUI')
           div(class="intro_menu" v-if="pc | dropdown==true" @click="dropdown=false;" )
             div(class="list" v-if="dropdown==true" @click="dropdown=false;")
               router-link(tag="label" v-for="(text, index) of menuText" v-bind:key="text" v-bind:to="'/' + urlText[index]" ) {{text}}
@@ -57,7 +59,9 @@ export default {
       loader: null,
       dropdown: false,
       frontImg,
-      backImg
+      backImg,
+      population: 0,
+      PM25: 0
     }
   },
   mounted: async function () {
@@ -71,7 +75,8 @@ export default {
 
     fetch('http://140.116.68.48:8081/bikeData').then((res) => {
       return res.json().then((jsonData) => {
-        console.log(jsonData);
+        this.population = jsonData['光復'] + jsonData['光復到榕園'] + jsonData['榕園']
+        this.PM25 = jsonData['PM2.5']
       })
     })
   },
@@ -403,6 +408,23 @@ export default {
 
       .intro_layout1{
         .test{
+          .monitor{
+            margin: 5vh 1vw 3vh 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            .block{
+              width: 30%;
+              background-color: #fff;
+              line-height: 60px;
+              border-radius: 30px;
+              font-size: 24px;
+              color: #7B61FF;
+              span{
+                color: #FF6187;
+              }
+            }
+          }
           display: flex;
           flex-direction: row;
           height: 100%;
@@ -412,8 +434,8 @@ export default {
           margin: 3vh 0 3vh 0;
           .intro_film{
             margin: 3vh 1vw 3vh 0;
-            height: 70vh;
-            width: 60vw;
+            height: 60vh;
+            width: 50vw;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
