@@ -1,5 +1,9 @@
 <template lang="pug">
-  Panel(:title="ansNum === 0 ? '心理測驗' : '心理測驗結果'")
+  Panel(:title="ansNum === 0 ? '心理測驗' : '心理測驗結果'" style="position: relative")
+    div.back-btn(
+      v-show="ansNum != 0"
+      @click="ansNum = 0"
+    ) ← 回上頁
     div.container(v-if="ansNum === 0")
       p {{content}}
       div.answers
@@ -52,6 +56,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.back-btn{
+  position: absolute;
+  left: 40px;
+  font-size: 20px;
+  cursor: pointer;
+  &:hover {
+    text-shadow: 0 0 4px #fcdbe3, 0 0 5px #dad0f2;
+  }
+}
   @media only screen and (max-width: 599px){
     .container {
       flex-grow: 1;
