@@ -13,14 +13,14 @@
       div(class="intro_layout1")
         div(class="test")
           div.preview
-            div.monitor
+            div.monitor(v-if="PM25 !== 0 && population !== 0")
               div.block 
                 span 空氣品質 
-                span.loader(v-if="PM25 === -1")
+                span.loader(v-if="PM25 === 0")
                 span.data(v-else) &nbsp;{{ PM25 }} &nbsp;
                 span.data.unit {{ ` (pm2.5)` }}
               div.block 入場人數 
-                span.loader(v-if="population === -1")
+                span.loader(v-if="population === 0")
                 span.data(v-else) &nbsp;{{ population }} &nbsp;
                 span.data.unit {{ ` (人)` }}
             iframe(class="intro_film" v-if="pc | dropdown==false" src='https://www.youtube.com/embed/KsXRN7AKDUI')
@@ -64,8 +64,8 @@ export default {
       dropdown: false,
       frontImg,
       backImg,
-      population: -1,
-      PM25: -1
+      population: 0,
+      PM25: 0
     }
   },
   mounted: async function () {
@@ -79,8 +79,18 @@ export default {
 
     fetch('https://nckubike.ainimal.io/').then((res) => {
       return res.json().then((jsonData) => {
-        this.population = jsonData['光復'] + jsonData['光復到榕園'] + jsonData['榕園']
-        this.PM25 = jsonData['PM2.5']
+        const fields = ['光復', '光復到榕園', '榕園']
+        this.population = 0;
+        for (let field in fields) {
+          if (jsonData[field]) {
+            this.population += jsonData[field]
+          }
+        }
+
+        this.PM25 = 0
+        if (jsonData['PM2.5']) {
+          this.PM25 = jsonData['PM2.5']
+        }
       })
     })
   },
@@ -435,8 +445,11 @@ export default {
 
       .intro_layout1{
         .test{
+          .preview{
+            margin: 5vh 0 0 0;
+          }
           .monitor{
-            margin: 5vh 1vw 3vh 0;
+            margin: 0 1vw 0 0;
             display: flex;
             justify-content: space-around;
             align-items: center;
