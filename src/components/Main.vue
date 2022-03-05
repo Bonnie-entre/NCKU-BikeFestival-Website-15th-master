@@ -81,7 +81,7 @@ export default {
       return res.json().then((jsonData) => {
         const fields = ['光復', '光復到榕園', '榕園']
         this.population = 0;
-        for (let field in fields) {
+        for (let field of fields) {
           if (jsonData[field]) {
             this.population += jsonData[field]
           }
