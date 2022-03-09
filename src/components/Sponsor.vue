@@ -254,16 +254,25 @@ export default {
           content: `
             <p align="left">
             <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px;">
-            來自香港的設計品牌 —— DOUGHNUT，十年前，因創辦人買不到理想的畢業旅行背包，而誤打誤撞地創立，從2個包到100個包，再從100包到跨國企業的品牌。因此 DOUGHNUT 深信，在你把事情完成之前，它往往看似不可能，但，只要想得到，就做得到。 秉持十年前的創立初衷，堅持以顧客角度出發，致力於設計「時裝與機能」完美融合的包款，品牌以 ”PACK YOUR DREAM” 為宗旨， 希望產品能承載每位旅者的夢想，一起展開實踐夢想的旅程。 對於夢想，我們有著不同的解構：夢想不一定要很大，有時候只是你想要的生活形式。人生，想玩就去玩，想試就去試，只要不要白過每日就可以。 DOUGHNUT 品牌永續目標：自2020年起，以「可持續性」為設計核心，進行產品研發，重視永續發展，採用回收寶特瓶、海洋廢棄漁網、GOTS 認證有機棉等材料設計包款，除了材料永續，更開發機能性強、耐用且能一包多用的包包。並計劃未來在產品上增加「碳足跡標籤」，讓消費者在選擇時尚的同時，也用消費改變世界。
+            來自香港的設計品牌 —— DOUGHNUT，十年前，因創辦人買不到理想的畢業旅行背包，而誤打誤撞地創立，從2個包到100個包，再從100包到跨國企業的品牌。因此 DOUGHNUT 深信，在你把事情完成之前，它往往看似不可能，但，只要想得到，就做得到。 
             </p>
-            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px;">
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            秉持十年前的創立初衷，堅持以顧客角度出發，致力於設計「時裝與機能」完美融合的包款，品牌以 ”PACK YOUR DREAM” 為宗旨， 希望產品能承載每位旅者的夢想，一起展開實踐夢想的旅程。
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            對於夢想，我們有著不同的解構：夢想不一定要很大，有時候只是你想要的生活形式。人生，想玩就去玩，想試就去試，只要不要白過每日就可以。
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            DOUGHNUT 品牌永續目標：自2020年起，以「可持續性」為設計核心，進行產品研發，重視永續發展，採用回收寶特瓶、海洋廢棄漁網、GOTS 認證有機棉等材料設計包款，除了材料永續，更開發機能性強、耐用且能一包多用的包包。並計劃未來在產品上增加「碳足跡標籤」，讓消費者在選擇時尚的同時，也用消費改變世界。
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px;margin-top: 20px;">
             夢想不一定要很大，有時候只是你想要的生活形式。Go Dreaming！
             </p>
             <div style=" width:100%; height: 4px; border-top: 3px solid #CDBFEE; margin-top: 20px; "> </div>
             <p align="center">
             <p style="color:#7B61FF; letter-spacing: 2px; font-weight: bold; font-size: 2.5vh; line-height: 4.5vh; margin-top: 2vh;">DOUGHNUT</p>
             <p>▎來自香港的設計品牌 —— DOUGHNUT </p>
-            <p>▎WEB：<a href="https://www.doughnut.com.tw/">https://www.doughnut.com.tw/</a></p>
+            <p>▎WEB：<a href="https://doughnut.cc/BrandStory_">https://doughnut.cc/BrandStory_</a></p>
             <p>▎Pack your Dream</p>
             </p>
             `
@@ -679,17 +688,48 @@ export default {
           content: `
             <p align="left">
             <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
-            在你的江湖，補充你的法力。只有中華民國才寫得出來的斷交史，和台灣人自己的台灣法曆，舉世獨步的島嶼，卻不正常的島嶼，有著自己的故事，和不正常的憲法，因此憲政熱映中。不正常國家的法律，讀了再久，還是忍不住罵一句 What the 法。 
+            找回 22 歲時的理想主義 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px;">
+            STAY 22 FOREVER！來自台灣的世界冠軍 
             </p>
             <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
-            書寫我們自己的法律故事，法律白話文運動全書系熱賣中，任選三本以上 79 折。
+            Lab22 製夢所的實驗精神： 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px;">
+            低碳生活，永續環保，22 歲的善良與初心。 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            實驗產物：過去只能在夢中出現， 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px;">
+            實踐循環經濟或是共享經濟的生活好物。 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            來自台灣的世界冠軍：東京國際禮品設計大獎， 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px;">
+            義大利 A’ Design Award&Competition， 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px;">
+            以及德國紅點設計大獎六項桂冠。 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            哲學加一：全球 PETA 認證，Lab22 的實驗和設計都是Animal Free ! 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            在這裡我們分享 Lab22 帶著 22 歲的初心，以及追求低碳生活，永續環保的熱情而生成的好想法與好設計 
+            </p>
+            <p style="padding: 5px 0; font-size: 20px; line-height: 28px; font-weight: 300; color: black; letter-spacing: 4.5px; margin-top: 20px;">
+            👉還有更多永續循環的環保鞋款 等著被發現
             </p>
             <div style=" width:100%; height: 4px; border-top: 3px solid #CDBFEE; margin-top: 20px; "> </div>
             <p align="center">
             <p style="color:#7B61FF; letter-spacing: 2px; font-weight: bold; font-size: 2.5vh; line-height: 4.5vh; margin-top: 2vh;">野台系</p>
-            <p>點這裡購買👉：<a href="store.plianlaw.me">store.plianlaw.me</a> </p>
-            <p>粉絲專頁：<a href="https://www.facebook.com/plainlaw.me">https://www.facebook.com/plainlaw.me</a> </p>
-            <p>電子信箱：<a href="business@plainlaw.me">business@plainlaw.me</a></p>
+            <p>更多資訊：<a href="https://bit.ly/3oYk208">https://bit.ly/3oYk208</a> </p>
+            <p>FB粉專：<a href="https://www.facebook.com/lab22gowildfortaiwan">https://www.facebook.com/lab22gowildfortaiwan</a> </p>
+            <p>#我野 #我台 #我驕傲 #ccilu #lab22taiwan </p>
+            <p>#Greenplax #XpreSole #SiliComfy #馳綠22製夢所</p>
             `
         },
         {
