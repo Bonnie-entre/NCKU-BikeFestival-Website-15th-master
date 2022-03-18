@@ -15,7 +15,6 @@
       router-link(class="dropdown_top_list" v-for="(item, index) in menuText" tag="label"  v-bind:key="text" v-bind:to="'/' + urlText[index]" v-bind:class="{ active: index==3 }") {{item}}
       label(class="dropdown_top_list" @click="openTab('https://docs.google.com/forms/d/e/1FAIpQLSdBW8m8SVm5YqwtsOGWAaMYwOWiMJ_RbjZTNMq4dJYYWCg85Q/viewform'); list = false;") 我要報名
     div(class="sponsor_layout_1" v-if=" mode === 0 && !dropdown_top" @click="list = false")
-      //- 
       div(class="sponsor_list" v-if="pc && mode === 0")
         label(
           v-for="(iter, index) of sponsorLogo"
@@ -32,14 +31,15 @@
           v-bind:data-name="iter.name"
           v-bind:href="`${iter.link}`" target="_blank"
           v-bind:style="{'background-image': 'url('+ require(`@/assets/sponsor/sponsor${index+1}.png`) + ')'}"
+          v-on:click="openSponsorLayout2(index)"
         ) 
-    div(class="sponsor_layout_2" v-if="pc && mode == 1" v-show="!dropdown_top" @click="list = false")
+    div(class="sponsor_layout_2" v-if=" mode == 1" v-show="!dropdown_top" @click="list = false")
       section(class="sponsor_info" )
         button(@click="mode=0;") x
         label(
           v-bind:style="{'background-image': 'url('+ require(`@/assets/sponsor/sponsor${currentIndex+1}.png`) + ')'}"
          )
-        p {{sponsor[currentIndex]}}
+        p {{sponsorLogo[currentIndex].name}}
       section(class="sponsor_content")
         div(class="sponsor_content_article")
           div(v-if="currentIndex==0")
@@ -71,10 +71,10 @@
             img(src="../assets/sponsor/bio1.jpg" width="90%" height="300" margin="10px")
             p(class="sub_title") 嚴格把關，安全無虞 
             p(class="content") BioMask 台灣製造的醫療級口罩，外層面料如絲綢般光滑平順，中間層材質採用高品質熔噴布，加上內層親膚舒適，擁有多項專業認證，成為許多消費者的指定品牌： 
-            p(class="content") ●TTRI 紡研所 功能性檢測 CNS14774 通過 
-            p(class="content") ●衛部醫器製壹字號第 009048 號 
-            p(class="content") ●符合 CNS15290 規範檢測產品 
-            p(class="content") ●通過全國公證不含偶氮重金屬甲醛檢測
+            p(class="content_noMarginTop") ●TTRI 紡研所 功能性檢測 CNS14774 通過 
+            p(class="content_noMarginTop") ●衛部醫器製壹字號第 009048 號 
+            p(class="content_noMarginTop") ●符合 CNS15290 規範檢測產品 
+            p(class="content_noMarginTop") ●通過全國公證不含偶氮重金屬甲醛檢測
             img(src="../assets/sponsor/bio2.png" width="90%" height="300" margin="10px")
             p(class="sub_title") 客製化合作──口罩也要 dress code BioMask 
             p(class="content") 在口罩客製化上有豐富經驗，受到許多企業、藝人及網紅的青睞，此外，BioMask 也樂於與學生合作，像這次單車節也利用口罩來凝聚團隊精神，工作人員們配戴的口罩正是委託 BioMask 為此次活動所製造的，不僅被大家直呼「好好看~」，材質也很親膚，長時間配戴也不會覺得勒耳朵。
@@ -213,24 +213,26 @@
             p() ■訂房專線：06-2232857
           div(v-if="currentIndex==11")
             p(align="left")
-            img(src="../assets/sponsor/onething1.png" display="block" padding-top="100%"  height="400" margin="10px")
+            img(src="../assets/sponsor/onething1.png"  height="500" margin="10px" v-if="pc")
+            img(src="../assets/sponsor/onething1.png"  height="400" margin="10px" v-if="!pc")
             p(class="content") 丟棄大眾定義的美學，提倡專注一件事、一種成分 和 唯一的自己 
-            p(class="content") 找尋 你 / 妳 的原生美麗，珍惜自己獨一無二的特質 
-            p(class="content") 合理的費用、知情的資訊、以高公信力的標準替使用者把關 
-            p(class="content") 就是為了讓每個人的肌膚維持健康平衡的狀態 
-            p(class="content") 發揮自身最佳的美 
-            p(class="content") 你 / 妳 就是最閃耀的那顆新星✨ ✨You are your superstar
-            img(src="../assets/sponsor/onething2.png" height="400" margin="10px")
+            p(class="content_noMarginTop") 找尋 你 / 妳 的原生美麗，珍惜自己獨一無二的特質 
+            p(class="content_noMarginTop") 合理的費用、知情的資訊、以高公信力的標準替使用者把關 
+            p(class="content_noMarginTop") 就是為了讓每個人的肌膚維持健康平衡的狀態 
+            p(class="content_noMarginTop") 發揮自身最佳的美 
+            p(class="content_noMarginTop") 你 / 妳 就是最閃耀的那顆新星✨ ✨You are your superstar
+            img(src="../assets/sponsor/onething2.png" height="500" margin="10px" v-if="pc")
+            img(src="../assets/sponsor/onething2.png" height="400" margin="10px" v-if="!pc")
             p(class="content") ⟨ONE THING 萃取液 化妝水⟩ 天然綠色原料，純素認證 
-            p(class="content") 🌿野茉莉的清香、🌿積雪草的安撫、🌿艾草的冷靜 
-            p(class="content") 🌿綠茶的鮮萃、🌿金盞花的鎮定、🌿薏仁的淨亮 
-            p(class="content") 🌿花椰的舒敏、🌿魚腥草的強健
+            p(class="content_noMarginTop") 🌿野茉莉的清香、🌿積雪草的安撫、🌿艾草的冷靜 
+            p(class="content_noMarginTop") 🌿綠茶的鮮萃、🌿金盞花的鎮定、🌿薏仁的淨亮 
+            p(class="content_noMarginTop") 🌿花椰的舒敏、🌿魚腥草的強健
             p(class="content") 👉還有更多功效產品 等著被發現 
-            p(class="content") ONE THING 官網 
+            p(class="content_noMarginTop") ONE THING 官網 
               a(href="https://bit.ly/3m2s5aU") https://bit.ly/3m2s5aU
             div(style=" width:100%; height: 4px; border-top: 3px solid #CDBFEE; margin-top: 20px;")
             p(align="center")
-              p(class="store_title") 台灣特有種實業社 
+              p(class="store_title") ONE THING 
             p() FB粉專：@onethingofficialtw 
             p() IG：@onething_official.tw  
             p() Line官方帳號：@onethingtaiwan
@@ -295,6 +297,7 @@
               a(href="https://www.ijealous.com.tw/") https://www.ijealous.com.tw/
           div(v-if="currentIndex==16")
             p(align="left")
+            p(class="content") 法律白話文運動為致力於普法的媒體，透過他們的介紹輕鬆學習相關法律知識，以法律為基礎，促進社會對話。從法律認識議題，藉由議題的介紹反思法律。不僅建立粉專、專欄，還有 podcast …等，提供許多讓人們選擇去了解法律知識的管道，與傳達致力推動的理想。
             p(class="content") 在你的江湖，補充你的法力。只有中華民國才寫得出來的斷交史，和台灣人自己的台灣法曆，舉世獨步的島嶼，卻不正常的島嶼，有著自己的故事，和不正常的憲法，因此憲政熱映中。不正常國家的法律，讀了再久，還是忍不住罵一句 What the 法。 
             p(class="content") 書寫我們自己的法律故事，法律白話文運動全書系熱賣中，任選三本以上 79 折。
             div(style=" width:100%; height: 4px; border-top: 3px solid #CDBFEE; margin-top: 20px;")
@@ -409,7 +412,6 @@ export default {
   },
   data: function () {
     return {
-      // img: require('../assets/sponsor/bio2.png'),
       menuText: ['活動介紹', '科系資訊', '主題專欄', '合作單位'],
       urlText: ['activity', 'department', 'column', 'sponsor'],
       list: false,
@@ -463,7 +465,7 @@ export default {
           img: 'https://i.imgur.com/a2u62ZH.jpg'
         },
         {
-          name: '台灣特有種實業社',
+          name: 'ONE THING',
           img: 'https://i.imgur.com/a2u62ZH.jpg'
         },
         {
@@ -514,8 +516,7 @@ export default {
           name: 'KISS ME',
           img: 'https://i.imgur.com/a2u62ZH.jpg'
         }
-      ],
-      sponsor: ['Batiste 乾洗髮','BioMask','DOUGHNUT','HERSHEY’S','I’M COFFEE','IMC 人力資源 股份有限公司', 'Snapask', 'SOL HELMETS', 'VoiceTube', 'Yes Online 線上英文家教', '台南大飯店', '台灣特有種實業社', '民台科技', '好日子', '百氛苑', '忌妒妳的美 IJEALOUS','法律白話文運動', '旅讀','野台系', '晶碩光學','群聯電子', '簡單生活實驗室', '寶貝國際', 'KISS ME']
+      ]
     }
   },
   mounted: function () {
@@ -717,31 +718,58 @@ export default {
     }
     .sponsor_layout_2 {
         display: flex;
-        flex-direction: row;
-        width: 50%;
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
+        width: 96vw;
         height: 90vh;
-
-        .sponsor_content {
-          grid-area: right;
-          display: grid;
-          grid-template-rows: 4fr 1.2fr 0.5fr 0.2fr;
-          grid-template-areas: "content" "info" "logo" ".";
-          justify-content: flex-start;
-          justify-items: flex-start;
-          align-content: flex-start;
-          align-items: flex-start;
-          padding: 8vh 2vw 3vh 4vw;
+        .sponsor_info {
+          margin-top: 3vh;
+          display: flex;
+          flex-direction: column;
           width: 100%;
-          height: 90%;
-
+          height: 22vh;
+          align-content: center;
+          align-items: center;
+          button{
+            position: absolute;
+            top: 12vh;
+            left: 2vw;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border:2px solid #769BFF;
+            background: transparent;
+            color: #769BFF;
+            font-size: 40px;
+            padding: 0vh 0vw 1vh 0vw;
+            cursor: pointer;
+          }
+          label{
+            width: 200px;
+            height: 200px;
+            margin: 0 10px 0 10px;
+            background-repeat: no-repeat;
+            background-position: center;
+          }
+          p{
+            font-size: 20px;
+          }
+        }
+        .sponsor_content {
+          padding: 3vh 2vw 3vh 3vw;
+          width: 100%;
+          height: 60vh;
+          display: flex;
+          flex-direction: column;
+          align-content: center;
+          align-items: center;
           .sponsor_content_article {
-            padding: 0 10px 0 5px;
             text-align: left;
-            line-height: 3.6vh;
-            grid-area: content;
-            width: 85%;
-            height: 52vh;
+            width: 90%;
+            height: 100%;
             overflow-y: scroll;
+            overflow-x: hidden;
             &::-webkit-scrollbar {
               width: 0.6vw;
               border-radius: 0.5vw;
@@ -750,9 +778,17 @@ export default {
               background: rgb(103, 192, 225);
               border-radius: 0.5vw;
             }
+            .content_noMarginTop{
+              padding: 5px 0; 
+              font-size: 16px; 
+              line-height: 28px; 
+              font-weight: 300; 
+              color: black; 
+              letter-spacing: 4.5px;
+            }
             .content{
               padding: 5px 0; 
-              font-size: 20px; 
+              font-size: 16px; 
               line-height: 28px; 
               font-weight: 300; 
               color: black; 
@@ -761,7 +797,7 @@ export default {
             }
             .sub_title{
               padding: 5px 0; 
-              font-size: 22px; 
+              font-size: 18px; 
               line-height: 28px; 
               font-weight: bold; 
               color: black; 
@@ -772,22 +808,12 @@ export default {
               color:#7B61FF;
               letter-spacing: 2px; 
               font-weight: bold; 
-              font-size: 2.5vh; 
+              font-size: 2vh; 
               line-height: 4.5vh; 
               margin-top: 2vh;
             }
           }
-          .sponsor_content_info {
-            grid-area: info;
-            padding: 12px 0 0 5px;
-            border-top: 3px solid rgb(254,241,217);
-            border-radius: 1px;
-            text-align: left;
-            width: 65%;
-            color: rgb(60, 60, 60);
-            font-size: 15px;
-            line-height: 25px;
-          }
+          
         }
       }
   }
@@ -1011,6 +1037,9 @@ export default {
             overflow-y: scroll;
             width: 100%;
             font-weight: 200;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             .content_noMarginTop{
               padding: 5px 0; 
               font-size: 20px; 
