@@ -213,16 +213,20 @@
             p() ■訂房專線：06-2232857
           div(v-if="currentIndex==11")
             p(align="left")
-            img(src="../assets/sponsor/onething1.png"  height="500" margin="10px" v-if="pc")
-            img(src="../assets/sponsor/onething1.png"  height="400" margin="10px" v-if="!pc")
+            div(style="display: flex; justify-content: center;")
+              img(src="../assets/sponsor/onething1.png"  height="500" margin="10px" v-if="pc")
+            div(style="display: flex; justify-content: center;")
+              img(src="../assets/sponsor/onething1.png"  height="400" margin="10px" v-if="!pc")
             p(class="content") 丟棄大眾定義的美學，提倡專注一件事、一種成分 和 唯一的自己 
             p(class="content_noMarginTop") 找尋 你 / 妳 的原生美麗，珍惜自己獨一無二的特質 
             p(class="content_noMarginTop") 合理的費用、知情的資訊、以高公信力的標準替使用者把關 
             p(class="content_noMarginTop") 就是為了讓每個人的肌膚維持健康平衡的狀態 
             p(class="content_noMarginTop") 發揮自身最佳的美 
             p(class="content_noMarginTop") 你 / 妳 就是最閃耀的那顆新星✨ ✨You are your superstar
-            img(src="../assets/sponsor/onething2.png" height="500" margin="10px" v-if="pc")
-            img(src="../assets/sponsor/onething2.png" height="400" margin="10px" v-if="!pc")
+            div(style="display: flex; justify-content: center;")
+              img(src="../assets/sponsor/onething2.png" height="500" margin="10px" v-if="pc")
+            div(style="display: flex; justify-content: center;")
+              img(src="../assets/sponsor/onething2.png" height="400" margin="10px" v-if="!pc")
             p(class="content") ⟨ONE THING 萃取液 化妝水⟩ 天然綠色原料，純素認證 
             p(class="content_noMarginTop") 🌿野茉莉的清香、🌿積雪草的安撫、🌿艾草的冷靜 
             p(class="content_noMarginTop") 🌿綠茶的鮮萃、🌿金盞花的鎮定、🌿薏仁的淨亮 
